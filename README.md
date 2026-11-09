@@ -1,4 +1,4 @@
-# Elena & Julian — Modern Minimal Digital Wedding Invitation
+# Soe Lin Htut & Htet Zar Chi — Modern Minimal Digital Wedding Invitation
 
 A digital wedding invitation website crafted with an editorial, publication-style visual language. Understated, emotional, and responsive.
 

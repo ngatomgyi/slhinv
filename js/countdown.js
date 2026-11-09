@@ -77,10 +77,12 @@ class WeddingCountdown {
   renderPastEvent() {
     const grid = document.querySelector('.countdown-grid');
     if (grid) {
+      const title = window.WEDDING_CONFIG?.couple?.displayTitle || "Soe Lin Htut & Htet Zar Chi";
+      const date = window.WEDDING_CONFIG?.dateDisplay?.fullDate || "November 15, 2026";
       grid.innerHTML = `
         <div class="countdown-passed" style="grid-column: 1 / -1;">
           <p style="font-size: var(--text-xl); margin-bottom: 0.5rem; color: var(--color-text-main);">Happily Ever After</p>
-          <p>Elena &amp; Julian were married on September 18, 2027.<br>Thank you to everyone who shared in celebrating this timeless memory.</p>
+          <p>${title} were married on ${date}.<br>Thank you to everyone who shared in celebrating this timeless memory.</p>
         </div>
       `;
     }

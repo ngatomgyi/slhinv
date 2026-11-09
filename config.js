@@ -4,57 +4,57 @@
  * Instructions:
  * Edit the values in this file to customize your wedding invitation.
  * All image paths are relative to the website root (e.g. './assets/images/hero.webp')
- * ensuring compatibility with subdirectories such as /wedding-2/ on Cloudflare Pages.
+ * ensuring compatibility with subdirectories such as /slhinv/ on GitHub Pages & Cloudflare Pages.
  */
 
 window.WEDDING_CONFIG = {
   // Couple Information
   couple: {
     partner1: {
-      firstName: "Elena",
-      lastName: "Vance",
-      role: "Bride"
-    },
-    partner2: {
-      firstName: "Julian",
-      lastName: "Thorne",
+      firstName: "Soe Lin",
+      lastName: "Htut",
       role: "Groom"
     },
+    partner2: {
+      firstName: "Htet Zar",
+      lastName: "Chi",
+      role: "Bride"
+    },
     // Monogram initials displayed on intro screen and stamps
-    initials: "E & J",
+    initials: "S & H",
     // Combined title format
-    displayTitle: "Elena & Julian"
+    displayTitle: "Soe Lin Htut & Htet Zar Chi"
   },
 
   // Wedding Date & Time
   // Format: YYYY-MM-DDTHH:mm:ss in ISO format
-  eventDate: "2027-09-18T16:00:00",
-  timezone: "Europe/Rome",
-  timezoneLabel: "CET (GMT+1)",
+  eventDate: "2026-11-15T09:00:00",
+  timezone: "Asia/Yangon",
+  timezoneLabel: "MMT (GMT+6:30)",
   
   // Date Display Formats
   dateDisplay: {
-    dayOfWeek: "Saturday",
-    fullDate: "September 18, 2027",
-    shortDate: "18 . 09 . 2027",
-    time: "4:00 PM",
-    year: "2027"
+    dayOfWeek: "Sunday",
+    fullDate: "November 15, 2026",
+    shortDate: "15 . 11 . 2026",
+    time: "9:00 AM",
+    year: "2026"
   },
 
   // Intro Screen
   intro: {
-    subtitle: "The Wedding Of",
-    quote: "A quiet celebration of love, art, and timeless devotion.",
+    subtitle: "The Wedding Celebration",
+    quote: "Two lives, one shared journey — celebrated in quiet devotion, love, and family blessing.",
     buttonText: "View Invitation",
-    footnote: "Scroll or click to open"
+    footnote: "Press or click to open"
   },
 
   // Hero Section
   hero: {
     leadTag: "Save The Date & Formal Invitation",
-    locationShort: "Lake Como, Italy",
+    locationShort: "Pathein, Myanmar",
     image: "./assets/images/hero.webp",
-    imageAlt: "Elena and Julian — Editorial portrait at Lake Como",
+    imageAlt: "Soe Lin Htut & Htet Zar Chi — Wedding Portrait",
     scrollHint: "Scroll down to discover"
   },
 
@@ -63,12 +63,12 @@ window.WEDDING_CONFIG = {
     heading: "We Request The Pleasure Of Your Company",
     subheading: "A Union of Two Lives",
     body: [
-      "Together with their beloved families, Elena Vance and Julian Thorne invite you to join them in celebrating their wedding under the timeless Italian sky.",
-      "Surrounded by ancient cypresses, still waters, and those dearest to our hearts, we will exchange our vows and embark on a new chapter of devotion, laughter, and lifelong partnership.",
-      "Your presence has shaped the people we have become, and sharing this quiet milestone with you means everything to us."
+      "Together with their parents, Soe Lin Htut and Htet Zar Chi warmly request the honour of your presence at the celebration of their wedding ceremony.",
+      "Surrounded by our beloved families, elders, and dearest friends, we will exchange our vows and begin this new chapter of love, mutual respect, and lifelong partnership.",
+      "Your warm blessings and presence will bring immense joy and make our wedding day truly memorable."
     ],
     monogramSignoff: "With love and gratitude,",
-    hosts: "The Vance & Thorne Families"
+    hosts: "The Parents of the Bride & Groom"
   },
 
   // Love Story / Editorial Vignettes
@@ -78,147 +78,141 @@ window.WEDDING_CONFIG = {
     subheading: "Chapter by Chapter",
     vignettes: [
       {
-        year: "2021",
-        place: "Florence",
-        title: "A Serendipitous Encounter",
-        text: "Introduced on an autumn evening along the Arno river. What began as a discussion on renaissance architecture unfolded into hours of conversation over bitter espresso."
+        year: "2022",
+        place: "Yangon",
+        title: "Where Our Story Began",
+        text: "Two lives quietly intersected on an autumn afternoon. What began as a heartfelt friendship quickly blossomed into a profound bond built on laughter and shared ideals."
       },
       {
-        year: "2023",
-        place: "Paris & Kyoto",
-        title: "Miles & Quiet Mornings",
-        text: "Two years of quiet travels, long walks through narrow alleys, shared sketchbooks, and discovering that home is not a place, but a person."
+        year: "2024",
+        place: "Pathein & Beyond",
+        title: "Growing Together",
+        text: "Two years of quiet travels, thoughtful conversations over tea, and the gentle realization that home is simply being wherever the other is."
       },
       {
-        year: "2025",
-        place: "Lake Como",
-        title: "The Promise",
-        text: "At sunset overlooking the terraced gardens of Villa Balbiano, Julian asked Elena to be his wife. A quiet whisper, an embrace, and a resounding yes."
+        year: "2026",
+        place: "The Promise",
+        title: "A Lifetime Ahead",
+        text: "With the loving blessings of both our families, we made our eternal promise to walk hand in hand through every season of life."
       }
     ],
     portraitImage: "./assets/images/story.webp",
-    portraitCaption: "Tremezzo, Summer 2025"
+    portraitCaption: "Together in Love • 2026"
   },
 
   // Venue & Schedule
   venue: {
-    name: "Villa Balbiano",
-    tagline: "Historic 16th-century Italian Palazzo",
-    address: "Piazza Cardinal Durini 5, 22010 Ossuccio CO, Italy",
+    name: "SWEN Hotel",
+    tagline: "Grand Ballroom, Pathein",
+    address: "SWEN Hotel, Merchant Street, Pathein, Ayeyarwady Region, Myanmar",
     // Google Maps direct navigation link
-    mapsUrl: "https://maps.google.com/?q=Villa+Balbiano+Ossuccio+Italy",
-    // Optional Google Maps Embed URL (leave empty string "" if you prefer only direct button)
-    embedMapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2777.6256247920153!2d9.1772412!3d45.9687483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784260a9f5d3099%3A0xe7bc32fcf2609059!2sVilla%20Balbiano!5e0!3m2!1sen!2sit!4v1715000000000!5m2!1sen!2sit",
+    mapsUrl: "https://maps.google.com/?q=SWEN+Hotel+Pathein+Myanmar",
+    // Optional Google Maps Embed URL
+    embedMapUrl: "https://www.google.com/maps?q=SWEN+Hotel+Pathein+Myanmar&output=embed",
     dressCode: {
-      title: "Black Tie Optional",
-      description: "Tuxedo or dark formal suit with tie. Floor-length or elegant cocktail gown. We warmly invite a palette of muted neutrals, olive, charcoal, and warm earth tones. We kindly request that guests reserve white, cream, and ivory for the bride."
+      title: "Formal / Elegant Traditional",
+      description: "Formal Western attire or elegant traditional Myanmar wedding attire. Warm neutral, pastel, gold, or dark formal palettes are warmly welcomed."
     },
     accommodations: {
-      title: "Accommodations & Travel",
-      description: "A private ferry shuttle will depart from Grand Hotel Tremezzo and Bellagio dock directly to Villa Balbiano dock. Valet parking will be available at the main gate."
+      title: "Venue & Guest Parking",
+      description: "Complimentary guest parking is available at the SWEN Hotel front gates. Reception staff will guide guests directly to the Grand Ballroom."
     }
   },
 
   // Schedule Timeline
   schedule: [
     {
-      time: "3:30 PM",
-      title: "Guest Arrival & Welcome Aperitivo",
-      location: "The Cypress Alley & Fountain Lawn",
-      detail: "Chilled prosecco, sparkling elderflower spritz, and classical harp accompaniment."
+      time: "9:00 AM",
+      title: "Guest Arrival & Welcome Reception",
+      location: "SWEN Hotel Grand Foyer",
+      detail: "Warm welcome drinks, traditional light refreshments, and ambient acoustic music."
     },
     {
-      time: "4:30 PM",
-      title: "The Ceremony",
-      location: "Lakeside Loggia",
-      detail: "Exchange of vows overlooking the tranquil waters of Como."
+      time: "9:30 AM",
+      title: "Sacred Wedding Ceremony & Vows",
+      location: "The Grand Ballroom",
+      detail: "Blessing ceremony, vow exchange, and ring presentation before our families and elders."
     },
     {
-      time: "5:30 PM",
-      title: "Cocktails & Canapés",
-      location: "The Rose Garden & Terraces",
-      detail: "Artisanal Italian antipasti, vintage champagne, and sunset photography."
+      time: "10:30 AM",
+      title: "Wedding Feast & Toasts",
+      location: "Grand Ballroom Dining Hall",
+      detail: "A celebratory feast served in honour of all guests and loved ones."
     },
     {
-      time: "7:00 PM",
-      title: "Seated Dinner & Toasts",
-      location: "The Grand Pergola",
-      detail: "A multi-course Northern Italian dinner paired with Lombardy wines."
-    },
-    {
-      time: "9:00 PM",
-      title: "Cake Cutting & Evening Celebration",
-      location: "Palazzo Courtyard",
-      detail: "Live jazz trio, dessert station, and dancing beneath fairy lights."
+      time: "11:30 AM",
+      title: "Photography & Bride & Groom Send-off",
+      location: "The Ballroom Stage",
+      detail: "Commemorative group photos with the bride and groom, family, and cherished friends."
     }
   ],
 
   // Gallery
   gallery: {
     heading: "Visual Impressions",
-    subheading: "Memories & Atmosphere",
+    subheading: "Moments & Memories",
     images: [
       {
         src: "./assets/images/hero.webp",
         thumb: "./assets/images/hero.webp",
-        title: "Golden Hour in Como",
-        subtitle: "Lakeside Portrait",
+        title: "Soe Lin Htut & Htet Zar Chi",
+        subtitle: "Wedding Portrait",
         aspect: "tall"
       },
       {
         src: "./assets/images/gallery-1.webp",
         thumb: "./assets/images/gallery-1.webp",
-        title: "The Ceremony Aisle",
-        subtitle: "Open Air & Flora",
+        title: "The Ceremony Hall",
+        subtitle: "Floral Elegance",
         aspect: "wide"
       },
       {
         src: "./assets/images/gallery-2.webp",
         thumb: "./assets/images/gallery-2.webp",
-        title: "Bespoke Details",
-        subtitle: "Handmade Paper & Bands",
+        title: "Sacred Details",
+        subtitle: "Wedding Rings & Vows",
         aspect: "square"
       },
       {
         src: "./assets/images/gallery-3.webp",
         thumb: "./assets/images/gallery-3.webp",
-        title: "Villa Balbiano Grounds",
-        subtitle: "Historic Palazzo Architecture",
+        title: "Pathein City Reflections",
+        subtitle: "Ayeyarwady Riverside",
         aspect: "wide"
       },
       {
         src: "./assets/images/gallery-4.webp",
         thumb: "./assets/images/gallery-4.webp",
-        title: "The Pergola Tablescape",
-        subtitle: "Linen, Olive Leaves & Beeswax",
+        title: "The Grand Tablescape",
+        subtitle: "White Florals & Linen",
         aspect: "tall"
       },
       {
         src: "./assets/images/gallery-5.webp",
         thumb: "./assets/images/gallery-5.webp",
         title: "A Shared Smile",
-        subtitle: "Unscripted Intimacy",
+        subtitle: "Unscripted Joy",
         aspect: "tall"
       },
       {
         src: "./assets/images/gallery-6.webp",
         thumb: "./assets/images/gallery-6.webp",
-        title: "Evening Toast",
-        subtitle: "Crystal Coupes & Sparkling Wine",
+        title: "Celebration Toast",
+        subtitle: "With Family & Friends",
         aspect: "square"
       },
       {
         src: "./assets/images/gallery-7.webp",
         thumb: "./assets/images/gallery-7.webp",
         title: "Twilight Stroll",
-        subtitle: "The Waters Edge",
+        subtitle: "Side by Side",
         aspect: "wide"
       },
       {
         src: "./assets/images/gallery-8.webp",
         thumb: "./assets/images/gallery-8.webp",
-        title: "Nightfall in the Courtyard",
-        subtitle: "Luminaries & Music",
+        title: "Evening Warmth",
+        subtitle: "Under Gentle Lights",
         aspect: "wide"
       }
     ]
@@ -228,8 +222,8 @@ window.WEDDING_CONFIG = {
   music: {
     enabled: true,
     file: "./assets/audio/ambient.mp3",
-    title: "Clair de Lune & Strings",
-    artist: "Acoustic Ambient Ensemble",
+    title: "Acoustic Piano & Strings",
+    artist: "Romantic Ambient Ensemble",
     // Autoplay policy: strictly false until user clicks "View Invitation" or audio toggle
     autoplayAfterIntro: true,
     initialVolume: 0.55
@@ -237,9 +231,9 @@ window.WEDDING_CONFIG = {
 
   // Final Closing Note
   closing: {
-    heading: "With All Our Love",
-    text: "We cannot wait to celebrate this sacred day in the presence of our family and most cherished friends. Thank you for walking this road with us.",
-    monogram: "E & J",
-    footerText: "Elena Vance & Julian Thorne • September 18, 2027 • Lake Como, Italy"
+    heading: "With Heartfelt Gratitude",
+    text: "Thank you for walking this road with us and blessing our union with your love and kindness. We cannot wait to celebrate this special day with you.",
+    monogram: "S & H",
+    footerText: "Soe Lin Htut & Htet Zar Chi • November 15, 2026 • SWEN Hotel, Pathein"
   }
 };
