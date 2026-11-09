@@ -229,7 +229,7 @@ window.WEDDING_CONFIG = {
     eyebrow: "Digital Wedding Blessing",
     title: "Send Love & Blessings",
     burmeseTitle: "",
-    message: "Your presence and prayers are our greatest blessings. For family and friends wishing to extend a wedding gift from afar, digital blessings may be shared via KBZPay or WavePay below.",
+    message: "Your warm presence is our greatest blessing. For loved ones wishing to send wedding gifts from afar:",
     accounts: [
       {
         id: "kpay",
@@ -258,8 +258,8 @@ window.WEDDING_CONFIG = {
 
   // Final Closing Note
   closing: {
-    heading: "With Heartfelt Gratitude",
-    text: "Thank you for walking this road with us and blessing our union with your love and kindness. We cannot wait to celebrate this special day with you.",
+    heading: "With Gratitude",
+    text: "Thank you for blessing our union with your love and kindness. We cannot wait to celebrate this special day with you.",
     monogram: "S & H",
     footerText: "Soe Lin Htut & Htet Zarchi Win • November 15, 2026 • SWEN Hotel, Pathein"
   }

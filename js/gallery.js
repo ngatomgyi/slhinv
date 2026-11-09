@@ -72,7 +72,7 @@ class WeddingGallery {
     if (this.images[0]) {
       html += `
         <div class="photo-layout-single photo-layout-opener">
-          ${makeCard(0, 'card-opener')}
+          ${makeCard(0, 'card-opener card-float-up')}
         </div>
       `;
     }
@@ -81,8 +81,8 @@ class WeddingGallery {
     if (this.images[1] || this.images[2]) {
       html += `
         <div class="photo-layout-duo">
-          ${makeCard(1)}
-          ${makeCard(2)}
+          ${makeCard(1, 'card-float-up')}
+          ${makeCard(2, 'card-float-up delay-1')}
         </div>
       `;
     }
@@ -91,7 +91,7 @@ class WeddingGallery {
     if (this.images[3]) {
       html += `
         <div class="photo-layout-panorama">
-          ${makeCard(3, 'card-panorama')}
+          ${makeCard(3, 'card-panorama card-float-up')}
         </div>
       `;
     }
@@ -100,8 +100,8 @@ class WeddingGallery {
     if (this.images[4] || this.images[5]) {
       html += `
         <div class="photo-layout-duo">
-          ${makeCard(4)}
-          ${makeCard(5)}
+          ${makeCard(4, 'card-float-up')}
+          ${makeCard(5, 'card-float-up delay-1')}
         </div>
       `;
     }
@@ -110,8 +110,8 @@ class WeddingGallery {
     if (this.images[6] || this.images[7]) {
       html += `
         <div class="photo-layout-duo">
-          ${makeCard(6)}
-          ${makeCard(7)}
+          ${makeCard(6, 'card-float-up')}
+          ${makeCard(7, 'card-float-up delay-1')}
         </div>
       `;
     }
@@ -120,8 +120,8 @@ class WeddingGallery {
     if (this.images[8] || this.images[9]) {
       html += `
         <div class="photo-layout-duo">
-          ${makeCard(8)}
-          ${makeCard(9)}
+          ${makeCard(8, 'card-float-up')}
+          ${makeCard(9, 'card-float-up delay-1')}
         </div>
       `;
     }
@@ -130,7 +130,7 @@ class WeddingGallery {
     if (this.images[10]) {
       html += `
         <div class="photo-layout-single photo-layout-epilogue">
-          ${makeCard(10, 'card-epilogue')}
+          ${makeCard(10, 'card-epilogue card-float-up')}
         </div>
       `;
     }
