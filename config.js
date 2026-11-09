@@ -147,73 +147,73 @@ window.WEDDING_CONFIG = {
     }
   ],
 
-  // Gallery
+  // Gallery (Pre-Wedding Photoshoot)
   gallery: {
-    heading: "Visual Impressions",
-    subheading: "Moments & Memories",
+    heading: "Pre-Wedding Memories",
+    subheading: "Editorial Shoot • Pathein 2026",
     images: [
       {
         src: "./assets/images/hero.webp",
         thumb: "./assets/images/hero.webp",
-        title: "Soe Lin Htut & Htet Zar Chi",
-        subtitle: "Wedding Portrait",
-        aspect: "tall"
+        title: "The First Portrait",
+        subtitle: "Ayeyarwady Shoreline",
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-1.webp",
         thumb: "./assets/images/gallery-1.webp",
-        title: "The Ceremony Hall",
-        subtitle: "Floral Elegance",
-        aspect: "wide"
+        title: "Hand in Hand",
+        subtitle: "Riverside Walkway",
+        aspect: "landscape"
       },
       {
         src: "./assets/images/gallery-2.webp",
         thumb: "./assets/images/gallery-2.webp",
-        title: "Sacred Details",
-        subtitle: "Wedding Rings & Vows",
+        title: "Sacred Rings & Bands",
+        subtitle: "Bespoke Details",
         aspect: "square"
       },
       {
         src: "./assets/images/gallery-3.webp",
         thumb: "./assets/images/gallery-3.webp",
-        title: "Pathein City Reflections",
-        subtitle: "Ayeyarwady Riverside",
-        aspect: "wide"
+        title: "Reflections of Pathein",
+        subtitle: "Golden Hour Glow",
+        aspect: "landscape"
       },
       {
         src: "./assets/images/gallery-4.webp",
         thumb: "./assets/images/gallery-4.webp",
-        title: "The Grand Tablescape",
-        subtitle: "White Florals & Linen",
-        aspect: "tall"
+        title: "Traditional Attire",
+        subtitle: "Silk & Heritage",
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-5.webp",
         thumb: "./assets/images/gallery-5.webp",
-        title: "A Shared Smile",
-        subtitle: "Unscripted Joy",
-        aspect: "tall"
+        title: "Unscripted Joy",
+        subtitle: "A Shared Smile",
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-6.webp",
         thumb: "./assets/images/gallery-6.webp",
-        title: "Celebration Toast",
-        subtitle: "With Family & Friends",
+        title: "Sunset Embrace",
+        subtitle: "Twilight Horizon",
         aspect: "square"
       },
       {
         src: "./assets/images/gallery-7.webp",
         thumb: "./assets/images/gallery-7.webp",
-        title: "Twilight Stroll",
-        subtitle: "Side by Side",
-        aspect: "wide"
+        title: "Evening Calm",
+        subtitle: "Under Gentle Lights",
+        aspect: "landscape"
       },
       {
         src: "./assets/images/gallery-8.webp",
         thumb: "./assets/images/gallery-8.webp",
-        title: "Evening Warmth",
-        subtitle: "Under Gentle Lights",
-        aspect: "wide"
+        title: "Together Forever",
+        subtitle: "The Lifetime Promise",
+        aspect: "landscape"
       }
     ]
   },

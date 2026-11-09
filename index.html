@@ -329,19 +329,45 @@
     </section>
 
     <!-- -----------------------------------------------------------------------
-         7. PHOTO GALLERY
+         7. PHOTO GALLERY / PRE-WEDDING SHOWCASE
          ----------------------------------------------------------------------- -->
-    <section class="section gallery-section" id="gallery" aria-label="Visual Gallery">
+    <section class="section gallery-section" id="gallery" aria-label="Pre-Wedding Visual Showcase">
       <div class="container-wide">
         
         <div class="section-header text-center reveal-item">
-          <span class="eyebrow">Memories</span>
-          <h2 class="section-title">Visual Impressions</h2>
-          <p class="section-subtitle">Moments captured in quiet elegance</p>
+          <span class="eyebrow">Visual Narrative</span>
+          <h2 class="section-title">Pre-Wedding Memories</h2>
+          <p class="section-subtitle">Moments captured in quiet elegance &amp; timeless devotion</p>
         </div>
 
-        <div id="gallery-grid" class="gallery-grid">
-          <!-- Dynamically populated from config.js -->
+        <!-- Showcase Mode Controller -->
+        <div class="gallery-controls reveal-item">
+          <div class="gallery-view-tabs" role="tablist" aria-label="Showcase Display Mode">
+            <button id="tab-gallery-reel" class="gallery-tab-btn active" data-view="reel" type="button" role="tab" aria-selected="true" aria-controls="gallery-reel-container">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="15" rx="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+              <span>Editorial Reel</span>
+            </button>
+            <button id="tab-gallery-grid" class="gallery-tab-btn" data-view="grid" type="button" role="tab" aria-selected="false" aria-controls="gallery-masonry-container">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              <span>Masonry Grid</span>
+            </button>
+          </div>
+          <div class="gallery-reel-indicator" id="gallery-reel-indicator" aria-live="polite">01 / 09</div>
+        </div>
+
+        <!-- Mode 1: Editorial Horizontal Reel Filmstrip -->
+        <div id="gallery-reel-container" class="gallery-reel-container active" role="tabpanel" aria-labelledby="tab-gallery-reel">
+          <div id="gallery-reel-track" class="gallery-reel-track">
+            <!-- Dynamically rendered reel cards -->
+          </div>
+          <div class="gallery-reel-nav-hint">
+            <span class="reel-hint-text">Swipe horizontally to explore reel</span>
+          </div>
+        </div>
+
+        <!-- Mode 2: Multi-Column Editorial Masonry Grid -->
+        <div id="gallery-masonry-container" class="gallery-masonry-container" role="tabpanel" aria-labelledby="tab-gallery-grid" hidden>
+          <!-- Dynamically rendered masonry items -->
         </div>
 
       </div>
@@ -401,6 +427,13 @@
     <div class="lightbox-caption-bar">
       <h3 id="lightbox-caption-title" class="lightbox-caption-title"></h3>
       <p id="lightbox-caption-subtitle" class="lightbox-caption-subtitle"></p>
+    </div>
+
+    <!-- Lightbox Thumbnail Scrubber Ribbon -->
+    <div id="lightbox-thumbs-bar" class="lightbox-thumbs-bar" aria-label="Photo thumbnails">
+      <div id="lightbox-thumbs-track" class="lightbox-thumbs-track">
+        <!-- Dynamically rendered clickable thumbnails -->
+      </div>
     </div>
   </aside>
 

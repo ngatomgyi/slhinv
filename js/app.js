@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. Initialize Gallery & Lightbox
   if (config.gallery?.images) {
-    new window.WeddingGallery(config.gallery.images, '#gallery-grid');
+    new window.WeddingGallery(config.gallery.images);
   }
 
   // 6. Initialize Calendar Integration
