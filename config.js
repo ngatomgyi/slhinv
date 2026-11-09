@@ -153,10 +153,10 @@ window.WEDDING_CONFIG = {
     subheading: "Editorial Shoot • Pathein 2026",
     images: [
       {
-        src: "./assets/images/hero.webp",
-        thumb: "./assets/images/hero.webp",
-        title: "The First Portrait",
-        subtitle: "Ayeyarwady Shoreline",
+        src: "./assets/images/gallery-10.webp",
+        thumb: "./assets/images/gallery-10.webp",
+        title: "The Sacred Portrait",
+        subtitle: "Flagship Attire",
         aspect: "portrait"
       },
       {
@@ -164,21 +164,21 @@ window.WEDDING_CONFIG = {
         thumb: "./assets/images/gallery-1.webp",
         title: "Hand in Hand",
         subtitle: "Riverside Walkway",
-        aspect: "landscape"
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-2.webp",
         thumb: "./assets/images/gallery-2.webp",
         title: "Sacred Rings & Bands",
         subtitle: "Bespoke Details",
-        aspect: "square"
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-3.webp",
         thumb: "./assets/images/gallery-3.webp",
         title: "Reflections of Pathein",
         subtitle: "Golden Hour Glow",
-        aspect: "landscape"
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-4.webp",
@@ -199,21 +199,35 @@ window.WEDDING_CONFIG = {
         thumb: "./assets/images/gallery-6.webp",
         title: "Sunset Embrace",
         subtitle: "Twilight Horizon",
-        aspect: "square"
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-7.webp",
         thumb: "./assets/images/gallery-7.webp",
         title: "Evening Calm",
         subtitle: "Under Gentle Lights",
-        aspect: "landscape"
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-8.webp",
         thumb: "./assets/images/gallery-8.webp",
         title: "Together Forever",
         subtitle: "The Lifetime Promise",
+        aspect: "portrait"
+      },
+      {
+        src: "./assets/images/gallery-9.webp",
+        thumb: "./assets/images/gallery-9.webp",
+        title: "Panoramic Horizon",
+        subtitle: "Ayeyarwady Vista",
         aspect: "landscape"
+      },
+      {
+        src: "./assets/images/gallery-11.webp",
+        thumb: "./assets/images/gallery-11.webp",
+        title: "Quiet Grace",
+        subtitle: "Enduring Devotion",
+        aspect: "portrait"
       }
     ]
   },
