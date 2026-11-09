@@ -1,0 +1,29 @@
+# Cloudflare Pages Caching & Security Headers
+
+# HTML files - never stale, check immediately
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Root URL
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Config file - revalidate frequently for instant changes
+/config.js
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+
+# CSS and JS - cache with stale revalidate
+/css/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/js/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Static media assets - immutable long cache
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

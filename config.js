@@ -235,24 +235,6 @@ window.WEDDING_CONFIG = {
     initialVolume: 0.55
   },
 
-  // RSVP Configuration
-  rsvp: {
-    enabled: true,
-    heading: "Kindly Respond",
-    subheading: "By July 15, 2027",
-    deadline: "2027-07-15",
-    introText: "Please let us know if you will be celebrating with us by filling in your details below. You can send your response via WhatsApp or instant confirmation.",
-    // Contact options
-    whatsappNumber: "+393401234567", // E.164 format without spaces or symbols for wa.me
-    emailTo: "celebration@elena-and-julian.com",
-    mealOptions: [
-      "Braised Beef Tenderloin & Truffle Polenta",
-      "Pan-Roasted Mediterranean Sea Bass",
-      "Wild Mushroom & Aged Carnaroli Risotto (Vegetarian/Vegan)",
-      "Gluten-Free Chef's Selection"
-    ]
-  },
-
   // Final Closing Note
   closing: {
     heading: "With All Our Love",

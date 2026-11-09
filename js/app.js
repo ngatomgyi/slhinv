@@ -28,13 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 6. Initialize Calendar Integration
   setupCalendar(config);
 
-  // 7. Initialize RSVP Handler
-  new window.WeddingRSVP(config.rsvp);
-
-  // 8. Setup Venue Interactions (Copy Address & Map Toggle)
+  // 7. Setup Venue Interactions (Copy Address & Map Toggle)
   setupVenueInteractions(config);
 
-  // 9. Setup Scroll Reveal Animations (IntersectionObserver)
+  // 8. Setup Scroll Reveal Animations (IntersectionObserver)
   setupScrollReveals();
 });
 
