@@ -329,52 +329,55 @@
     </section>
 
     <!-- -----------------------------------------------------------------------
-         7. PHOTO GALLERY / PRE-WEDDING SHOWCASE
+         7. PHOTO GALLERY / EDITORIAL STORYBOOK
          ----------------------------------------------------------------------- -->
-    <section class="section gallery-section" id="gallery" aria-label="Pre-Wedding Visual Showcase">
+    <section class="section gallery-section" id="gallery" aria-label="Pre-Wedding Editorial Storybook">
       <div class="container-wide">
         
         <div class="section-header text-center reveal-item">
           <span class="eyebrow">Visual Narrative</span>
-          <h2 class="section-title">Pre-Wedding Memories</h2>
+          <h2 class="section-title">Pre-Wedding Storybook</h2>
           <p class="section-subtitle">Moments captured in quiet elegance &amp; timeless devotion</p>
         </div>
 
-        <!-- Showcase Mode Controller -->
-        <div class="gallery-controls reveal-item">
-          <div class="gallery-view-tabs" role="tablist" aria-label="Showcase Display Mode">
-            <button id="tab-gallery-reel" class="gallery-tab-btn active" data-view="reel" type="button" role="tab" aria-selected="true" aria-controls="gallery-reel-container">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="15" rx="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
-              <span>Editorial Reel</span>
-            </button>
-            <button id="tab-gallery-grid" class="gallery-tab-btn" data-view="grid" type="button" role="tab" aria-selected="false" aria-controls="gallery-masonry-container">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-              <span>Masonry Grid</span>
-            </button>
-          </div>
-          <div class="gallery-reel-indicator" id="gallery-reel-indicator" aria-live="polite">01 / 09</div>
+        <!-- Curated Editorial Storybook (Vertical seamless magazine flow) -->
+        <div id="gallery-storybook-stream" class="gallery-storybook-stream" role="region" aria-label="Curated pre-wedding spreads">
+          <!-- Dynamically populated by js/gallery.js -->
         </div>
 
-        <!-- Mode 1: Editorial Horizontal Reel Filmstrip -->
-        <div id="gallery-reel-container" class="gallery-reel-container active" role="tabpanel" aria-labelledby="tab-gallery-reel">
-          <div id="gallery-reel-track" class="gallery-reel-track">
-            <!-- Dynamically rendered reel cards -->
-          </div>
-          <div class="gallery-reel-nav-hint">
-            <span class="reel-hint-text">Swipe horizontally to explore reel</span>
-          </div>
-        </div>
-
-        <!-- Mode 2: Multi-Column Editorial Masonry Grid -->
-        <div id="gallery-masonry-container" class="gallery-masonry-container" role="tabpanel" aria-labelledby="tab-gallery-grid" hidden>
-          <!-- Dynamically rendered masonry items -->
+        <!-- Editorial Lightbox hint -->
+        <div class="gallery-tap-hint reveal-item">
+          <span class="tap-hint-icon">✦</span>
+          <span class="tap-hint-text">Tap any photo to view full-resolution gallery</span>
         </div>
 
       </div>
     </section>
 
     <!-- -----------------------------------------------------------------------
-         8. FINAL SECTION / FOOTER
+         8. DIGITAL WEDDING BLESSINGS & GIFTS (KPAY & WAVE)
+         ----------------------------------------------------------------------- -->
+    <section class="section gift-section" id="gifts" aria-label="Wedding Blessings and Digital Gifts">
+      <div class="container">
+        
+        <div class="section-header text-center reveal-item">
+          <span class="eyebrow" id="gift-eyebrow">Digital Wedding Blessing</span>
+          <h2 class="section-title" id="gift-title">Send Love &amp; Blessings</h2>
+          <div class="gift-burmese-pill" id="gift-burmese-title">မင်္ဂလာလက်ဖွဲ့</div>
+          <p class="section-subtitle gift-subtitle" id="gift-message">
+            Your presence and prayers are our greatest blessings. For family and friends wishing to extend a wedding gift from afar, digital blessings may be shared via KBZPay or WavePay below.
+          </p>
+        </div>
+
+        <div id="gift-cards-container" class="gift-cards-grid">
+          <!-- Dynamically populated from config.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         9. FINAL SECTION / FOOTER
          ----------------------------------------------------------------------- -->
     <section class="section closing-section" id="closing" aria-label="Closing Note">
       <div class="container-narrow">

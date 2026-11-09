@@ -1,29 +1,20 @@
 /**
- * EDITORIAL PRE-WEDDING SHOWCASE & TOUCH LIGHTBOX CONTROLLER
- * Supports:
- * 1. Dual-mode display (Editorial Reel Filmstrip + Multi-Column Masonry)
- * 2. Mobile touch-snap horizontal scrolling with real-time index indicator
- * 3. Fullscreen Lightbox with touch swipe gestures, keyboard nav, and thumbnail scrubber ribbon
+ * EDITORIAL PRE-WEDDING STORYBOOK & FULLSCREEN LIGHTBOX CONTROLLER
+ * 
+ * Features:
+ * 1. Curated editorial magazine layout (Hero spreads, intimate duos, panoramic cinema, asymmetric trios).
+ * 2. Natural vertical storytelling flow without clumsy horizontal scroll traps.
+ * 3. Mobile-first touch tap anywhere to open full-resolution Lightbox.
+ * 4. Lightbox features: Touch swipe gestures, Keyboard navigation, Bottom thumbnail scrubber bar.
  */
 
 class WeddingGallery {
   constructor(images, containerSelector) {
     this.images = images || [];
     this.currentIndex = 0;
-    this.activeView = 'reel'; // 'reel' or 'grid'
 
-    // Showcase containers
-    this.reelContainer = document.getElementById('gallery-reel-container');
-    this.reelTrack = document.getElementById('gallery-reel-track');
-    this.masonryContainer = document.getElementById('gallery-masonry-container');
-    this.reelIndicator = document.getElementById('gallery-reel-indicator');
-    this.tabReel = document.getElementById('tab-gallery-reel');
-    this.tabGrid = document.getElementById('tab-gallery-grid');
-
-    // Backward-compatible fallback for legacy #gallery-grid
-    this.legacyContainer = document.getElementById('gallery-grid');
-
-    // Lightbox DOM elements
+    // DOM Elements
+    this.storybookStream = document.getElementById('gallery-storybook-stream');
     this.modal = document.getElementById('lightbox-modal');
     this.lightboxImg = document.getElementById('lightbox-img');
     this.counterEl = document.getElementById('lightbox-counter');
@@ -44,73 +35,144 @@ class WeddingGallery {
   }
 
   init() {
-    this.renderShowcase();
+    this.renderStorybook();
     this.renderLightboxThumbs();
     this.bindEvents();
-    this.updateReelIndicator(0);
   }
 
-  renderShowcase() {
-    if (!this.images.length) return;
+  // Convert index to Roman numeral for editorial charm
+  toRoman(num) {
+    const roman = {
+      1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V',
+      6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X', 11: 'XI', 12: 'XII'
+    };
+    return roman[num] || String(num).padStart(2, '0');
+  }
 
-    // 1. Render Editorial Reel Cards
-    if (this.reelTrack) {
-      this.reelTrack.innerHTML = this.images
-        .map((img, idx) => {
-          const paddedIndex = String(idx + 1).padStart(2, '0');
-          return `
-            <div class="gallery-reel-card reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="View photo ${paddedIndex}: ${img.title || 'Pre-wedding moment'}">
-              <div class="reel-card-img-wrap">
-                <img class="reel-card-img" src="${img.src}" alt="${img.title || 'Pre-wedding photo'}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
-                <span class="reel-card-badge">${paddedIndex}</span>
-              </div>
-              <div class="reel-card-meta">
-                <h3 class="reel-card-title">${img.title || `Moment ${paddedIndex}`}</h3>
-                <span class="reel-card-sub">${img.subtitle || 'Pre-Wedding Collection'}</span>
-              </div>
+  renderStorybook() {
+    if (!this.storybookStream || !this.images.length) return;
+
+    let html = '';
+    const total = this.images.length;
+
+    // Helper to generate a single photo frame
+    const makeCard = (idx, customClass = '', showMeta = true) => {
+      const img = this.images[idx];
+      if (!img) return '';
+      const roman = this.toRoman(idx + 1);
+      const padded = String(idx + 1).padStart(2, '0');
+      return `
+        <article class="storybook-card ${customClass} reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${padded}: ${img.title || 'Pre-wedding portrait'}">
+          <div class="storybook-frame">
+            <img class="storybook-img" src="${img.src}" alt="${img.title || 'Pre-wedding photo'}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
+            <div class="storybook-badge-strip">
+              <span class="storybook-badge-num">${roman}</span>
+              <span class="storybook-badge-tag">${img.subtitle || 'Chapter'}</span>
             </div>
-          `;
-        })
-        .join('');
+            <div class="storybook-expand-indicator" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+              </svg>
+            </div>
+          </div>
+          ${showMeta ? `
+            <header class="storybook-card-header">
+              <span class="storybook-card-index">${padded} / ${String(total).padStart(2, '0')}</span>
+              <h3 class="storybook-card-title">${img.title || `Moment ${padded}`}</h3>
+              <p class="storybook-card-sub">${img.subtitle || 'SWEN Hotel • Pathein'}</p>
+            </header>
+          ` : ''}
+        </article>
+      `;
+    };
+
+    // 1. Spread 1: Flagship Hero Opener (Photo 0)
+    if (this.images[0]) {
+      html += `
+        <div class="storybook-spread spread-hero">
+          ${makeCard(0, 'card-hero', true)}
+        </div>
+      `;
     }
 
-    // 2. Render Masonry Grid Cards
-    if (this.masonryContainer) {
-      this.masonryContainer.innerHTML = this.images
-        .map((img, idx) => {
-          const paddedIndex = String(idx + 1).padStart(2, '0');
-          return `
-            <div class="gallery-masonry-card reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="View photo ${paddedIndex}: ${img.title || 'Pre-wedding moment'}">
-              <div class="masonry-card-img-wrap">
-                <img class="masonry-card-img" src="${img.thumb || img.src}" alt="${img.title || 'Pre-wedding photo'}" loading="lazy" decoding="async">
-                <span class="masonry-card-badge">${paddedIndex}</span>
-              </div>
-              <div class="masonry-card-meta">
-                <h4 class="masonry-card-title">${img.title || `Moment ${paddedIndex}`}</h4>
-                <span class="masonry-card-sub">${img.subtitle || 'Pre-Wedding'}</span>
-              </div>
-            </div>
-          `;
-        })
-        .join('');
+    // 2. Spread 2: Intimate Duo (Photos 1 & 2)
+    if (this.images[1] || this.images[2]) {
+      html += `
+        <div class="storybook-spread spread-duo">
+          ${makeCard(1, 'card-duo-left', true)}
+          ${makeCard(2, 'card-duo-right', true)}
+        </div>
+      `;
     }
 
-    // 3. Fallback for legacy markup
-    if (this.legacyContainer && !this.reelTrack) {
-      this.legacyContainer.innerHTML = this.images
-        .map((img, idx) => {
-          const paddedIndex = String(idx + 1).padStart(2, '0');
-          return `
-            <div class="gallery-item" data-index="${idx}" role="button" tabindex="0">
-              <div class="gallery-item-inner">
-                <img class="gallery-img" src="${img.src}" alt="${img.title || ''}" loading="lazy">
-                <span class="gallery-overlay-badge">${paddedIndex}</span>
-              </div>
-            </div>
-          `;
-        })
-        .join('');
+    // 3. Spread 3: Panoramic Cinema Horizon (Photo 3)
+    if (this.images[3]) {
+      html += `
+        <div class="storybook-spread spread-panorama">
+          ${makeCard(3, 'card-panorama', true)}
+          <div class="storybook-editorial-interlude reveal-item">
+            <blockquote class="storybook-interlude-quote">“To love and to be loved is to feel the sun from both sides.”</blockquote>
+            <cite class="storybook-interlude-cite">Soe Lin Htut &amp; Htet Zar Chi</cite>
+          </div>
+        </div>
+      `;
     }
+
+    // 4. Spread 4: Asymmetric Trio (Photos 4, 5, 6)
+    if (this.images[4] || this.images[5] || this.images[6]) {
+      html += `
+        <div class="storybook-spread spread-trio">
+          <div class="spread-trio-main">
+            ${makeCard(4, 'card-trio-dominant', true)}
+          </div>
+          <div class="spread-trio-stack">
+            ${makeCard(5, 'card-trio-sub', true)}
+            ${makeCard(6, 'card-trio-sub', true)}
+          </div>
+        </div>
+      `;
+    }
+
+    // 5. Spread 5: Dramatic Centerpiece Portrait (Photo 7)
+    if (this.images[7]) {
+      html += `
+        <div class="storybook-spread spread-centerpiece">
+          <div class="spread-centerpiece-inner">
+            ${makeCard(7, 'card-centerpiece', true)}
+          </div>
+        </div>
+      `;
+    }
+
+    // 6. Spread 6: Twilight Sunset Duo (Photos 8 & 9)
+    if (this.images[8] || this.images[9]) {
+      html += `
+        <div class="storybook-spread spread-duo spread-duo-twilight">
+          ${makeCard(8, 'card-duo-left', true)}
+          ${makeCard(9, 'card-duo-right', true)}
+        </div>
+      `;
+    }
+
+    // 7. Spread 7: Intimate Epilogue Frame (Photo 10 and beyond)
+    if (this.images[10]) {
+      html += `
+        <div class="storybook-spread spread-closing">
+          ${makeCard(10, 'card-closing-hero', true)}
+        </div>
+      `;
+    }
+
+    // Any extra photos beyond index 10
+    if (total > 11) {
+      let extraHtml = '';
+      for (let i = 11; i < total; i++) {
+        extraHtml += makeCard(i, 'card-duo-left', true);
+      }
+      html += `<div class="storybook-spread spread-duo">${extraHtml}</div>`;
+    }
+
+    this.storybookStream.innerHTML = html;
   }
 
   renderLightboxThumbs() {
@@ -119,7 +181,7 @@ class WeddingGallery {
     this.thumbsTrack.innerHTML = this.images
       .map((img, idx) => {
         return `
-          <button class="lightbox-thumb-btn ${idx === 0 ? 'active' : ''}" data-thumb-index="${idx}" type="button" aria-label="Navigate to photo ${idx + 1}">
+          <button class="lightbox-thumb-btn ${idx === 0 ? 'active' : ''}" data-thumb-index="${idx}" type="button" aria-label="View photo ${idx + 1}">
             <img class="lightbox-thumb-img" src="${img.thumb || img.src}" alt="Thumbnail ${idx + 1}" loading="lazy">
           </button>
         `;
@@ -128,97 +190,54 @@ class WeddingGallery {
   }
 
   bindEvents() {
-    // View Switcher (Reel vs Grid)
-    if (this.tabReel && this.tabGrid) {
-      this.tabReel.addEventListener('click', () => this.switchView('reel'));
-      this.tabGrid.addEventListener('click', () => this.switchView('grid'));
-    }
-
-    // Reel Card Clicks
-    if (this.reelTrack) {
-      this.reelTrack.addEventListener('click', (e) => {
-        const card = e.target.closest('.gallery-reel-card');
+    // Click on Storybook card opens Lightbox
+    if (this.storybookStream) {
+      this.storybookStream.addEventListener('click', (e) => {
+        const card = e.target.closest('.storybook-card');
         if (card) {
           const index = parseInt(card.getAttribute('data-index'), 10);
-          this.open(index);
-        }
-      });
-      this.reelTrack.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          const card = e.target.closest('.gallery-reel-card');
-          if (card) {
-            e.preventDefault();
-            const index = parseInt(card.getAttribute('data-index'), 10);
+          if (!isNaN(index)) {
             this.open(index);
           }
         }
       });
 
-      // Track scroll on reel to update indicator
-      let scrollTimer = null;
-      this.reelTrack.addEventListener('scroll', () => {
-        if (scrollTimer) clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => {
-          this.calculateActiveReelIndex();
-        }, 60);
-      }, { passive: true });
-    }
-
-    // Masonry Card Clicks
-    if (this.masonryContainer) {
-      this.masonryContainer.addEventListener('click', (e) => {
-        const card = e.target.closest('.gallery-masonry-card');
-        if (card) {
-          const index = parseInt(card.getAttribute('data-index'), 10);
-          this.open(index);
-        }
-      });
-      this.masonryContainer.addEventListener('keydown', (e) => {
+      this.storybookStream.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          const card = e.target.closest('.gallery-masonry-card');
+          const card = e.target.closest('.storybook-card');
           if (card) {
             e.preventDefault();
             const index = parseInt(card.getAttribute('data-index'), 10);
-            this.open(index);
+            if (!isNaN(index)) {
+              this.open(index);
+            }
           }
         }
       });
     }
 
     // Lightbox Controls
-    if (this.closeBtn) {
-      this.closeBtn.addEventListener('click', () => this.close());
-    }
+    if (this.closeBtn) this.closeBtn.addEventListener('click', () => this.close());
+    if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.prev());
+    if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.next());
 
-    if (this.prevBtn) {
-      this.prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.prev();
-      });
-    }
-
-    if (this.nextBtn) {
-      this.nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        this.next();
-      });
-    }
-
-    // Lightbox Thumbnail Ribbon Clicks
+    // Thumbnail strip clicks
     if (this.thumbsTrack) {
       this.thumbsTrack.addEventListener('click', (e) => {
-        const thumb = e.target.closest('.lightbox-thumb-btn');
-        if (thumb) {
-          const index = parseInt(thumb.getAttribute('data-thumb-index'), 10);
-          this.goTo(index);
+        const btn = e.target.closest('.lightbox-thumb-btn');
+        if (btn) {
+          const idx = parseInt(btn.getAttribute('data-thumb-index'), 10);
+          if (!isNaN(idx)) {
+            this.goTo(idx);
+          }
         }
       });
     }
 
-    // Modal background click closes lightbox
+    // Modal background click to close
     if (this.modal) {
       this.modal.addEventListener('click', (e) => {
-        if (e.target === this.modal || e.target.classList.contains('lightbox-stage')) {
+        if (e.target === this.modal || e.target.classList.contains('lightbox-backdrop') || e.target.classList.contains('lightbox-viewport')) {
           this.close();
         }
       });
@@ -226,194 +245,132 @@ class WeddingGallery {
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (!this.isOpen()) return;
+      if (!this.modal || !this.modal.classList.contains('active')) return;
 
-      if (e.key === 'Escape') {
-        this.close();
-      } else if (e.key === 'ArrowLeft') {
-        this.prev();
-      } else if (e.key === 'ArrowRight') {
-        this.next();
-      }
+      if (e.key === 'Escape') this.close();
+      if (e.key === 'ArrowLeft') this.prev();
+      if (e.key === 'ArrowRight') this.next();
     });
 
-    // Touch Swipe Gestures on Lightbox
-    const stage = document.querySelector('.lightbox-stage');
-    if (stage) {
-      stage.addEventListener('touchstart', (e) => {
+    // Touch Swipe Gestures on Lightbox Viewport
+    if (this.modal) {
+      this.modal.addEventListener('touchstart', (e) => {
         this.touchStartX = e.changedTouches[0].screenX;
         this.touchStartY = e.changedTouches[0].screenY;
       }, { passive: true });
 
-      stage.addEventListener('touchend', (e) => {
+      this.modal.addEventListener('touchend', (e) => {
         this.touchEndX = e.changedTouches[0].screenX;
         this.touchEndY = e.changedTouches[0].screenY;
-        this.handleSwipe();
+        this.handleTouchSwipe();
       }, { passive: true });
     }
   }
 
-  switchView(mode) {
-    this.activeView = mode;
-
-    if (mode === 'reel') {
-      if (this.tabReel) {
-        this.tabReel.classList.add('active');
-        this.tabReel.setAttribute('aria-selected', 'true');
-      }
-      if (this.tabGrid) {
-        this.tabGrid.classList.remove('active');
-        this.tabGrid.setAttribute('aria-selected', 'false');
-      }
-      if (this.reelContainer) {
-        this.reelContainer.classList.add('active');
-        this.reelContainer.removeAttribute('hidden');
-      }
-      if (this.masonryContainer) {
-        this.masonryContainer.classList.remove('active');
-        this.masonryContainer.setAttribute('hidden', '');
-      }
-      if (this.reelIndicator) this.reelIndicator.style.display = 'block';
-    } else {
-      if (this.tabGrid) {
-        this.tabGrid.classList.add('active');
-        this.tabGrid.setAttribute('aria-selected', 'true');
-      }
-      if (this.tabReel) {
-        this.tabReel.classList.remove('active');
-        this.tabReel.setAttribute('aria-selected', 'false');
-      }
-      if (this.masonryContainer) {
-        this.masonryContainer.classList.add('active');
-        this.masonryContainer.removeAttribute('hidden');
-      }
-      if (this.reelContainer) {
-        this.reelContainer.classList.remove('active');
-        this.reelContainer.setAttribute('hidden', '');
-      }
-      if (this.reelIndicator) this.reelIndicator.style.display = 'none';
-    }
-  }
-
-  calculateActiveReelIndex() {
-    if (!this.reelTrack) return;
-    const cards = this.reelTrack.querySelectorAll('.gallery-reel-card');
-    if (!cards.length) return;
-
-    const trackRect = this.reelTrack.getBoundingClientRect();
-    const trackCenter = trackRect.left + trackRect.width / 2;
-
-    let closestIdx = 0;
-    let minDistance = Infinity;
-
-    cards.forEach((card, idx) => {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      const dist = Math.abs(trackCenter - cardCenter);
-      if (dist < minDistance) {
-        minDistance = dist;
-        closestIdx = idx;
-      }
-    });
-
-    this.updateReelIndicator(closestIdx);
-  }
-
-  updateReelIndicator(index) {
-    if (!this.reelIndicator || !this.images.length) return;
-    const currentPad = String(index + 1).padStart(2, '0');
-    const totalPad = String(this.images.length).padStart(2, '0');
-    this.reelIndicator.textContent = `${currentPad} / ${totalPad}`;
-  }
-
-  handleSwipe() {
+  handleTouchSwipe() {
     const diffX = this.touchEndX - this.touchStartX;
     const diffY = this.touchEndY - this.touchStartY;
 
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 45) {
+    // Ensure horizontal gesture is stronger than vertical
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
       if (diffX < 0) {
-        this.next();
+        this.next(); // Swiped left -> next
       } else {
-        this.prev();
+        this.prev(); // Swiped right -> prev
       }
+    } else if (diffY > 100 && Math.abs(diffX) < 50) {
+      // Swipe down to dismiss
+      this.close();
     }
-  }
-
-  isOpen() {
-    return this.modal && this.modal.classList.contains('active');
   }
 
   open(index) {
     if (!this.modal || !this.images.length) return;
     this.currentIndex = (index >= 0 && index < this.images.length) ? index : 0;
-    this.updateModal();
+    this.updateImage();
+
     this.modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    this.modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-locked');
+
+    if (this.closeBtn) this.closeBtn.focus();
   }
 
   close() {
     if (!this.modal) return;
     this.modal.classList.remove('active');
-    document.body.style.overflow = '';
+    this.modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-locked');
+  }
+
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    this.updateImage();
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    this.updateImage();
   }
 
   goTo(index) {
     if (index >= 0 && index < this.images.length) {
       this.currentIndex = index;
-      this.updateModal();
+      this.updateImage();
     }
   }
 
-  prev() {
-    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
-    this.updateModal();
-  }
+  updateImage() {
+    const imgData = this.images[this.currentIndex];
+    if (!imgData || !this.lightboxImg) return;
 
-  next() {
-    this.currentIndex = (this.currentIndex + 1) % this.images.length;
-    this.updateModal();
-  }
+    // Cross-fade effect
+    this.lightboxImg.style.opacity = '0';
+    this.lightboxImg.style.transform = 'scale(0.98)';
 
-  updateModal() {
-    const current = this.images[this.currentIndex];
-    if (!current) return;
+    setTimeout(() => {
+      this.lightboxImg.src = imgData.src;
+      this.lightboxImg.alt = imgData.title || 'Pre-wedding photo';
 
-    if (this.lightboxImg) {
-      this.lightboxImg.style.opacity = '0.3';
-      this.lightboxImg.src = current.src;
-      this.lightboxImg.alt = current.title || 'Pre-wedding photography';
       this.lightboxImg.onload = () => {
         this.lightboxImg.style.opacity = '1';
+        this.lightboxImg.style.transform = 'scale(1)';
       };
-    }
 
+      // Fallback in case image is already cached
+      if (this.lightboxImg.complete) {
+        this.lightboxImg.style.opacity = '1';
+        this.lightboxImg.style.transform = 'scale(1)';
+      }
+    }, 120);
+
+    // Update Counter
     if (this.counterEl) {
-      const currentPad = String(this.currentIndex + 1).padStart(2, '0');
-      const totalPad = String(this.images.length).padStart(2, '0');
-      this.counterEl.textContent = `${currentPad} / ${totalPad}`;
+      this.counterEl.textContent = `${String(this.currentIndex + 1).padStart(2, '0')} / ${String(this.images.length).padStart(2, '0')}`;
     }
 
+    // Update Caption
     if (this.captionTitleEl) {
-      this.captionTitleEl.textContent = current.title || '';
+      this.captionTitleEl.textContent = imgData.title || `Moment ${String(this.currentIndex + 1).padStart(2, '0')}`;
     }
-
     if (this.captionSubtitleEl) {
-      this.captionSubtitleEl.textContent = current.subtitle || '';
+      this.captionSubtitleEl.textContent = imgData.subtitle || 'Pre-Wedding Collection';
     }
 
-    // Sync active thumbnail in ribbon
+    // Sync Thumbnail Strip
     if (this.thumbsTrack) {
       const allThumbs = this.thumbsTrack.querySelectorAll('.lightbox-thumb-btn');
       allThumbs.forEach((thumb, idx) => {
-        if (idx === this.currentIndex) {
-          thumb.classList.add('active');
+        const isActive = idx === this.currentIndex;
+        thumb.classList.toggle('active', isActive);
+        thumb.setAttribute('aria-current', isActive ? 'true' : 'false');
+        if (isActive) {
           thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        } else {
-          thumb.classList.remove('active');
         }
       });
     }
   }
 }
 
+// Make accessible to window
 window.WeddingGallery = WeddingGallery;

@@ -31,7 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 7. Setup Venue Interactions (Copy Address & Map Toggle)
   setupVenueInteractions(config);
 
-  // 8. Setup Scroll Reveal Animations (IntersectionObserver)
+  // 8. Initialize Digital Wedding Gifts & Blessings (KPay & Wave)
+  renderGifts(config.gifts);
+
+  // 9. Setup Scroll Reveal Animations (IntersectionObserver)
   setupScrollReveals();
 });
 
@@ -277,4 +280,147 @@ function showAppToast(text) {
   setTimeout(() => {
     toast.classList.remove('show');
   }, 3200);
+}
+
+function renderGifts(giftsConfig) {
+  const container = document.getElementById('gift-cards-container');
+  if (!container || !giftsConfig || giftsConfig.enabled === false) {
+    const giftSection = document.getElementById('gifts');
+    if (giftSection && giftsConfig?.enabled === false) {
+      giftSection.style.display = 'none';
+    }
+    return;
+  }
+
+  // Update Section Header Text
+  setElemText('#gift-eyebrow', giftsConfig.eyebrow);
+  setElemText('#gift-title', giftsConfig.title);
+  setElemText('#gift-burmese-title', giftsConfig.burmeseTitle);
+  setElemText('#gift-message', giftsConfig.message);
+
+  const accounts = giftsConfig.accounts || [];
+  if (!accounts.length) return;
+
+  container.innerHTML = accounts
+    .map((acc) => {
+      const isKPay = acc.id === 'kpay';
+      const brandClass = isKPay ? 'gift-card-kpay' : 'gift-card-wave';
+      return `
+        <div class="gift-card ${brandClass} reveal-item">
+          <div class="gift-card-top">
+            <div class="gift-brand-badge" style="--brand-color: ${acc.brandColor}">
+              <span class="gift-badge-text">${acc.badge || acc.provider}</span>
+            </div>
+            <span class="gift-provider-name">${acc.provider}</span>
+          </div>
+
+          <div class="gift-qr-wrapper">
+            <div class="gift-qr-box" role="button" tabindex="0" data-qr-src="${acc.qr}" aria-label="View ${acc.provider} QR code full size">
+              <img class="gift-qr-img" src="${acc.qr}" alt="${acc.provider} QR Code" loading="lazy">
+              <div class="gift-qr-overlay">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+                <span>Tap to Zoom</span>
+              </div>
+            </div>
+            <p class="gift-qr-hint">${acc.note || 'Scan with app to send blessing'}</p>
+          </div>
+
+          <div class="gift-info-block">
+            <div class="gift-info-row">
+              <span class="gift-info-label">Account Name</span>
+              <strong class="gift-info-val gift-account-name">${acc.name}</strong>
+            </div>
+
+            <div class="gift-info-row">
+              <span class="gift-info-label">Phone / Number</span>
+              <strong class="gift-info-val gift-account-number">${acc.phone}</strong>
+            </div>
+
+            <button class="btn btn-primary gift-copy-btn" data-phone="${acc.rawPhone || acc.phone}" data-provider="${acc.provider}" type="button" aria-label="Copy ${acc.provider} number">
+              <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span class="btn-copy-label">Copy Number</span>
+            </button>
+          </div>
+        </div>
+      `;
+    })
+    .join('');
+
+  // 1-Tap Copy Event Listener
+  container.querySelectorAll('.gift-copy-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const rawNumber = btn.getAttribute('data-phone');
+      const provider = btn.getAttribute('data-provider') || 'Account';
+      const labelSpan = btn.querySelector('.btn-copy-label');
+
+      const performCopy = () => {
+        showAppToast(`✓ ${provider} number (${rawNumber}) copied to clipboard`);
+        btn.classList.add('btn-copied');
+        if (labelSpan) labelSpan.textContent = '✓ Copied!';
+        setTimeout(() => {
+          btn.classList.remove('btn-copied');
+          if (labelSpan) labelSpan.textContent = 'Copy Number';
+        }, 2500);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(rawNumber).then(performCopy).catch(() => {
+          fallbackCopyText(rawNumber);
+          performCopy();
+        });
+      } else {
+        fallbackCopyText(rawNumber);
+        performCopy();
+      }
+    });
+  });
+
+  // Tap QR Code to open lightbox preview
+  container.querySelectorAll('.gift-qr-box').forEach((box) => {
+    const openQR = () => {
+      const qrSrc = box.getAttribute('data-qr-src');
+      const modal = document.getElementById('lightbox-modal');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const titleEl = document.getElementById('lightbox-caption-title');
+      const subEl = document.getElementById('lightbox-caption-subtitle');
+      if (modal && lightboxImg) {
+        lightboxImg.src = qrSrc;
+        lightboxImg.alt = 'Digital Wedding Gift QR Code';
+        if (titleEl) titleEl.textContent = 'Digital Blessing QR Code';
+        if (subEl) subEl.textContent = 'Scan via Mobile Banking App';
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-locked');
+      }
+    };
+
+    box.addEventListener('click', openQR);
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openQR();
+      }
+    });
+  });
+}
+
+function fallbackCopyText(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.opacity = '0';
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+    document.execCommand('copy');
+  } catch (err) {
+    console.error('Fallback copy failed', err);
+  }
+  document.body.removeChild(textArea);
 }

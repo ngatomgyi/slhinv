@@ -243,6 +243,39 @@ window.WEDDING_CONFIG = {
     initialVolume: 0.60
   },
 
+  // Digital Wedding Gift & Blessings (KPay & Wave)
+  gifts: {
+    enabled: true,
+    eyebrow: "Digital Wedding Blessing",
+    title: "Send Love & Blessings",
+    burmeseTitle: "မင်္ဂလာလက်ဖွဲ့",
+    message: "Your presence and prayers are our greatest blessings. For family and friends wishing to extend a wedding gift from afar, digital blessings may be shared via KBZPay or WavePay below.",
+    accounts: [
+      {
+        id: "kpay",
+        provider: "KBZPay",
+        badge: "KPay",
+        brandColor: "#104F9E",
+        name: "Soe Lin Htut",
+        phone: "09 123 456 789",
+        rawPhone: "09123456789",
+        qr: "./assets/images/qr-kpay.svg",
+        note: "Scan with KBZPay app or tap to copy"
+      },
+      {
+        id: "wave",
+        provider: "WavePay",
+        badge: "Wave",
+        brandColor: "#D97706",
+        name: "Htet Zar Chi",
+        phone: "09 987 654 321",
+        rawPhone: "09987654321",
+        qr: "./assets/images/qr-wave.svg",
+        note: "Scan with WavePay app or tap to copy"
+      }
+    ]
+  },
+
   // Final Closing Note
   closing: {
     heading: "With Heartfelt Gratitude",
