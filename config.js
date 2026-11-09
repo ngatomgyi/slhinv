@@ -11,19 +11,21 @@ window.WEDDING_CONFIG = {
   // Couple Information
   couple: {
     partner1: {
-      firstName: "Soe Lin",
-      lastName: "Htut",
+      firstName: "Soe Lin Htut",
+      lastName: "",
+      fullName: "Soe Lin Htut",
       role: "Groom"
     },
     partner2: {
-      firstName: "Htet Zar",
-      lastName: "Chi",
+      firstName: "Htet Zarchi Win",
+      lastName: "",
+      fullName: "Htet Zarchi Win",
       role: "Bride"
     },
     // Monogram initials displayed on intro screen and stamps
     initials: "S & H",
     // Combined title format
-    displayTitle: "Soe Lin Htut & Htet Zar Chi"
+    displayTitle: "Soe Lin Htut & Htet Zarchi Win"
   },
 
   // Wedding Date & Time
@@ -149,84 +151,62 @@ window.WEDDING_CONFIG = {
 
   // Gallery (Pre-Wedding Photoshoot)
   gallery: {
-    heading: "Pre-Wedding Memories",
-    subheading: "Editorial Shoot • Pathein 2026",
+    heading: "Pre-Wedding Moments",
+    subheading: "Pathein • SWEN Hotel",
     images: [
       {
         src: "./assets/images/gallery-10.webp",
         thumb: "./assets/images/gallery-10.webp",
-        title: "The Sacred Portrait",
-        subtitle: "Flagship Attire",
         aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-1.webp",
         thumb: "./assets/images/gallery-1.webp",
-        title: "Hand in Hand",
-        subtitle: "Riverside Walkway",
         aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-2.webp",
         thumb: "./assets/images/gallery-2.webp",
-        title: "Sacred Rings & Bands",
-        subtitle: "Bespoke Details",
-        aspect: "portrait"
-      },
-      {
-        src: "./assets/images/gallery-3.webp",
-        thumb: "./assets/images/gallery-3.webp",
-        title: "Reflections of Pathein",
-        subtitle: "Golden Hour Glow",
-        aspect: "portrait"
-      },
-      {
-        src: "./assets/images/gallery-4.webp",
-        thumb: "./assets/images/gallery-4.webp",
-        title: "Traditional Attire",
-        subtitle: "Silk & Heritage",
-        aspect: "portrait"
-      },
-      {
-        src: "./assets/images/gallery-5.webp",
-        thumb: "./assets/images/gallery-5.webp",
-        title: "Unscripted Joy",
-        subtitle: "A Shared Smile",
-        aspect: "portrait"
-      },
-      {
-        src: "./assets/images/gallery-6.webp",
-        thumb: "./assets/images/gallery-6.webp",
-        title: "Sunset Embrace",
-        subtitle: "Twilight Horizon",
-        aspect: "portrait"
-      },
-      {
-        src: "./assets/images/gallery-7.webp",
-        thumb: "./assets/images/gallery-7.webp",
-        title: "Evening Calm",
-        subtitle: "Under Gentle Lights",
-        aspect: "portrait"
-      },
-      {
-        src: "./assets/images/gallery-8.webp",
-        thumb: "./assets/images/gallery-8.webp",
-        title: "Together Forever",
-        subtitle: "The Lifetime Promise",
         aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-9.webp",
         thumb: "./assets/images/gallery-9.webp",
-        title: "Panoramic Horizon",
-        subtitle: "Ayeyarwady Vista",
         aspect: "landscape"
+      },
+      {
+        src: "./assets/images/gallery-3.webp",
+        thumb: "./assets/images/gallery-3.webp",
+        aspect: "portrait"
+      },
+      {
+        src: "./assets/images/gallery-4.webp",
+        thumb: "./assets/images/gallery-4.webp",
+        aspect: "portrait"
+      },
+      {
+        src: "./assets/images/gallery-5.webp",
+        thumb: "./assets/images/gallery-5.webp",
+        aspect: "portrait"
+      },
+      {
+        src: "./assets/images/gallery-8.webp",
+        thumb: "./assets/images/gallery-8.webp",
+        aspect: "portrait"
+      },
+      {
+        src: "./assets/images/gallery-6.webp",
+        thumb: "./assets/images/gallery-6.webp",
+        aspect: "portrait"
+      },
+      {
+        src: "./assets/images/gallery-7.webp",
+        thumb: "./assets/images/gallery-7.webp",
+        aspect: "portrait"
       },
       {
         src: "./assets/images/gallery-11.webp",
         thumb: "./assets/images/gallery-11.webp",
-        title: "Quiet Grace",
-        subtitle: "Enduring Devotion",
         aspect: "portrait"
       }
     ]
@@ -237,7 +217,7 @@ window.WEDDING_CONFIG = {
     enabled: true,
     file: "./assets/audio/ambient.mp3",
     title: "Wedding Celebration Melody",
-    artist: "Soe Lin Htut & Htet Zar Chi",
+    artist: "Soe Lin Htut & Htet Zarchi Win",
     // Autoplay policy: strictly false until user clicks "View Invitation" or audio toggle
     autoplayAfterIntro: true,
     initialVolume: 0.60
@@ -248,7 +228,7 @@ window.WEDDING_CONFIG = {
     enabled: true,
     eyebrow: "Digital Wedding Blessing",
     title: "Send Love & Blessings",
-    burmeseTitle: "မင်္ဂလာလက်ဖွဲ့",
+    burmeseTitle: "",
     message: "Your presence and prayers are our greatest blessings. For family and friends wishing to extend a wedding gift from afar, digital blessings may be shared via KBZPay or WavePay below.",
     accounts: [
       {
@@ -260,18 +240,18 @@ window.WEDDING_CONFIG = {
         phone: "09 123 456 789",
         rawPhone: "09123456789",
         qr: "./assets/images/qr-kpay.svg",
-        note: "Scan with KBZPay app or tap to copy"
+        note: "Scan with KBZPay app to transfer"
       },
       {
         id: "wave",
         provider: "WavePay",
         badge: "Wave",
         brandColor: "#D97706",
-        name: "Htet Zar Chi",
+        name: "Htet Zarchi Win",
         phone: "09 987 654 321",
         rawPhone: "09987654321",
         qr: "./assets/images/qr-wave.svg",
-        note: "Scan with WavePay app or tap to copy"
+        note: "Scan with WavePay app to transfer"
       }
     ]
   },
@@ -281,6 +261,6 @@ window.WEDDING_CONFIG = {
     heading: "With Heartfelt Gratitude",
     text: "Thank you for walking this road with us and blessing our union with your love and kindness. We cannot wait to celebrate this special day with you.",
     monogram: "S & H",
-    footerText: "Soe Lin Htut & Htet Zar Chi • November 15, 2026 • SWEN Hotel, Pathein"
+    footerText: "Soe Lin Htut & Htet Zarchi Win • November 15, 2026 • SWEN Hotel, Pathein"
   }
 };

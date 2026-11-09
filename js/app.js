@@ -61,9 +61,9 @@ function populateStaticDetails(config) {
   setElemText('#intro-date', `${dateDisplay.fullDate || 'September 18, 2027'} • ${venue.name || 'Lake Como'}`);
 
   // Hero Section
-  setElemText('#hero-name-1', couple.partner1?.firstName || 'Elena');
-  setElemText('#hero-name-2', couple.partner2?.firstName || 'Julian');
-  setElemText('#hero-date-val', dateDisplay.fullDate || 'September 18, 2027');
+  setElemText('#hero-name-1', couple.partner1?.fullName || couple.partner1?.firstName || 'Soe Lin Htut');
+  setElemText('#hero-name-2', couple.partner2?.fullName || couple.partner2?.firstName || 'Htet Zarchi Win');
+  setElemText('#hero-date-val', dateDisplay.fullDate || 'November 15, 2026');
   setElemText('#hero-time-val', `${dateDisplay.time || '4:00 PM'} ${config.timezoneLabel || ''}`);
   setElemText('#hero-venue-val', venue.name || 'Villa Balbiano, Como');
 
@@ -159,8 +159,12 @@ function setupIntroScreen(audio) {
 
   if (!introScreen || !viewBtn) return;
 
+  // Lock background webpage scrolling while intro screen is active
+  document.body.classList.add('intro-active');
+
   const dismissIntro = () => {
     introScreen.classList.add('dismissed');
+    document.body.classList.remove('intro-active');
 
     // Trigger subtle sound playback upon guest interaction
     if (audio) {
@@ -315,14 +319,8 @@ function renderGifts(giftsConfig) {
           </div>
 
           <div class="gift-qr-wrapper">
-            <div class="gift-qr-box" role="button" tabindex="0" data-qr-src="${acc.qr}" aria-label="View ${acc.provider} QR code full size">
+            <div class="gift-qr-box" aria-label="${acc.provider} QR code (scan to transfer)">
               <img class="gift-qr-img" src="${acc.qr}" alt="${acc.provider} QR Code" loading="lazy">
-              <div class="gift-qr-overlay">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-                </svg>
-                <span>Tap to Zoom</span>
-              </div>
             </div>
             <p class="gift-qr-hint">${acc.note || 'Scan with app to send blessing'}</p>
           </div>
@@ -376,34 +374,6 @@ function renderGifts(giftsConfig) {
       } else {
         fallbackCopyText(rawNumber);
         performCopy();
-      }
-    });
-  });
-
-  // Tap QR Code to open lightbox preview
-  container.querySelectorAll('.gift-qr-box').forEach((box) => {
-    const openQR = () => {
-      const qrSrc = box.getAttribute('data-qr-src');
-      const modal = document.getElementById('lightbox-modal');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const titleEl = document.getElementById('lightbox-caption-title');
-      const subEl = document.getElementById('lightbox-caption-subtitle');
-      if (modal && lightboxImg) {
-        lightboxImg.src = qrSrc;
-        lightboxImg.alt = 'Digital Wedding Gift QR Code';
-        if (titleEl) titleEl.textContent = 'Digital Blessing QR Code';
-        if (subEl) subEl.textContent = 'Scan via Mobile Banking App';
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('lightbox-locked');
-      }
-    };
-
-    box.addEventListener('click', openQR);
-    box.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openQR();
       }
     });
   });

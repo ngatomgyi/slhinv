@@ -1,11 +1,10 @@
 /**
- * EDITORIAL PRE-WEDDING STORYBOOK & FULLSCREEN LIGHTBOX CONTROLLER
+ * UNTOUCHED EDITORIAL PHOTO SHOWCASE & FULLSCREEN LIGHTBOX
  * 
- * Features:
- * 1. Curated editorial magazine layout (Hero spreads, intimate duos, panoramic cinema, asymmetric trios).
- * 2. Natural vertical storytelling flow without clumsy horizontal scroll traps.
- * 3. Mobile-first touch tap anywhere to open full-resolution Lightbox.
- * 4. Lightbox features: Touch swipe gestures, Keyboard navigation, Bottom thumbnail scrubber bar.
+ * Guarantees:
+ * 1. ZERO CROPPING: Every portrait photo renders at natural 2:3 aspect ratio, landscape at 3:2.
+ * 2. NO CAPTIONS: Removed all text titles, subtitles, badges, and numbers per user request.
+ * 3. TAP TO ENLARGE: Clicking any photo opens the fullscreen Lightbox with swipe and thumbnail navigation.
  */
 
 class WeddingGallery {
@@ -25,6 +24,10 @@ class WeddingGallery {
     this.nextBtn = document.getElementById('lightbox-next');
     this.closeBtn = document.getElementById('lightbox-close');
 
+    // Hide any caption containers in lightbox to maintain clean visual aesthetic
+    if (this.captionTitleEl) this.captionTitleEl.style.display = 'none';
+    if (this.captionSubtitleEl) this.captionSubtitleEl.style.display = 'none';
+
     // Touch gesture state
     this.touchStartX = 0;
     this.touchEndX = 0;
@@ -35,141 +38,110 @@ class WeddingGallery {
   }
 
   init() {
-    this.renderStorybook();
+    this.renderShowcase();
     this.renderLightboxThumbs();
     this.bindEvents();
   }
 
-  // Convert index to Roman numeral for editorial charm
-  toRoman(num) {
-    const roman = {
-      1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V',
-      6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X', 11: 'XI', 12: 'XII'
-    };
-    return roman[num] || String(num).padStart(2, '0');
-  }
-
-  renderStorybook() {
+  renderShowcase() {
     if (!this.storybookStream || !this.images.length) return;
 
-    let html = '';
-    const total = this.images.length;
-
-    // Helper to generate a single photo frame
-    const makeCard = (idx, customClass = '', showMeta = true) => {
+    // Helper to generate a clean photo card without any captions or badges
+    const makeCard = (idx, customClass = '') => {
       const img = this.images[idx];
       if (!img) return '';
-      const roman = this.toRoman(idx + 1);
-      const padded = String(idx + 1).padStart(2, '0');
+      const isLandscape = img.aspect === 'landscape';
+      const aspectClass = isLandscape ? 'photo-aspect-landscape' : 'photo-aspect-portrait';
       return `
-        <article class="storybook-card ${customClass} reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${padded}: ${img.title || 'Pre-wedding portrait'}">
-          <div class="storybook-frame">
-            <img class="storybook-img" src="${img.src}" alt="${img.title || 'Pre-wedding photo'}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
-            <div class="storybook-badge-strip">
-              <span class="storybook-badge-num">${roman}</span>
-              <span class="storybook-badge-tag">${img.subtitle || 'Chapter'}</span>
-            </div>
-            <div class="storybook-expand-indicator" aria-hidden="true">
+        <figure class="editorial-photo-card ${aspectClass} ${customClass} reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${idx + 1}">
+          <div class="photo-frame">
+            <img class="photo-img" src="${img.src}" alt="Pre-wedding photo ${idx + 1}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
+            <div class="photo-zoom-hint" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
               </svg>
             </div>
           </div>
-          ${showMeta ? `
-            <header class="storybook-card-header">
-              <span class="storybook-card-index">${padded} / ${String(total).padStart(2, '0')}</span>
-              <h3 class="storybook-card-title">${img.title || `Moment ${padded}`}</h3>
-              <p class="storybook-card-sub">${img.subtitle || 'SWEN Hotel • Pathein'}</p>
-            </header>
-          ` : ''}
-        </article>
+        </figure>
       `;
     };
 
-    // 1. Spread 1: Flagship Hero Opener (Photo 0)
+    let html = '';
+
+    // 1. Opener Portrait (Photo 0) - Centerpiece
     if (this.images[0]) {
       html += `
-        <div class="storybook-spread spread-hero">
-          ${makeCard(0, 'card-hero', true)}
+        <div class="photo-layout-single photo-layout-opener">
+          ${makeCard(0, 'card-opener')}
         </div>
       `;
     }
 
-    // 2. Spread 2: Intimate Duo (Photos 1 & 2)
+    // 2. Duo Portraits (Photos 1 & 2)
     if (this.images[1] || this.images[2]) {
       html += `
-        <div class="storybook-spread spread-duo">
-          ${makeCard(1, 'card-duo-left', true)}
-          ${makeCard(2, 'card-duo-right', true)}
+        <div class="photo-layout-duo">
+          ${makeCard(1)}
+          ${makeCard(2)}
         </div>
       `;
     }
 
-    // 3. Spread 3: Panoramic Cinema Horizon (Photo 3)
+    // 3. Panoramic Landscape (Photo 3) - Full width uncropped 3:2
     if (this.images[3]) {
       html += `
-        <div class="storybook-spread spread-panorama">
-          ${makeCard(3, 'card-panorama', true)}
-          <div class="storybook-editorial-interlude reveal-item">
-            <blockquote class="storybook-interlude-quote">“To love and to be loved is to feel the sun from both sides.”</blockquote>
-            <cite class="storybook-interlude-cite">Soe Lin Htut &amp; Htet Zar Chi</cite>
-          </div>
+        <div class="photo-layout-panorama">
+          ${makeCard(3, 'card-panorama')}
         </div>
       `;
     }
 
-    // 4. Spread 4: Asymmetric Trio (Photos 4, 5, 6)
-    if (this.images[4] || this.images[5] || this.images[6]) {
+    // 4. Duo Portraits (Photos 4 & 5)
+    if (this.images[4] || this.images[5]) {
       html += `
-        <div class="storybook-spread spread-trio">
-          <div class="spread-trio-main">
-            ${makeCard(4, 'card-trio-dominant', true)}
-          </div>
-          <div class="spread-trio-stack">
-            ${makeCard(5, 'card-trio-sub', true)}
-            ${makeCard(6, 'card-trio-sub', true)}
-          </div>
+        <div class="photo-layout-duo">
+          ${makeCard(4)}
+          ${makeCard(5)}
         </div>
       `;
     }
 
-    // 5. Spread 5: Dramatic Centerpiece Portrait (Photo 7)
-    if (this.images[7]) {
+    // 5. Duo Portraits (Photos 6 & 7)
+    if (this.images[6] || this.images[7]) {
       html += `
-        <div class="storybook-spread spread-centerpiece">
-          <div class="spread-centerpiece-inner">
-            ${makeCard(7, 'card-centerpiece', true)}
-          </div>
+        <div class="photo-layout-duo">
+          ${makeCard(6)}
+          ${makeCard(7)}
         </div>
       `;
     }
 
-    // 6. Spread 6: Twilight Sunset Duo (Photos 8 & 9)
+    // 6. Duo Portraits (Photos 8 & 9)
     if (this.images[8] || this.images[9]) {
       html += `
-        <div class="storybook-spread spread-duo spread-duo-twilight">
-          ${makeCard(8, 'card-duo-left', true)}
-          ${makeCard(9, 'card-duo-right', true)}
+        <div class="photo-layout-duo">
+          ${makeCard(8)}
+          ${makeCard(9)}
         </div>
       `;
     }
 
-    // 7. Spread 7: Intimate Epilogue Frame (Photo 10 and beyond)
+    // 7. Epilogue Portrait (Photo 10 and any beyond)
     if (this.images[10]) {
       html += `
-        <div class="storybook-spread spread-closing">
-          ${makeCard(10, 'card-closing-hero', true)}
+        <div class="photo-layout-single photo-layout-epilogue">
+          ${makeCard(10, 'card-epilogue')}
         </div>
       `;
     }
 
-    // Any extra photos beyond index 10
-    if (total > 11) {
-      let extraHtml = '';
-      for (let i = 11; i < total; i++) {
-        extraHtml += makeCard(i, 'card-duo-left', true);
+    // Additional photos if any
+    if (this.images.length > 11) {
+      let extra = '';
+      for (let i = 11; i < this.images.length; i++) {
+        extra += makeCard(i);
       }
-      html += `<div class="storybook-spread spread-duo">${extraHtml}</div>`;
+      html += `<div class="photo-layout-duo">${extra}</div>`;
     }
 
     this.storybookStream.innerHTML = html;
@@ -181,7 +153,7 @@ class WeddingGallery {
     this.thumbsTrack.innerHTML = this.images
       .map((img, idx) => {
         return `
-          <button class="lightbox-thumb-btn ${idx === 0 ? 'active' : ''}" data-thumb-index="${idx}" type="button" aria-label="View photo ${idx + 1}">
+          <button class="lightbox-thumb-btn ${idx === 0 ? 'active' : ''}" data-thumb-index="${idx}" type="button" aria-label="Photo ${idx + 1}">
             <img class="lightbox-thumb-img" src="${img.thumb || img.src}" alt="Thumbnail ${idx + 1}" loading="lazy">
           </button>
         `;
@@ -190,10 +162,10 @@ class WeddingGallery {
   }
 
   bindEvents() {
-    // Click on Storybook card opens Lightbox
+    // Click on photo opens Lightbox
     if (this.storybookStream) {
       this.storybookStream.addEventListener('click', (e) => {
-        const card = e.target.closest('.storybook-card');
+        const card = e.target.closest('.editorial-photo-card');
         if (card) {
           const index = parseInt(card.getAttribute('data-index'), 10);
           if (!isNaN(index)) {
@@ -204,7 +176,7 @@ class WeddingGallery {
 
       this.storybookStream.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          const card = e.target.closest('.storybook-card');
+          const card = e.target.closest('.editorial-photo-card');
           if (card) {
             e.preventDefault();
             const index = parseInt(card.getAttribute('data-index'), 10);
@@ -271,15 +243,13 @@ class WeddingGallery {
     const diffX = this.touchEndX - this.touchStartX;
     const diffY = this.touchEndY - this.touchStartY;
 
-    // Ensure horizontal gesture is stronger than vertical
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
       if (diffX < 0) {
-        this.next(); // Swiped left -> next
+        this.next();
       } else {
-        this.prev(); // Swiped right -> prev
+        this.prev();
       }
     } else if (diffY > 100 && Math.abs(diffX) < 50) {
-      // Swipe down to dismiss
       this.close();
     }
   }
@@ -324,37 +294,27 @@ class WeddingGallery {
     const imgData = this.images[this.currentIndex];
     if (!imgData || !this.lightboxImg) return;
 
-    // Cross-fade effect
     this.lightboxImg.style.opacity = '0';
     this.lightboxImg.style.transform = 'scale(0.98)';
 
     setTimeout(() => {
       this.lightboxImg.src = imgData.src;
-      this.lightboxImg.alt = imgData.title || 'Pre-wedding photo';
+      this.lightboxImg.alt = `Pre-wedding photo ${this.currentIndex + 1}`;
 
       this.lightboxImg.onload = () => {
         this.lightboxImg.style.opacity = '1';
         this.lightboxImg.style.transform = 'scale(1)';
       };
 
-      // Fallback in case image is already cached
       if (this.lightboxImg.complete) {
         this.lightboxImg.style.opacity = '1';
         this.lightboxImg.style.transform = 'scale(1)';
       }
-    }, 120);
+    }, 100);
 
-    // Update Counter
+    // Update Counter only (clean: no text captions)
     if (this.counterEl) {
       this.counterEl.textContent = `${String(this.currentIndex + 1).padStart(2, '0')} / ${String(this.images.length).padStart(2, '0')}`;
-    }
-
-    // Update Caption
-    if (this.captionTitleEl) {
-      this.captionTitleEl.textContent = imgData.title || `Moment ${String(this.currentIndex + 1).padStart(2, '0')}`;
-    }
-    if (this.captionSubtitleEl) {
-      this.captionSubtitleEl.textContent = imgData.subtitle || 'Pre-Wedding Collection';
     }
 
     // Sync Thumbnail Strip
@@ -372,5 +332,4 @@ class WeddingGallery {
   }
 }
 
-// Make accessible to window
 window.WeddingGallery = WeddingGallery;
