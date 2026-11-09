@@ -236,11 +236,11 @@ window.WEDDING_CONFIG = {
   music: {
     enabled: true,
     file: "./assets/audio/ambient.mp3",
-    title: "Acoustic Piano & Strings",
-    artist: "Romantic Ambient Ensemble",
+    title: "Wedding Celebration Melody",
+    artist: "Soe Lin Htut & Htet Zar Chi",
     // Autoplay policy: strictly false until user clicks "View Invitation" or audio toggle
     autoplayAfterIntro: true,
-    initialVolume: 0.55
+    initialVolume: 0.60
   },
 
   // Final Closing Note
