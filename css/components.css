@@ -187,18 +187,20 @@ body.intro-active #main-content {
    2. HERO SECTION
    -------------------------------------------------------------------------- */
 .hero-section {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: var(--space-2xl) var(--space-md) var(--space-xl);
+  justify-content: flex-start;
+  padding: calc(var(--space-md) + env(safe-area-inset-top, 0px)) var(--space-md) var(--space-xl);
   position: relative;
   overflow: hidden;
 }
 
 @media (min-width: 900px) {
   .hero-section {
-    padding: var(--space-3xl) var(--space-lg) var(--space-2xl);
+    min-height: 100vh;
+    justify-content: center;
+    padding: var(--space-2xl) var(--space-lg) var(--space-2xl);
   }
 }
 

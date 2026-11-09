@@ -68,13 +68,13 @@ h4 { font-size: var(--text-lg); }
 /* Section Base */
 .section {
   position: relative;
-  padding: var(--space-2xl) var(--space-md);
+  padding: var(--space-xl) var(--space-md);
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: var(--space-3xl) var(--space-lg);
+    padding: var(--space-2xl) var(--space-lg);
   }
 }
 
