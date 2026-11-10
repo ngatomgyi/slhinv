@@ -59,18 +59,18 @@ window.WEDDING_CONFIG = {
     imageAlt: "Soe Lin Htut & Htet Zar Chi — Wedding Portrait",
     scrollHint: "Scroll down to discover"
   },
-
-  // Invitation Message
+  
+  // Invitation Message - Pure First-Person Flow
   invitation: {
-    heading: "We Request The Pleasure Of Your Company",
-    subheading: "A Union of Two Lives",
+    heading: "We're Getting Married",
+    subheading: "Soe Lin Htut & Htet Zar Chi",
     body: [
-      "Together with their parents, Soe Lin Htut and Htet Zar Chi warmly request the honour of your presence at the celebration of their wedding ceremony.",
-      "Surrounded by our beloved families, elders, and dearest friends, we will exchange our vows and begin this new chapter of love, mutual respect, and lifelong partnership.",
-      "Your warm blessings and presence will bring immense joy and make our wedding day truly memorable."
+      "Together with our families, we invite you to celebrate the beginning of our marriage.",
+      "Our story wouldn't be complete without the family and friends who have cheered us on, guided us, and filled our lives with joy.",
+      "We can't wait to share our vows, celebrate together, and step into this new chapter with your blessings."
     ],
-    monogramSignoff: "With love and gratitude,",
-    hosts: "The Parents of the Bride & Groom"
+    monogramSignoff: "With love & gratitude,",
+    hosts: "The Bride, Groom & Their Families"
   },
 
   // Love Story / Editorial Vignettes
@@ -81,7 +81,7 @@ window.WEDDING_CONFIG = {
     vignettes: [
       {
         year: "2022",
-        place: "Yangon",
+        place: "Wakema",
         title: "Where Our Story Began",
         text: "Two lives quietly intersected on an autumn afternoon. What began as a heartfelt friendship quickly blossomed into a profound bond built on laughter and shared ideals."
       },
@@ -136,7 +136,7 @@ window.WEDDING_CONFIG = {
       detail: "Blessing ceremony, vow exchange, and ring presentation before our families and elders."
     },
     {
-      time: "10:30 AM",
+      time: "10:00 AM",
       title: "Wedding Feast & Toasts",
       location: "Grand Ballroom Dining Hall",
       detail: "A celebratory feast served in honour of all guests and loved ones."
