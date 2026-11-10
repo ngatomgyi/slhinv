@@ -65,7 +65,7 @@ function populateStaticDetails(config) {
   setElemText('#hero-name-1', couple.partner1?.fullName || 'Soe Lin Htut');
   setElemText('#hero-name-2', couple.partner2?.fullName || 'Htet Zarchi Win');
   setElemText('#hero-date-val', dateDisplay.fullDate || 'November 15, 2026');
-  const heroTime = `${dateDisplay.time || '9:00 AM to 12 PM'}${config.timezoneLabel ? ' ' + config.timezoneLabel : ''}`.trim();
+  const heroTime = `${dateDisplay.time || '9:00 AM to 12:00 PM'}${config.timezoneLabel ? ' ' + config.timezoneLabel : ''}`.trim();
   setElemText('#hero-time-val', heroTime);
   setElemText('#hero-venue-val', `${venue.name || 'SWEN Hotel'}, Pathein`);
 
@@ -373,15 +373,13 @@ function renderGifts(giftsConfig) {
 
   container.innerHTML = accounts
     .map((acc) => {
-      const isKPay = acc.id === 'kpay';
-      const brandClass = isKPay ? 'gift-card-kpay' : 'gift-card-wave';
       return `
-        <div class="gift-card ${brandClass} reveal-card">
+        <div class="gift-card reveal-card">
+          <div class="gift-card-inner-frame" aria-hidden="true"></div>
+
           <div class="gift-card-top">
-            <div class="gift-brand-badge" style="--brand-color: ${acc.brandColor}">
-              <span class="gift-badge-text">${acc.badge || acc.provider}</span>
-            </div>
-            <span class="gift-provider-name">${acc.provider}</span>
+            <span class="gift-brand-badge">${acc.badge || acc.provider}</span>
+            <h3 class="gift-provider-name">${acc.provider}</h3>
           </div>
 
           <div class="gift-qr-wrapper">
@@ -398,12 +396,12 @@ function renderGifts(giftsConfig) {
             </div>
 
             <div class="gift-info-row">
-              <span class="gift-info-label">Phone / Number</span>
+              <span class="gift-info-label">Account Number</span>
               <strong class="gift-info-val gift-account-number">${acc.phone}</strong>
             </div>
 
-            <button class="btn btn-primary gift-copy-btn" data-phone="${acc.rawPhone || acc.phone}" data-provider="${acc.provider}" type="button" aria-label="Copy ${acc.provider} number">
-              <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <button class="btn btn-outline gift-copy-btn" data-phone="${acc.rawPhone || acc.phone}" data-provider="${acc.provider}" type="button" aria-label="Copy ${acc.provider} number">
+              <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
               </svg>

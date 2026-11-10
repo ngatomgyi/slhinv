@@ -1255,17 +1255,17 @@ body.intro-active #main-content {
 }
 
 /* --------------------------------------------------------------------------
-   8. DIGITAL WEDDING BLESSINGS & GIFTS (KPAY & WAVE)
+   8. DIGITAL WEDDING BLESSINGS & GIFTS (MINIMAL EDITORIAL)
    -------------------------------------------------------------------------- */
 .gift-section {
   position: relative;
-  background: linear-gradient(180deg, var(--color-bg) 0%, rgba(244, 240, 235, 0.85) 100%);
+  background-color: var(--color-bg);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
 
 .gift-subtitle {
-  max-width: 620px;
+  max-width: 580px;
   margin: 0 auto;
   line-height: 1.7;
 }
@@ -1274,8 +1274,8 @@ body.intro-active #main-content {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-xl);
-  max-width: 860px;
-  margin: var(--space-2xl) auto 0;
+  max-width: 820px;
+  margin: var(--space-xl) auto 0;
 }
 
 @media (min-width: 680px) {
@@ -1290,75 +1290,91 @@ body.intro-active #main-content {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  padding: var(--space-xl) var(--space-md);
-  box-shadow: var(--shadow-subtle);
+  padding: var(--space-xl) var(--space-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   position: relative;
-  transition: transform var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+  transition: transform var(--duration-fast) ease, box-shadow var(--duration-fast) ease, border-color var(--duration-fast) ease;
 }
 
 .gift-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-float);
+  box-shadow: 0 12px 32px rgba(29, 28, 26, 0.08);
+  border-color: rgba(95, 107, 86, 0.3);
 }
 
-.gift-card-kpay {
-  border-top: 3px solid #104F9E;
-}
-
-.gift-card-wave {
-  border-top: 3px solid #F59E0B;
+.gift-card-inner-frame {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(29, 28, 26, 0.05);
+  pointer-events: none;
+  border-radius: calc(var(--radius-sm) - 4px);
 }
 
 .gift-card-top {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-bottom: var(--space-lg);
-  justify-content: center;
+  gap: 6px;
+  margin-bottom: var(--space-md);
+  position: relative;
+  z-index: 1;
 }
 
 .gift-brand-badge {
-  background: var(--brand-color, var(--color-text-main));
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 4px;
+  color: var(--color-accent-taupe);
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  background: transparent;
 }
 
 .gift-provider-name {
   font-family: var(--font-serif);
-  font-size: var(--text-lg);
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: var(--color-text-main);
+  margin: 0;
 }
 
 .gift-qr-wrapper {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .gift-qr-box {
   position: relative;
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   border-radius: var(--radius-xs);
   overflow: hidden;
   background: #FFFFFF;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-subtle);
+  padding: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   cursor: default;
   pointer-events: none;
   user-select: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gift-card:hover .gift-qr-box {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
 }
 
 .gift-qr-img {
@@ -1370,10 +1386,11 @@ body.intro-active #main-content {
 }
 
 .gift-qr-hint {
-  margin-top: var(--space-xs);
-  font-size: 0.72rem;
+  margin-top: 8px;
+  font-size: 0.68rem;
   color: var(--color-text-muted);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .gift-info-block {
@@ -1384,6 +1401,8 @@ body.intro-active #main-content {
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-md);
   margin-top: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .gift-info-row {
@@ -1394,47 +1413,40 @@ body.intro-active #main-content {
 }
 
 .gift-info-label {
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
 .gift-account-name {
-  font-size: var(--text-md);
+  font-family: var(--font-serif);
+  font-size: 1rem;
   color: var(--color-text-main);
   font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .gift-account-number {
   font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
-  letter-spacing: 0.06em;
+  font-size: clamp(1.15rem, 1.1rem + 0.4vw, 1.35rem);
+  letter-spacing: 0.08em;
   color: var(--color-text-main);
   font-variant-numeric: tabular-nums;
 }
 
 .gift-copy-btn {
-  margin-top: var(--space-xs);
+  margin-top: var(--space-2xs);
   width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 18px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  border-radius: var(--radius-xs);
-  transition: all var(--duration-fast) ease;
-  cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
 }
 
 .gift-copy-btn.btn-copied {
-  background-color: var(--color-accent-sage) !important;
-  color: #FFFFFF !important;
-  border-color: var(--color-accent-sage) !important;
+  border-color: var(--color-accent-sage);
+  color: var(--color-accent-sage);
+  background: rgba(95, 107, 86, 0.06);
 }
 
 /* --------------------------------------------------------------------------

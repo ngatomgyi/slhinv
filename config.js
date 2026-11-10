@@ -39,7 +39,7 @@ window.WEDDING_CONFIG = {
     dayOfWeek: "Sunday",
     fullDate: "November 15, 2026",
     shortDate: "15 . 11 . 2026",
-    time: "9:00 AM to 12 PM",
+    time: "9:00 AM to 12:00 PM",
     year: "2026"
   },
 
@@ -68,7 +68,7 @@ window.WEDDING_CONFIG = {
       "We can't wait to share our vows, celebrate together, and step into this new chapter with your blessings."
     ],
     monogramSignoff: "With love & gratitude,",
-    hosts: "The Bride, Groom & Their Families"
+    hosts: "Soe Lin Htut & Htet Zarchi Win • Together with our families"
   },
 
   // Love Story / Editorial Vignettes
@@ -150,7 +150,7 @@ window.WEDDING_CONFIG = {
 
   // Gallery (Pre-Wedding Photoshoot)
   gallery: {
-    heading: "Pre-Wedding Moments",
+    heading: "Captured Moments",
     subheading: "Pathein • SWEN Hotel",
     images: [
       {
