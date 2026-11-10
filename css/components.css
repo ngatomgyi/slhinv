@@ -1024,13 +1024,7 @@ body.intro-active #main-content {
   font-size: var(--text-md);
   color: var(--color-text-main);
   font-weight: 400;
-}
-
-.schedule-event-location {
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  line-height: 1.35;
 }
 
 .schedule-event-detail {

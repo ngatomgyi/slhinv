@@ -146,7 +146,6 @@ function renderSchedule(scheduleList) {
         <span class="schedule-time">${item.time}</span>
         <div class="schedule-title-wrap">
           <span class="schedule-event-title">${item.title}</span>
-          <span class="schedule-event-location">${item.location}</span>
         </div>
         <p class="schedule-event-detail">${item.detail}</p>
       </div>

@@ -125,25 +125,21 @@ window.WEDDING_CONFIG = {
     {
       time: "9:00 AM",
       title: "Guest Arrival & Welcome Reception",
-      location: "Grand Foyer",
       detail: "Warm welcome drinks, traditional light refreshments, and ambient acoustic music."
     },
     {
       time: "9:30 AM",
       title: "Sacred Wedding Ceremony & Vows",
-      location: "The Grand Ballroom",
       detail: "Blessing ceremony, vow exchange, and ring presentation before our families and elders."
     },
     {
       time: "10:00 AM",
       title: "Wedding Feast & Toasts",
-      location: "Grand Ballroom Dining Hall",
       detail: "A celebratory feast served in honour of all guests and loved ones."
     },
     {
       time: "11:30 AM",
       title: "Photography & Bride & Groom Send-off",
-      location: "The Ballroom Stage",
       detail: "Commemorative group photos with the bride and groom, family, and cherished friends."
     }
   ],
