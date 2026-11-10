@@ -202,11 +202,6 @@ window.WEDDING_CONFIG = {
         src: "./assets/images/gallery-7.webp",
         thumb: "./assets/images/gallery-7.webp",
         aspect: "portrait"
-      },
-      {
-        src: "./assets/images/gallery-11.webp",
-        thumb: "./assets/images/gallery-11.webp",
-        aspect: "portrait"
       }
     ]
   },
