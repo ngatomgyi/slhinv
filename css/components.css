@@ -159,7 +159,7 @@ body.intro-active #main-content {
   background: var(--color-text-main);
   color: var(--color-bg);
   border: 1px solid var(--color-text-main);
-  padding: 0.95rem 2.4rem;
+  padding: 0.95rem 2.5rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -168,13 +168,25 @@ body.intro-active #main-content {
   font-weight: 500;
   cursor: pointer;
   transition: all var(--duration-normal) var(--ease-out-editorial);
-  box-shadow: 0 4px 16px rgba(29, 28, 26, 0.08);
+  box-shadow: 0 4px 16px rgba(29, 28, 26, 0.12);
+  animation: attractPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes attractPulse {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 4px 16px rgba(29, 28, 26, 0.12), 0 0 0 0 rgba(95, 107, 86, 0.28);
+  }
+  50% {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(29, 28, 26, 0.18), 0 0 0 10px rgba(95, 107, 86, 0);
+  }
 }
 
 .intro-btn:hover {
   background-color: #35322F;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(29, 28, 26, 0.14);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(29, 28, 26, 0.22);
 }
 
 .intro-btn svg {
@@ -182,10 +194,30 @@ body.intro-active #main-content {
   height: 14px;
   stroke-width: 2;
   transition: transform var(--duration-fast) ease;
+  animation: chevronBounce 1.6s ease-in-out infinite;
 }
 
-.intro-btn:hover svg {
-  transform: translateY(2px);
+@keyframes chevronBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+.intro-click-hint {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent-taupe);
+  margin-top: 0.75rem;
+  animation: hintBreathe 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hintBreathe {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.95; }
 }
 
 .intro-footer-spacer {
@@ -724,21 +756,36 @@ body.intro-active #main-content {
   background-color: var(--color-surface);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  padding: clamp(2rem, 5vw, 4rem) var(--space-sm);
+}
+
+@media (min-width: 768px) {
+  .details-section {
+    padding: var(--space-2xl) var(--space-lg);
+  }
 }
 
 .venue-card-editorial {
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
-  padding: var(--space-xl);
-  margin-bottom: var(--space-2xl);
+  border-radius: var(--radius-sm);
+  padding: 1.35rem 1.15rem;
+  margin-bottom: var(--space-xl);
   box-shadow: var(--shadow-subtle);
+}
+
+@media (min-width: 768px) {
+  .venue-card-editorial {
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
 }
 
 .venue-card-header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-  margin-bottom: var(--space-md);
+  gap: var(--space-2xs);
+  margin-bottom: 0.75rem;
 }
 
 @media (min-width: 768px) {
@@ -750,8 +797,9 @@ body.intro-active #main-content {
 }
 
 .venue-name {
-  font-size: var(--text-xl);
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
   font-weight: 300;
+  line-height: 1.2;
 }
 
 .venue-tagline {
@@ -762,9 +810,10 @@ body.intro-active #main-content {
 }
 
 .venue-address {
-  font-size: var(--text-sm);
+  font-size: clamp(0.82rem, 2.5vw, 0.92rem);
+  line-height: 1.5;
   color: var(--color-text-body);
-  margin-bottom: var(--space-md);
+  margin-bottom: 1.15rem;
   display: flex;
   align-items: flex-start;
   gap: var(--space-xs);
@@ -772,8 +821,8 @@ body.intro-active #main-content {
 
 .venue-address svg {
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   stroke: var(--color-accent-sage);
   margin-top: 2px;
 }
@@ -781,33 +830,54 @@ body.intro-active #main-content {
 .venue-actions {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 0.55rem;
   width: 100%;
-  margin-bottom: var(--space-md);
+  margin-bottom: 1rem;
+}
+
+.venue-actions-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.venue-actions .btn {
+  width: 100%;
+  height: 44px;
+  padding: 0 0.85rem;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.venue-actions .btn svg {
+  flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
   .venue-actions {
     flex-direction: row;
-    width: auto;
+    align-items: center;
     gap: var(--space-sm);
   }
-}
 
-.venue-actions .btn {
-  width: 100%;
-  height: 48px;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
+  .venue-actions-secondary {
+    display: contents;
+  }
 
-@media (min-width: 640px) {
   .venue-actions .btn {
     width: auto;
-    min-width: 170px;
+    min-width: 160px;
+    height: 48px;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+    padding: 0 1.5rem;
   }
 }
 
@@ -837,21 +907,24 @@ body.intro-active #main-content {
 .subnotes-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
 @media (min-width: 768px) {
   .subnotes-grid {
     grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
   }
 }
 
 .subnote-card {
-  padding: var(--space-md);
+  padding: 0.95rem 1.15rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);
   border-left: 3px solid var(--color-accent-sage);
+  border-radius: var(--radius-xs);
 }
 
 .subnote-card-title {
@@ -1486,59 +1559,86 @@ body.intro-active #main-content {
    -------------------------------------------------------------------------- */
 .music-toggle-btn {
   position: fixed;
-  bottom: var(--space-md);
-  right: var(--space-md);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  right: max(16px, env(safe-area-inset-right));
   z-index: var(--z-floating);
   background-color: var(--color-surface-translucent);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-pill);
-  padding: 0.55rem 1.15rem;
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
   cursor: pointer;
-  box-shadow: var(--shadow-float);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   transition: all var(--duration-normal) var(--ease-out-editorial);
   color: var(--color-text-main);
+  /* Mobile: compact minimal circular speaker */
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .music-toggle-btn:hover {
   transform: translateY(-2px);
   background-color: var(--color-bg);
-  box-shadow: var(--shadow-overlay);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.music-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-weight: 500;
+.music-toggle-btn:active {
+  transform: scale(0.95);
 }
 
-.music-wave-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 14px;
+.music-toggle-btn .music-label {
+  display: none;
 }
 
-.music-bar {
-  width: 2px;
-  height: 4px;
-  background-color: var(--color-accent-sage);
-  border-radius: 1px;
-  transition: height var(--duration-fast) ease;
+.music-toggle-btn .music-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke: var(--color-text-main);
 }
 
-.music-toggle-btn.playing .music-bar:nth-child(1) {
-  animation: audioBar1 1.1s ease-in-out infinite alternate;
+/* Default state: muted / paused */
+.music-toggle-btn .music-icon-speaker {
+  display: none;
 }
-.music-toggle-btn.playing .music-bar:nth-child(2) {
-  animation: audioBar2 0.8s ease-in-out infinite alternate;
+.music-toggle-btn .music-icon-muted {
+  display: block;
 }
-.music-toggle-btn.playing .music-bar:nth-child(3) {
-  animation: audioBar3 1.3s ease-in-out infinite alternate;
+
+/* Playing state: speaker with active sound wave */
+.music-toggle-btn.playing .music-icon-speaker {
+  display: block;
+}
+.music-toggle-btn.playing .music-icon-muted {
+  display: none;
+}
+
+@keyframes speakerWavePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.music-toggle-btn.playing .speaker-wave-2 {
+  animation: speakerWavePulse 1.6s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .music-toggle-btn {
+    width: auto;
+    height: 40px;
+    padding: 0 1.15rem;
+    gap: 0.5rem;
+  }
+  .music-toggle-btn .music-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
 }
 
 /* --------------------------------------------------------------------------

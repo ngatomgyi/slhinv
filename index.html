@@ -63,6 +63,7 @@
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
+      <span class="intro-click-hint">Tap to Open</span>
     </div>
 
     <!-- Spacer for balance -->
@@ -281,12 +282,14 @@
               <span>Open Google Maps</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
-            <button id="btn-copy-address" class="btn btn-outline" type="button">
-              <span>Copy Address</span>
-            </button>
-            <button id="btn-toggle-map" class="btn btn-outline" type="button">
-              <span>Map Preview</span>
-            </button>
+            <div class="venue-actions-secondary">
+              <button id="btn-copy-address" class="btn btn-outline" type="button">
+                <span>Copy Address</span>
+              </button>
+              <button id="btn-toggle-map" class="btn btn-outline" type="button">
+                <span>Map Preview</span>
+              </button>
+            </div>
           </div>
 
           <!-- Optional Map Preview Container -->
@@ -441,11 +444,16 @@
        FLOATING AMBIENT MUSIC TOGGLE
        ========================================================================= -->
   <button id="music-toggle-btn" class="music-toggle-btn" type="button" aria-label="Toggle ambient music">
-    <div class="music-wave-bars" aria-hidden="true">
-      <span class="music-bar"></span>
-      <span class="music-bar"></span>
-      <span class="music-bar"></span>
-    </div>
+    <svg class="music-icon music-icon-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path class="speaker-wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      <path class="speaker-wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+    </svg>
+    <svg class="music-icon music-icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
     <span class="music-label">Music</span>
   </button>
 

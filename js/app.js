@@ -180,6 +180,7 @@ function setupIntroScreen(audio) {
   };
 
   viewBtn.addEventListener('click', dismissIntro);
+  introScreen.addEventListener('click', dismissIntro);
 
   // Optional: Escape key dismisses intro
   document.addEventListener('keydown', (e) => {
