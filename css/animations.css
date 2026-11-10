@@ -40,12 +40,23 @@
   100% { transform: scale(1); }
 }
 
-/* Scroll Triggered Reveals */
+@keyframes heroLensFocus {
+  0% {
+    filter: blur(10px) brightness(1.15);
+    transform: scale(1.1);
+  }
+  100% {
+    filter: blur(0px) brightness(1);
+    transform: scale(1);
+  }
+}
+
+/* Scroll Triggered Reveals: Standard Items */
 .reveal-item {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -54,6 +65,35 @@
 .reveal-item.is-revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Scroll Triggered Reveals: 3D Elevation Cards */
+.reveal-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.975);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.6s ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal-card.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hairline Expanding Divider Animation */
+.hairline-anim {
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.hairline-anim.is-revealed {
+  transform: scaleX(1);
 }
 
 /* Stagger Delays */
@@ -80,6 +120,37 @@
   transform: translateY(0);
 }
 
+/* Editorial Mask Reveal for Section Titles */
+.editorial-mask-reveal {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.editorial-mask-reveal > span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.editorial-mask-reveal.is-revealed > span {
+  transform: translateY(0);
+}
+
+/* Hero Ampersand Scale Bloom */
+.hero-amp-reveal {
+  opacity: 0;
+  transform: scale(0.55) rotate(-6deg);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+}
+
+.hero-amp-reveal.is-revealed {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
 /* Subtle continuous portrait movement */
 .ken-burns {
   animation: subtleKenBurns 24s ease-in-out infinite alternate;
@@ -98,13 +169,24 @@
     scroll-behavior: auto !important;
   }
 
-  .reveal-item {
+  .reveal-item,
+  .reveal-card {
     opacity: 1 !important;
     transform: none !important;
   }
 
-  .mask-reveal > span {
+  .mask-reveal > span,
+  .editorial-mask-reveal > span {
     transform: none !important;
+  }
+
+  .hero-amp-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hairline-anim {
+    transform: scaleX(1) !important;
   }
 
   .intro-screen.dismissed {

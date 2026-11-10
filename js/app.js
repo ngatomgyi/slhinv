@@ -165,32 +165,87 @@ function setupIntroScreen(audio) {
   document.body.classList.add('intro-active');
 
   const dismissIntro = () => {
-    if (introScreen.classList.contains('dismissed')) return;
-    introScreen.classList.add('dismissed');
-    document.body.classList.remove('intro-active');
+    if (introScreen.classList.contains('dismissed') || introScreen.classList.contains('opening')) return;
 
-    // Trigger subtle sound playback upon guest interaction
-    if (audio) {
-      setTimeout(() => {
-        audio.play();
-      }, 300);
-    }
+    // Phase 1: Dissolve center stage content & expand gold frame
+    introScreen.classList.add('opening');
 
-    // Smoothly reveal hero elements upon opening
+    // Phase 2: Luxury envelope peel upwards
     setTimeout(() => {
-      document.querySelectorAll('#hero .reveal-item, #hero .mask-reveal').forEach((el) => {
-        el.classList.add('is-revealed');
-      });
-    }, 150);
+      introScreen.classList.add('dismissed');
+      document.body.classList.remove('intro-active');
 
-    // Scroll to top of main content
-    window.scrollTo({ top: 0, behavior: 'instant' });
+      // Scroll to top of main content
+      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // Trigger subtle background music upon first guest touch
+      if (audio) {
+        setTimeout(() => {
+          audio.play();
+        }, 120);
+      }
+
+      // Phase 3: Choreographed Hero Unveiling Ceremony
+      const hero = document.getElementById('hero');
+      if (hero) {
+        // Step 1: Top Eyebrow
+        setTimeout(() => {
+          const metaTop = hero.querySelector('.hero-meta-top');
+          if (metaTop) metaTop.classList.add('is-revealed');
+        }, 120);
+
+        // Step 2: Groom Name masked rise
+        setTimeout(() => {
+          const name1 = hero.querySelector('.hero-name-line-1');
+          if (name1) name1.classList.add('is-revealed');
+        }, 260);
+
+        // Step 3: Ampersand golden blossom
+        setTimeout(() => {
+          const amp = hero.querySelector('.hero-ampersand');
+          if (amp) amp.classList.add('is-revealed');
+        }, 420);
+
+        // Step 4: Bride Name masked rise
+        setTimeout(() => {
+          const name2 = hero.querySelector('.hero-name-line-2');
+          if (name2) name2.classList.add('is-revealed');
+        }, 580);
+
+        // Step 5: Hero Portrait lens focus reveal
+        setTimeout(() => {
+          const frame = hero.querySelector('.hero-visual-frame');
+          const img = hero.querySelector('#hero-portrait-img');
+          if (frame) frame.classList.add('is-revealed');
+          if (img) img.classList.add('lens-focused');
+        }, 460);
+
+        // Step 6: Subdetails (Date, Time, Location)
+        setTimeout(() => {
+          const subdetails = hero.querySelector('.hero-subdetails');
+          if (subdetails) subdetails.classList.add('is-revealed');
+        }, 720);
+
+        // Step 7: Floating tag and scroll indicator
+        setTimeout(() => {
+          const tag = hero.querySelector('.hero-tag-floating');
+          const scrollInd = hero.querySelector('.hero-scroll-indicator');
+          if (tag) tag.classList.add('is-revealed');
+          if (scrollInd) scrollInd.classList.add('is-revealed');
+        }, 880);
+      }
+
+      // Clean up intro screen DOM layer after exit animation finishes
+      setTimeout(() => {
+        introScreen.style.display = 'none';
+      }, 1000);
+    }, 280);
   };
 
   viewBtn.addEventListener('click', dismissIntro);
   introScreen.addEventListener('click', dismissIntro);
 
-  // Optional: Escape key dismisses intro
+  // Optional: Enter key dismisses intro
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !introScreen.classList.contains('dismissed')) {
       dismissIntro();
@@ -260,7 +315,7 @@ function setupVenueInteractions(config) {
 }
 
 function setupScrollReveals() {
-  const elements = document.querySelectorAll('.reveal-item, .mask-reveal');
+  const elements = document.querySelectorAll('.reveal-item, .reveal-card, .mask-reveal, .editorial-mask-reveal, .hairline-anim');
   if (!elements.length) return;
 
   if (!('IntersectionObserver' in window)) {
@@ -321,7 +376,7 @@ function renderGifts(giftsConfig) {
       const isKPay = acc.id === 'kpay';
       const brandClass = isKPay ? 'gift-card-kpay' : 'gift-card-wave';
       return `
-        <div class="gift-card ${brandClass} reveal-item">
+        <div class="gift-card ${brandClass} reveal-card">
           <div class="gift-card-top">
             <div class="gift-brand-badge" style="--brand-color: ${acc.brandColor}">
               <span class="gift-badge-text">${acc.badge || acc.provider}</span>

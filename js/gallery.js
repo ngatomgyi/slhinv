@@ -1,19 +1,27 @@
 /**
- * UNTOUCHED EDITORIAL PHOTO SHOWCASE & FULLSCREEN LIGHTBOX
+ * OPTION 1: HORIZONTAL EDITORIAL FILMSTRIP & FULLSCREEN LIGHTBOX
  * 
- * Guarantees:
+ * Features:
  * 1. ZERO CROPPING: Every portrait photo renders at natural 2:3 aspect ratio, landscape at 3:2.
- * 2. NO CAPTIONS: Removed all text titles, subtitles, badges, and numbers per user request.
- * 3. TAP TO ENLARGE: Clicking any photo opens the fullscreen Lightbox with swipe and thumbnail navigation.
+ * 2. HORIZONTAL EDITORIAL FILMSTRIP: Smooth CSS scroll-snap track with adjacent card peek.
+ * 3. DYNAMIC STATUS & PROGRESS: Synced 01/11 pill counter and animated gold progress bar.
+ * 4. FULLSCREEN LIGHTBOX: Tap any card to enlarge with smooth crossfade, touch swipe, and thumbnails.
  */
 
 class WeddingGallery {
-  constructor(images, containerSelector) {
+  constructor(images) {
     this.images = images || [];
     this.currentIndex = 0;
 
-    // DOM Elements
-    this.storybookStream = document.getElementById('gallery-storybook-stream');
+    // Filmstrip DOM Elements
+    this.filmstripTrack = document.getElementById('gallery-filmstrip-track');
+    this.filmstripPrevBtn = document.getElementById('filmstrip-prev-btn');
+    this.filmstripNextBtn = document.getElementById('filmstrip-next-btn');
+    this.filmstripActiveNum = document.getElementById('filmstrip-active-num');
+    this.filmstripTotalNum = document.getElementById('filmstrip-total-num');
+    this.filmstripProgressBar = document.getElementById('filmstrip-progress-bar');
+
+    // Lightbox DOM Elements
     this.modal = document.getElementById('lightbox-modal');
     this.lightboxImg = document.getElementById('lightbox-img');
     this.counterEl = document.getElementById('lightbox-counter');
@@ -24,7 +32,7 @@ class WeddingGallery {
     this.nextBtn = document.getElementById('lightbox-next');
     this.closeBtn = document.getElementById('lightbox-close');
 
-    // Hide any caption containers in lightbox to maintain clean visual aesthetic
+    // Clean aesthetic: hide text captions in lightbox
     if (this.captionTitleEl) this.captionTitleEl.style.display = 'none';
     if (this.captionSubtitleEl) this.captionSubtitleEl.style.display = 'none';
 
@@ -39,112 +47,129 @@ class WeddingGallery {
 
   init() {
     this.renderShowcase();
+    this.setupFilmstripSync();
     this.renderLightboxThumbs();
     this.bindEvents();
   }
 
   renderShowcase() {
-    if (!this.storybookStream || !this.images.length) return;
+    if (!this.filmstripTrack || !this.images.length) return;
 
-    // Helper to generate a clean photo card without any captions or badges
-    const makeCard = (idx, customClass = '') => {
-      const img = this.images[idx];
-      if (!img) return '';
-      const isLandscape = img.aspect === 'landscape';
-      const aspectClass = isLandscape ? 'photo-aspect-landscape' : 'photo-aspect-portrait';
-      return `
-        <figure class="editorial-photo-card ${aspectClass} ${customClass} reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${idx + 1}">
-          <div class="photo-frame">
-            <img class="photo-img" src="${img.src}" alt="Pre-wedding photo ${idx + 1}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
-            <div class="photo-zoom-hint" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-              </svg>
+    this.filmstripTrack.innerHTML = this.images
+      .map((img, idx) => {
+        const isLandscape = img.aspect === 'landscape';
+        const aspectClass = isLandscape ? 'photo-aspect-landscape' : 'photo-aspect-portrait';
+        return `
+          <figure class="filmstrip-photo-card ${aspectClass} ${idx === 0 ? 'is-filmstrip-active' : ''} reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${idx + 1} full screen">
+            <div class="filmstrip-photo-frame">
+              <img class="filmstrip-photo-img" src="${img.src}" alt="Pre-wedding photo ${idx + 1}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
+              <div class="filmstrip-zoom-hint" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+              </div>
             </div>
-          </div>
-        </figure>
-      `;
+          </figure>
+        `;
+      })
+      .join('');
+  }
+
+  setupFilmstripSync() {
+    if (!this.filmstripTrack) return;
+
+    const cards = this.filmstripTrack.querySelectorAll('.filmstrip-photo-card');
+    const total = cards.length;
+    if (this.filmstripTotalNum) {
+      this.filmstripTotalNum.textContent = String(total).padStart(2, '0');
+    }
+
+    let ticking = false;
+
+    const updateActiveState = () => {
+      const trackRect = this.filmstripTrack.getBoundingClientRect();
+      const trackCenter = trackRect.left + trackRect.width / 2;
+
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, idx) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const dist = Math.abs(trackCenter - cardCenter);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestIdx = idx;
+        }
+      });
+
+      // Update active card styling
+      cards.forEach((card, idx) => {
+        card.classList.toggle('is-filmstrip-active', idx === closestIdx);
+      });
+
+      // Update counter pill
+      if (this.filmstripActiveNum) {
+        this.filmstripActiveNum.textContent = String(closestIdx + 1).padStart(2, '0');
+      }
+
+      // Update progress bar
+      if (this.filmstripProgressBar) {
+        const maxScroll = this.filmstripTrack.scrollWidth - this.filmstripTrack.clientWidth;
+        if (maxScroll > 0) {
+          const ratio = Math.max(0, Math.min(1, this.filmstripTrack.scrollLeft / maxScroll));
+          const basePct = (1 / total) * 100;
+          const progress = basePct + ratio * (100 - basePct);
+          this.filmstripProgressBar.style.width = `${progress.toFixed(1)}%`;
+        } else {
+          this.filmstripProgressBar.style.width = `${(((closestIdx + 1) / total) * 100).toFixed(1)}%`;
+        }
+      }
+
+      ticking = false;
     };
 
-    let html = '';
-
-    // 1. Opener Portrait (Photo 0) - Centerpiece
-    if (this.images[0]) {
-      html += `
-        <div class="photo-layout-single photo-layout-opener">
-          ${makeCard(0, 'card-opener card-float-up')}
-        </div>
-      `;
-    }
-
-    // 2. Duo Portraits (Photos 1 & 2)
-    if (this.images[1] || this.images[2]) {
-      html += `
-        <div class="photo-layout-duo">
-          ${makeCard(1, 'card-float-up')}
-          ${makeCard(2, 'card-float-up delay-1')}
-        </div>
-      `;
-    }
-
-    // 3. Panoramic Landscape (Photo 3) - Full width uncropped 3:2
-    if (this.images[3]) {
-      html += `
-        <div class="photo-layout-panorama">
-          ${makeCard(3, 'card-panorama card-float-up')}
-        </div>
-      `;
-    }
-
-    // 4. Duo Portraits (Photos 4 & 5)
-    if (this.images[4] || this.images[5]) {
-      html += `
-        <div class="photo-layout-duo">
-          ${makeCard(4, 'card-float-up')}
-          ${makeCard(5, 'card-float-up delay-1')}
-        </div>
-      `;
-    }
-
-    // 5. Duo Portraits (Photos 6 & 7)
-    if (this.images[6] || this.images[7]) {
-      html += `
-        <div class="photo-layout-duo">
-          ${makeCard(6, 'card-float-up')}
-          ${makeCard(7, 'card-float-up delay-1')}
-        </div>
-      `;
-    }
-
-    // 6. Duo Portraits (Photos 8 & 9)
-    if (this.images[8] || this.images[9]) {
-      html += `
-        <div class="photo-layout-duo">
-          ${makeCard(8, 'card-float-up')}
-          ${makeCard(9, 'card-float-up delay-1')}
-        </div>
-      `;
-    }
-
-    // 7. Epilogue Portrait (Photo 10 and any beyond)
-    if (this.images[10]) {
-      html += `
-        <div class="photo-layout-single photo-layout-epilogue">
-          ${makeCard(10, 'card-epilogue card-float-up')}
-        </div>
-      `;
-    }
-
-    // Additional photos if any
-    if (this.images.length > 11) {
-      let extra = '';
-      for (let i = 11; i < this.images.length; i++) {
-        extra += makeCard(i);
+    this.filmstripTrack.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveState);
+        ticking = true;
       }
-      html += `<div class="photo-layout-duo">${extra}</div>`;
+    }, { passive: true });
+
+    // Initial positioning check
+    setTimeout(updateActiveState, 100);
+
+    // Bind Filmstrip Arrow Navigation
+    if (this.filmstripPrevBtn) {
+      this.filmstripPrevBtn.addEventListener('click', () => {
+        const activeCard = this.filmstripTrack.querySelector('.filmstrip-photo-card.is-filmstrip-active') || cards[0];
+        const step = activeCard ? activeCard.offsetWidth + 20 : 340;
+        this.filmstripTrack.scrollBy({ left: -step, behavior: 'smooth' });
+      });
     }
 
-    this.storybookStream.innerHTML = html;
+    if (this.filmstripNextBtn) {
+      this.filmstripNextBtn.addEventListener('click', () => {
+        const activeCard = this.filmstripTrack.querySelector('.filmstrip-photo-card.is-filmstrip-active') || cards[0];
+        const step = activeCard ? activeCard.offsetWidth + 20 : 340;
+        this.filmstripTrack.scrollBy({ left: step, behavior: 'smooth' });
+      });
+    }
+
+    // Keyboard navigation when track is focused
+    this.filmstripTrack.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const activeCard = this.filmstripTrack.querySelector('.filmstrip-photo-card.is-filmstrip-active') || cards[0];
+        const step = activeCard ? activeCard.offsetWidth + 20 : 340;
+        this.filmstripTrack.scrollBy({ left: -step, behavior: 'smooth' });
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const activeCard = this.filmstripTrack.querySelector('.filmstrip-photo-card.is-filmstrip-active') || cards[0];
+        const step = activeCard ? activeCard.offsetWidth + 20 : 340;
+        this.filmstripTrack.scrollBy({ left: step, behavior: 'smooth' });
+      }
+    });
   }
 
   renderLightboxThumbs() {
@@ -162,10 +187,10 @@ class WeddingGallery {
   }
 
   bindEvents() {
-    // Click on photo opens Lightbox
-    if (this.storybookStream) {
-      this.storybookStream.addEventListener('click', (e) => {
-        const card = e.target.closest('.editorial-photo-card');
+    // Click or Enter on filmstrip card opens Lightbox
+    if (this.filmstripTrack) {
+      this.filmstripTrack.addEventListener('click', (e) => {
+        const card = e.target.closest('.filmstrip-photo-card');
         if (card) {
           const index = parseInt(card.getAttribute('data-index'), 10);
           if (!isNaN(index)) {
@@ -174,9 +199,9 @@ class WeddingGallery {
         }
       });
 
-      this.storybookStream.addEventListener('keydown', (e) => {
+      this.filmstripTrack.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          const card = e.target.closest('.editorial-photo-card');
+          const card = e.target.closest('.filmstrip-photo-card');
           if (card) {
             e.preventDefault();
             const index = parseInt(card.getAttribute('data-index'), 10);
@@ -215,7 +240,7 @@ class WeddingGallery {
       });
     }
 
-    // Keyboard navigation
+    // Keyboard navigation in lightbox
     document.addEventListener('keydown', (e) => {
       if (!this.modal || !this.modal.classList.contains('active')) return;
 
