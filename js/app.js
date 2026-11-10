@@ -113,6 +113,9 @@ function setElemText(selector, text) {
 function renderStory(storyConfig) {
   if (!storyConfig || !storyConfig.vignettes) return;
 
+  setElemText('#story-title', storyConfig.heading);
+  setElemText('#story-subtitle', storyConfig.subheading);
+
   const timelineContainer = document.getElementById('story-timeline-container');
   if (timelineContainer) {
     timelineContainer.innerHTML = storyConfig.vignettes
@@ -305,7 +308,13 @@ function setupVenueInteractions(config) {
       mapIframe.src = config.venue.embedMapUrl;
       toggleMapBtn.addEventListener('click', () => {
         const isActive = mapContainer.classList.toggle('active');
-        toggleMapBtn.textContent = isActive ? 'Hide Map View' : 'Show Map View';
+        const span = toggleMapBtn.querySelector('span');
+        const text = isActive ? 'Hide Map View' : 'Map Preview';
+        if (span) {
+          span.textContent = text;
+        } else {
+          toggleMapBtn.textContent = text;
+        }
       });
     } else {
       toggleMapBtn.style.display = 'none';

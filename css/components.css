@@ -1460,6 +1460,7 @@ body.intro-active #main-content {
   color: #FFF;
   position: relative;
   z-index: 2;
+  padding-top: max(0px, env(safe-area-inset-top, 0px));
 }
 
 .lightbox-counter {
@@ -1561,7 +1562,7 @@ body.intro-active #main-content {
   width: 100%;
   max-width: 680px;
   margin: 0 auto;
-  padding: var(--space-xs) 0 0;
+  padding: var(--space-xs) 0 max(0px, env(safe-area-inset-bottom, 0px));
   position: relative;
   z-index: 2;
 }
@@ -1889,8 +1890,8 @@ body.intro-active #main-content {
    -------------------------------------------------------------------------- */
 .toast-notice {
   position: fixed;
-  bottom: calc(var(--space-md) + 60px);
-  right: var(--space-md);
+  bottom: calc(var(--space-md) + 60px + env(safe-area-inset-bottom, 0px));
+  right: max(var(--space-md), env(safe-area-inset-right, 0px));
   z-index: var(--z-toast);
   background-color: var(--color-text-main);
   color: var(--color-bg);

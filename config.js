@@ -74,8 +74,8 @@ window.WEDDING_CONFIG = {
   // Love Story / Editorial Vignettes
   story: {
     enabled: true,
-    heading: "Our Story",
-    subheading: "Chapter by Chapter",
+    heading: "The Path to Forever",
+    subheading: "Selected chapters of a shared voyage",
     vignettes: [
       {
         year: "2022",
@@ -248,8 +248,8 @@ window.WEDDING_CONFIG = {
 
   // Final Closing Note
   closing: {
-    heading: "With Gratitude",
-    text: "Thank you for blessing our union with your love and kindness. We cannot wait to celebrate this special day with you.",
+    heading: "With Heartfelt Gratitude",
+    text: "Thank you for walking this road with us and blessing our union with your love and kindness. We cannot wait to celebrate this special day with you.",
     monogram: "S & H",
     footerText: "Soe Lin Htut & Htet Zarchi Win • November 15, 2026 • SWEN Hotel, Pathein"
   }

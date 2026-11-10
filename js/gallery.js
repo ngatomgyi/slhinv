@@ -56,7 +56,7 @@ class WeddingGallery {
       const isLandscape = img.aspect === 'landscape';
       const aspectClass = isLandscape ? 'photo-aspect-landscape' : 'photo-aspect-portrait';
       return `
-        <figure class="editorial-photo-card ${aspectClass} ${customClass} reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${idx + 1} full screen">
+        <figure class="editorial-photo-card ${aspectClass} ${customClass}" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${idx + 1} full screen">
           <div class="photo-frame">
             <img class="photo-img" src="${img.src}" alt="Pre-wedding photo ${idx + 1}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
             <div class="photo-zoom-hint" aria-hidden="true">

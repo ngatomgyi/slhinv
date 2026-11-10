@@ -77,7 +77,7 @@ class WeddingCountdown {
   renderPastEvent() {
     const grid = document.querySelector('.countdown-grid');
     if (grid) {
-      const title = window.WEDDING_CONFIG?.couple?.displayTitle || "Soe Lin Htut & Htet Zar Chi";
+      const title = window.WEDDING_CONFIG?.couple?.displayTitle || "Soe Lin Htut & Htet Zarchi Win";
       const date = window.WEDDING_CONFIG?.dateDisplay?.fullDate || "November 15, 2026";
       grid.innerHTML = `
         <div class="countdown-passed" style="grid-column: 1 / -1;">
