@@ -165,6 +165,7 @@ function setupIntroScreen(audio) {
   document.body.classList.add('intro-active');
 
   const dismissIntro = () => {
+    if (introScreen.classList.contains('dismissed')) return;
     introScreen.classList.add('dismissed');
     document.body.classList.remove('intro-active');
 
@@ -172,8 +173,15 @@ function setupIntroScreen(audio) {
     if (audio) {
       setTimeout(() => {
         audio.play();
-      }, 350);
+      }, 300);
     }
+
+    // Smoothly reveal hero elements upon opening
+    setTimeout(() => {
+      document.querySelectorAll('#hero .reveal-item, #hero .mask-reveal').forEach((el) => {
+        el.classList.add('is-revealed');
+      });
+    }, 150);
 
     // Scroll to top of main content
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -271,8 +279,8 @@ function setupScrollReveals() {
     },
     {
       root: null,
-      rootMargin: '0px 0px -60px 0px',
-      threshold: 0.12
+      rootMargin: '0px 0px -25px 0px',
+      threshold: 0.05
     }
   );
 

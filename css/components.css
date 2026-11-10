@@ -29,8 +29,9 @@ body.intro-active #main-content {
   justify-content: space-between;
   align-items: center;
   padding: max(var(--space-xl), env(safe-area-inset-top)) var(--space-md) max(var(--space-xl), env(safe-area-inset-bottom));
-  transition: transform var(--duration-cinematic) var(--ease-in-out-smooth),
-              opacity var(--duration-cinematic) var(--ease-in-out-smooth);
+  transition: transform 750ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
   overflow: hidden;
   touch-action: none;
 }
@@ -1392,13 +1393,14 @@ body.intro-active #main-content {
   z-index: var(--z-modal);
   background-color: rgba(18, 17, 16, 0.94);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: var(--space-md);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--duration-normal) ease;
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .lightbox-modal.active {
@@ -1451,7 +1453,13 @@ body.intro-active #main-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--duration-fast) ease-out;
+  transform: scale(0.95);
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.lightbox-modal.active .lightbox-image-wrap {
+  transform: scale(1);
 }
 
 .lightbox-img {
@@ -1459,6 +1467,9 @@ body.intro-active #main-content {
   max-height: 75vh;
   object-fit: contain;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .lightbox-nav-btn {
