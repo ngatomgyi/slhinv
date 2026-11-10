@@ -378,7 +378,6 @@ function renderGifts(giftsConfig) {
           <div class="gift-card-inner-frame" aria-hidden="true"></div>
 
           <div class="gift-card-top">
-            <span class="gift-brand-badge">${acc.badge || acc.provider}</span>
             <h3 class="gift-provider-name">${acc.provider}</h3>
           </div>
 

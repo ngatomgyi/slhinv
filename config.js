@@ -68,7 +68,7 @@ window.WEDDING_CONFIG = {
       "We can't wait to share our vows, celebrate together, and step into this new chapter with your blessings."
     ],
     monogramSignoff: "With love & gratitude,",
-    hosts: "Soe Lin Htut & Htet Zarchi Win • Together with our families"
+    hosts: "Together with our Families"
   },
 
   // Love Story / Editorial Vignettes
