@@ -1,11 +1,11 @@
 /**
- * OPTION 1: HORIZONTAL EDITORIAL FILMSTRIP & FULLSCREEN LIGHTBOX
+ * CURATED VERTICAL EDITORIAL PHOTO STORYBOOK & FULLSCREEN LIGHTBOX
  * 
- * Features:
+ * Guarantees:
  * 1. ZERO CROPPING: Every portrait photo renders at natural 2:3 aspect ratio, landscape at 3:2.
- * 2. HORIZONTAL EDITORIAL FILMSTRIP: Smooth CSS scroll-snap track with adjacent card peek.
- * 3. DYNAMIC STATUS & PROGRESS: Synced 01/11 pill counter and animated gold progress bar.
- * 4. FULLSCREEN LIGHTBOX: Tap any card to enlarge with smooth crossfade, touch swipe, and thumbnails.
+ * 2. VERTICAL MAGAZINE FLOW: Elegant asymmetrical spreads (opener, duo pairs, panorama, epilogue).
+ * 3. SILKY SMOOTH MOTION: Layered scroll reveals with blur settle, light sheen sweep, and subtle 3D lift.
+ * 4. FULLSCREEN LIGHTBOX: Tap any photo to enlarge with smooth crossfade, touch swipe, and thumbnails.
  */
 
 class WeddingGallery {
@@ -13,13 +13,8 @@ class WeddingGallery {
     this.images = images || [];
     this.currentIndex = 0;
 
-    // Filmstrip DOM Elements
-    this.filmstripTrack = document.getElementById('gallery-filmstrip-track');
-    this.filmstripPrevBtn = document.getElementById('filmstrip-prev-btn');
-    this.filmstripNextBtn = document.getElementById('filmstrip-next-btn');
-    this.filmstripActiveNum = document.getElementById('filmstrip-active-num');
-    this.filmstripTotalNum = document.getElementById('filmstrip-total-num');
-    this.filmstripProgressBar = document.getElementById('filmstrip-progress-bar');
+    // Storybook DOM Elements
+    this.storybookStream = document.getElementById('gallery-storybook-stream');
 
     // Lightbox DOM Elements
     this.modal = document.getElementById('lightbox-modal');
@@ -47,129 +42,112 @@ class WeddingGallery {
 
   init() {
     this.renderShowcase();
-    this.setupFilmstripSync();
     this.renderLightboxThumbs();
     this.bindEvents();
   }
 
   renderShowcase() {
-    if (!this.filmstripTrack || !this.images.length) return;
+    if (!this.storybookStream || !this.images.length) return;
 
-    this.filmstripTrack.innerHTML = this.images
-      .map((img, idx) => {
-        const isLandscape = img.aspect === 'landscape';
-        const aspectClass = isLandscape ? 'photo-aspect-landscape' : 'photo-aspect-portrait';
-        return `
-          <figure class="filmstrip-photo-card ${aspectClass} ${idx === 0 ? 'is-filmstrip-active' : ''} reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${idx + 1} full screen">
-            <div class="filmstrip-photo-frame">
-              <img class="filmstrip-photo-img" src="${img.src}" alt="Pre-wedding photo ${idx + 1}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
-              <div class="filmstrip-zoom-hint" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-                </svg>
-              </div>
+    // Helper to generate a clean photo card without captions or badges
+    const makeCard = (idx, customClass = '') => {
+      const img = this.images[idx];
+      if (!img) return '';
+      const isLandscape = img.aspect === 'landscape';
+      const aspectClass = isLandscape ? 'photo-aspect-landscape' : 'photo-aspect-portrait';
+      return `
+        <figure class="editorial-photo-card ${aspectClass} ${customClass} reveal-item" data-index="${idx}" role="button" tabindex="0" aria-label="Open photo ${idx + 1} full screen">
+          <div class="photo-frame">
+            <img class="photo-img" src="${img.src}" alt="Pre-wedding photo ${idx + 1}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async">
+            <div class="photo-zoom-hint" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+              </svg>
             </div>
-          </figure>
-        `;
-      })
-      .join('');
-  }
-
-  setupFilmstripSync() {
-    if (!this.filmstripTrack) return;
-
-    const cards = this.filmstripTrack.querySelectorAll('.filmstrip-photo-card');
-    const total = cards.length;
-    if (this.filmstripTotalNum) {
-      this.filmstripTotalNum.textContent = String(total).padStart(2, '0');
-    }
-
-    let ticking = false;
-
-    const updateActiveState = () => {
-      const trackRect = this.filmstripTrack.getBoundingClientRect();
-      const trackCenter = trackRect.left + trackRect.width / 2;
-
-      let closestIdx = 0;
-      let minDistance = Infinity;
-
-      cards.forEach((card, idx) => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const dist = Math.abs(trackCenter - cardCenter);
-        if (dist < minDistance) {
-          minDistance = dist;
-          closestIdx = idx;
-        }
-      });
-
-      // Update active card styling
-      cards.forEach((card, idx) => {
-        card.classList.toggle('is-filmstrip-active', idx === closestIdx);
-      });
-
-      // Update counter pill
-      if (this.filmstripActiveNum) {
-        this.filmstripActiveNum.textContent = String(closestIdx + 1).padStart(2, '0');
-      }
-
-      // Update progress bar
-      if (this.filmstripProgressBar) {
-        const maxScroll = this.filmstripTrack.scrollWidth - this.filmstripTrack.clientWidth;
-        if (maxScroll > 0) {
-          const ratio = Math.max(0, Math.min(1, this.filmstripTrack.scrollLeft / maxScroll));
-          const basePct = (1 / total) * 100;
-          const progress = basePct + ratio * (100 - basePct);
-          this.filmstripProgressBar.style.width = `${progress.toFixed(1)}%`;
-        } else {
-          this.filmstripProgressBar.style.width = `${(((closestIdx + 1) / total) * 100).toFixed(1)}%`;
-        }
-      }
-
-      ticking = false;
+          </div>
+        </figure>
+      `;
     };
 
-    this.filmstripTrack.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateActiveState);
-        ticking = true;
-      }
-    }, { passive: true });
+    let html = '';
 
-    // Initial positioning check
-    setTimeout(updateActiveState, 100);
-
-    // Bind Filmstrip Arrow Navigation
-    if (this.filmstripPrevBtn) {
-      this.filmstripPrevBtn.addEventListener('click', () => {
-        const activeCard = this.filmstripTrack.querySelector('.filmstrip-photo-card.is-filmstrip-active') || cards[0];
-        const step = activeCard ? activeCard.offsetWidth + 20 : 340;
-        this.filmstripTrack.scrollBy({ left: -step, behavior: 'smooth' });
-      });
+    // 1. Opener Centerpiece (Photo 0)
+    if (this.images[0]) {
+      html += `
+        <div class="photo-layout-single photo-layout-opener">
+          ${makeCard(0, 'card-opener')}
+        </div>
+      `;
     }
 
-    if (this.filmstripNextBtn) {
-      this.filmstripNextBtn.addEventListener('click', () => {
-        const activeCard = this.filmstripTrack.querySelector('.filmstrip-photo-card.is-filmstrip-active') || cards[0];
-        const step = activeCard ? activeCard.offsetWidth + 20 : 340;
-        this.filmstripTrack.scrollBy({ left: step, behavior: 'smooth' });
-      });
+    // 2. Duo Portraits (Photos 1 & 2)
+    if (this.images[1] || this.images[2]) {
+      html += `
+        <div class="photo-layout-duo">
+          ${makeCard(1)}
+          ${makeCard(2, 'delay-1')}
+        </div>
+      `;
     }
 
-    // Keyboard navigation when track is focused
-    this.filmstripTrack.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        const activeCard = this.filmstripTrack.querySelector('.filmstrip-photo-card.is-filmstrip-active') || cards[0];
-        const step = activeCard ? activeCard.offsetWidth + 20 : 340;
-        this.filmstripTrack.scrollBy({ left: -step, behavior: 'smooth' });
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        const activeCard = this.filmstripTrack.querySelector('.filmstrip-photo-card.is-filmstrip-active') || cards[0];
-        const step = activeCard ? activeCard.offsetWidth + 20 : 340;
-        this.filmstripTrack.scrollBy({ left: step, behavior: 'smooth' });
+    // 3. Panoramic Landscape (Photo 3) - Natural uncropped 3:2
+    if (this.images[3]) {
+      html += `
+        <div class="photo-layout-panorama">
+          ${makeCard(3, 'card-panorama')}
+        </div>
+      `;
+    }
+
+    // 4. Duo Portraits (Photos 4 & 5)
+    if (this.images[4] || this.images[5]) {
+      html += `
+        <div class="photo-layout-duo">
+          ${makeCard(4)}
+          ${makeCard(5, 'delay-1')}
+        </div>
+      `;
+    }
+
+    // 5. Duo Portraits (Photos 6 & 7)
+    if (this.images[6] || this.images[7]) {
+      html += `
+        <div class="photo-layout-duo">
+          ${makeCard(6)}
+          ${makeCard(7, 'delay-1')}
+        </div>
+      `;
+    }
+
+    // 6. Duo Portraits (Photos 8 & 9)
+    if (this.images[8] || this.images[9]) {
+      html += `
+        <div class="photo-layout-duo">
+          ${makeCard(8)}
+          ${makeCard(9, 'delay-1')}
+        </div>
+      `;
+    }
+
+    // 7. Epilogue Portrait (Photo 10 and any beyond)
+    if (this.images[10]) {
+      html += `
+        <div class="photo-layout-single photo-layout-epilogue">
+          ${makeCard(10, 'card-epilogue')}
+        </div>
+      `;
+    }
+
+    // Additional photos if any
+    if (this.images.length > 11) {
+      let extra = '';
+      for (let i = 11; i < this.images.length; i++) {
+        extra += makeCard(i, i % 2 === 1 ? 'delay-1' : '');
       }
-    });
+      html += `<div class="photo-layout-duo">${extra}</div>`;
+    }
+
+    this.storybookStream.innerHTML = html;
   }
 
   renderLightboxThumbs() {
@@ -187,10 +165,10 @@ class WeddingGallery {
   }
 
   bindEvents() {
-    // Click or Enter on filmstrip card opens Lightbox
-    if (this.filmstripTrack) {
-      this.filmstripTrack.addEventListener('click', (e) => {
-        const card = e.target.closest('.filmstrip-photo-card');
+    // Click or Enter on editorial photo card opens Lightbox
+    if (this.storybookStream) {
+      this.storybookStream.addEventListener('click', (e) => {
+        const card = e.target.closest('.editorial-photo-card');
         if (card) {
           const index = parseInt(card.getAttribute('data-index'), 10);
           if (!isNaN(index)) {
@@ -199,9 +177,9 @@ class WeddingGallery {
         }
       });
 
-      this.filmstripTrack.addEventListener('keydown', (e) => {
+      this.storybookStream.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          const card = e.target.closest('.filmstrip-photo-card');
+          const card = e.target.closest('.editorial-photo-card');
           if (card) {
             e.preventDefault();
             const index = parseInt(card.getAttribute('data-index'), 10);

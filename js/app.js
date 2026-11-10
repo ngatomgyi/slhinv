@@ -315,7 +315,7 @@ function setupVenueInteractions(config) {
 }
 
 function setupScrollReveals() {
-  const elements = document.querySelectorAll('.reveal-item, .reveal-card, .mask-reveal, .editorial-mask-reveal, .hairline-anim');
+  const elements = document.querySelectorAll('.reveal-item, .reveal-card, .editorial-photo-card, .mask-reveal, .editorial-mask-reveal, .hairline-anim');
   if (!elements.length) return;
 
   if (!('IntersectionObserver' in window)) {

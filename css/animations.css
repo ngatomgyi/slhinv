@@ -170,9 +170,15 @@
   }
 
   .reveal-item,
-  .reveal-card {
+  .reveal-card,
+  .editorial-photo-card {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
+  }
+
+  .editorial-photo-card .photo-frame::after {
+    display: none !important;
   }
 
   .mask-reveal > span,

@@ -329,9 +329,9 @@
     </section>
 
     <!-- -----------------------------------------------------------------------
-         7. PHOTO GALLERY / HORIZONTAL EDITORIAL FILMSTRIP (OPTION 1)
+         7. PHOTO GALLERY / CURATED VERTICAL EDITORIAL STORYBOOK
          ----------------------------------------------------------------------- -->
-    <section class="section gallery-section" id="gallery" aria-label="Pre-Wedding Editorial Filmstrip">
+    <section class="section gallery-section" id="gallery" aria-label="Pre-Wedding Editorial Storybook">
       <div class="container-wide">
         
         <div class="section-header text-center reveal-item">
@@ -340,44 +340,15 @@
           <p class="section-subtitle">Moments in quiet elegance &amp; timeless devotion</p>
         </div>
 
-        <!-- Horizontal Editorial Filmstrip Wrapper -->
-        <div class="gallery-filmstrip-wrapper reveal-item">
-          <!-- Filmstrip Scroll Track -->
-          <div id="gallery-filmstrip-track" class="gallery-filmstrip-track" role="region" aria-label="Pre-wedding photos filmstrip" tabindex="0">
-            <!-- Dynamically populated by js/gallery.js -->
-          </div>
-
-          <!-- Filmstrip Navigation & Progress Controls -->
-          <div class="gallery-filmstrip-controls">
-            <button id="filmstrip-prev-btn" class="filmstrip-nav-btn filmstrip-prev" type="button" aria-label="Previous photo">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-
-            <div class="filmstrip-status-wrap">
-              <div class="filmstrip-counter">
-                <span id="filmstrip-active-num" class="filmstrip-active-num">01</span>
-                <span class="filmstrip-counter-sep">/</span>
-                <span id="filmstrip-total-num" class="filmstrip-total-num">11</span>
-              </div>
-              <div class="filmstrip-progress-track" aria-hidden="true">
-                <div id="filmstrip-progress-bar" class="filmstrip-progress-bar" style="width: 9%;"></div>
-              </div>
-            </div>
-
-            <button id="filmstrip-next-btn" class="filmstrip-nav-btn filmstrip-next" type="button" aria-label="Next photo">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </div>
+        <!-- Curated Editorial Storybook (Vertical seamless magazine flow) -->
+        <div id="gallery-storybook-stream" class="gallery-storybook-stream" role="region" aria-label="Curated pre-wedding spreads">
+          <!-- Dynamically populated by js/gallery.js -->
         </div>
 
         <!-- Editorial Lightbox hint -->
         <div class="gallery-tap-hint reveal-item">
           <span class="tap-hint-icon">✦</span>
-          <span class="tap-hint-text">Swipe to browse • Tap photo to enlarge</span>
+          <span class="tap-hint-text">Tap photo to enlarge</span>
         </div>
 
       </div>
