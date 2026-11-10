@@ -250,7 +250,7 @@ window.WEDDING_CONFIG = {
         name: "Soe Lin Htut",
         phone: "09 792 245 717",
         rawPhone: "09792245717",
-        qr: "./assets/images/qr-wave.svg",
+        qr: "./assets/images/qr-wave.jpg",
         note: "Scan with WavePay app to transfer"
       }
     ]
