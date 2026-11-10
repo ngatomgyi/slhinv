@@ -32,23 +32,21 @@ window.WEDDING_CONFIG = {
   // Format: YYYY-MM-DDTHH:mm:ss in ISO format
   eventDate: "2026-11-15T09:00:00",
   timezone: "Asia/Yangon",
-  timezoneLabel: "MMT (GMT+6:30)",
+  timezoneLabel: "",
   
   // Date Display Formats
   dateDisplay: {
     dayOfWeek: "Sunday",
     fullDate: "November 15, 2026",
     shortDate: "15 . 11 . 2026",
-    time: "9:00 AM",
+    time: "9:00 AM to 12 PM",
     year: "2026"
   },
 
   // Intro Screen
   intro: {
     subtitle: "The Wedding Celebration",
-    quote: "Two lives, one shared journey — celebrated in quiet devotion, love, and family blessing.",
-    buttonText: "View Invitation",
-    footnote: "Press or click to open"
+    buttonText: "Open Invitation"
   },
 
   // Hero Section
@@ -56,14 +54,14 @@ window.WEDDING_CONFIG = {
     leadTag: "Save The Date & Formal Invitation",
     locationShort: "Pathein, Myanmar",
     image: "./assets/images/hero.webp",
-    imageAlt: "Soe Lin Htut & Htet Zar Chi — Wedding Portrait",
+    imageAlt: "Soe Lin Htut & Htet Zarchi Win — Wedding Portrait",
     scrollHint: "Scroll down to discover"
   },
   
   // Invitation Message - Pure First-Person Flow
   invitation: {
     heading: "We're Getting Married",
-    subheading: "Soe Lin Htut & Htet Zar Chi",
+    subheading: "Soe Lin Htut & Htet Zarchi Win",
     body: [
       "Together with our families, we invite you to celebrate the beginning of our marriage.",
       "Our story wouldn't be complete without the family and friends who have cheered us on, guided us, and filled our lives with joy.",

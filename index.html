@@ -36,39 +36,37 @@
        ========================================================================= -->
   <section id="intro-screen" class="intro-screen" aria-label="Invitation Opening">
     <div class="intro-bg-art"></div>
-    <div class="intro-border-frame"></div>
+    <div class="intro-border-frame">
+      <div class="intro-border-inner"></div>
+    </div>
 
     <!-- Intro Header -->
     <header class="intro-header">
-      <span class="eyebrow">The Wedding Celebration</span>
+      <span class="intro-eyebrow">The Wedding Celebration</span>
     </header>
 
     <!-- Intro Centerstage -->
     <div class="intro-center">
-      <span class="intro-initials conf-initials">S &amp; H</span>
-      <h2 class="intro-names conf-display-title">Soe Lin Htut &amp; Htet Zarchi Win</h2>
+      <h1 class="intro-names-title">
+        <span class="intro-name" id="intro-name-1">Soe Lin Htut</span>
+        <span class="intro-amp">&amp;</span>
+        <span class="intro-name" id="intro-name-2">Htet Zarchi Win</span>
+      </h1>
+
+      <div class="intro-divider" aria-hidden="true"></div>
+
       <p id="intro-date" class="intro-date">November 15, 2026 • SWEN Hotel, Pathein</p>
-      
-      <div class="intro-line-anim" aria-hidden="true"></div>
-      
-      <p id="intro-quote" class="intro-quote">
-        “Two lives, one shared journey — celebrated in quiet devotion, love, and family blessing.”
-      </p>
 
       <button id="btn-view-invitation" class="intro-btn" type="button" aria-label="Open wedding invitation">
-        <span>View Invitation</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
+        <span>Open Invitation</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
-      <span class="intro-footnote">Press or click to begin</span>
     </div>
 
-    <!-- Intro Footer -->
-    <footer class="intro-footer">
-      <span class="section-index">Vol. MMXXVII</span>
-    </footer>
+    <!-- Spacer for balance -->
+    <div class="intro-footer-spacer" aria-hidden="true"></div>
   </section>
 
   <!-- =========================================================================
@@ -107,7 +105,7 @@
               </div>
               <div class="hero-detail-item">
                 <span class="hero-detail-label">Time</span>
-                <span id="hero-time-val" class="hero-detail-value">9:00 AM MMT</span>
+                <span id="hero-time-val" class="hero-detail-value">9:00 AM to 12 PM</span>
               </div>
               <div class="hero-detail-item">
                 <span class="hero-detail-label">Location</span>

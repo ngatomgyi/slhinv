@@ -57,15 +57,17 @@ function populateStaticDetails(config) {
   });
 
   // Intro Screen
-  setElemText('#intro-quote', config.intro?.quote);
-  setElemText('#intro-date', `${dateDisplay.fullDate || 'September 18, 2027'} • ${venue.name || 'Lake Como'}`);
+  setElemText('#intro-name-1', couple.partner1?.fullName || 'Soe Lin Htut');
+  setElemText('#intro-name-2', couple.partner2?.fullName || 'Htet Zarchi Win');
+  setElemText('#intro-date', `${dateDisplay.fullDate || 'November 15, 2026'} • ${venue.name || 'SWEN Hotel'}, Pathein`);
 
   // Hero Section
-  setElemText('#hero-name-1', couple.partner1?.fullName || couple.partner1?.firstName || 'Soe Lin Htut');
-  setElemText('#hero-name-2', couple.partner2?.fullName || couple.partner2?.firstName || 'Htet Zarchi Win');
+  setElemText('#hero-name-1', couple.partner1?.fullName || 'Soe Lin Htut');
+  setElemText('#hero-name-2', couple.partner2?.fullName || 'Htet Zarchi Win');
   setElemText('#hero-date-val', dateDisplay.fullDate || 'November 15, 2026');
-  setElemText('#hero-time-val', `${dateDisplay.time || '4:00 PM'} ${config.timezoneLabel || ''}`);
-  setElemText('#hero-venue-val', venue.name || 'Villa Balbiano, Como');
+  const heroTime = `${dateDisplay.time || '9:00 AM to 12 PM'}${config.timezoneLabel ? ' ' + config.timezoneLabel : ''}`.trim();
+  setElemText('#hero-time-val', heroTime);
+  setElemText('#hero-venue-val', `${venue.name || 'SWEN Hotel'}, Pathein`);
 
   const heroImg = document.getElementById('hero-portrait-img');
   if (heroImg && config.hero?.image) {
