@@ -90,7 +90,7 @@ function populateStaticDetails(config) {
   // Venue & Schedule
   setElemText('#venue-name', venue.name);
   setElemText('#venue-tagline', venue.tagline);
-  setElemText('#venue-address-text', venue.address);
+  setElemText('#venue-address-text', venue.addressDisplay || venue.address);
   setElemText('#dress-code-title', venue.dressCode?.title);
   setElemText('#dress-code-desc', venue.dressCode?.description);
   setElemText('#travel-note-title', venue.accommodations?.title);

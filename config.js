@@ -103,7 +103,8 @@ window.WEDDING_CONFIG = {
   // Venue & Schedule
   venue: {
     name: "SWEN Hotel",
-    tagline: "Grand Ballroom, Pathein",
+    tagline: "Grand Ballroom",
+    addressDisplay: "Merchant Street, Pathein",
     address: "SWEN Hotel, Merchant Street, Pathein, Ayeyarwady Region, Myanmar",
     // Google Maps direct navigation link
     mapsUrl: "https://maps.google.com/?q=SWEN+Hotel+Pathein+Myanmar",
@@ -124,7 +125,7 @@ window.WEDDING_CONFIG = {
     {
       time: "9:00 AM",
       title: "Guest Arrival & Welcome Reception",
-      location: "SWEN Hotel Grand Foyer",
+      location: "Grand Foyer",
       detail: "Warm welcome drinks, traditional light refreshments, and ambient acoustic music."
     },
     {

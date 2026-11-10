@@ -793,47 +793,38 @@ body.intro-active #main-content {
 .venue-card-header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
-  margin-bottom: 0.75rem;
-}
-
-@media (min-width: 768px) {
-  .venue-card-header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
+  gap: 2px;
+  margin-bottom: 0.65rem;
 }
 
 .venue-name {
-  font-size: clamp(1.7rem, 5vw, 2.3rem);
+  font-size: clamp(1.65rem, 5vw, 2.2rem);
   font-weight: 300;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .venue-tagline {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: var(--text-base);
-  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  color: var(--color-accent-taupe);
 }
 
 .venue-address {
-  font-size: clamp(0.82rem, 2.5vw, 0.92rem);
-  line-height: 1.5;
+  font-size: clamp(0.82rem, 2.5vw, 0.9rem);
+  line-height: 1.45;
   color: var(--color-text-body);
   margin-bottom: 1.15rem;
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-xs);
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .venue-address svg {
   flex-shrink: 0;
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
   stroke: var(--color-accent-sage);
-  margin-top: 2px;
 }
 
 .venue-actions {
