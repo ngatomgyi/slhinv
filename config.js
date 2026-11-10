@@ -237,9 +237,9 @@ window.WEDDING_CONFIG = {
         badge: "KPay",
         brandColor: "#104F9E",
         name: "Soe Lin Htut",
-        phone: "09 123 456 789",
-        rawPhone: "09123456789",
-        qr: "./assets/images/qr-kpay.svg",
+        phone: "09 792 245 717",
+        rawPhone: "09792245717",
+        qr: "./assets/images/qr-kpay.jpg",
         note: "Scan with KBZPay app to transfer"
       },
       {
@@ -247,9 +247,9 @@ window.WEDDING_CONFIG = {
         provider: "WavePay",
         badge: "Wave",
         brandColor: "#D97706",
-        name: "Htet Zarchi Win",
-        phone: "09 987 654 321",
-        rawPhone: "09987654321",
+        name: "Soe Lin Htut",
+        phone: "09 792 245 717",
+        rawPhone: "09792245717",
         qr: "./assets/images/qr-wave.svg",
         note: "Scan with WavePay app to transfer"
       }
