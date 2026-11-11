@@ -14,9 +14,9 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
 
-# Subfolder configs
+# Subfolder configs - revalidate immediately
 /*/config.js
-  Cache-Control: public, max-age=60, stale-while-revalidate=600
+  Cache-Control: public, max-age=0, must-revalidate
 
 # Subfolder CSS and JS
 /*/css/*
