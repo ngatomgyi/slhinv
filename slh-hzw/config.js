@@ -104,8 +104,8 @@ window.WEDDING_CONFIG = {
   venue: {
     name: "SWEN Hotel",
     tagline: "Grand Ballroom",
-    addressDisplay: "Merchant Street, Pathein",
-    address: "SWEN Hotel, Merchant Street, Pathein, Ayeyarwady Region, Myanmar",
+    addressDisplay: "Maharbandula Road, Pathein",
+    address: "SWEN Hotel, Maharbandula Road, Pathein, Ayeyarwady Region, Myanmar",
     // Google Maps direct navigation link
     mapsUrl: "https://maps.google.com/?q=SWEN+Hotel+Pathein+Myanmar",
     // Optional Google Maps Embed URL
