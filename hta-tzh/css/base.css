@@ -1,53 +1,60 @@
 /**
- * BASE STYLES & LAYOUT SYSTEM
- * Balance of Burgundy, Chinese Wedding Red, Warm Ivory, and Champagne Gold
+ * BASE STYLES & LUXURY RED COLOR CONTINUITY
+ * No White Screens! Continuous Imperial Chinese Velvet & Gold Theme
  */
 
 body {
   font-family: var(--font-sans);
   background-color: var(--color-burgundy-deepest);
-  color: var(--color-ivory);
+  color: var(--color-text-main);
   position: relative;
   overflow-x: hidden;
+  font-weight: 300;
+  letter-spacing: 0.02em;
 }
 
-/* Subtle background grain and auspicious cloud atmosphere */
+/* Subtle Imperial Lattice Watermark Texture across entire site */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  background-size: 64px 64px;
+  background-image: 
+    linear-gradient(45deg, var(--color-gold) 25%, transparent 25%), 
+    linear-gradient(-45deg, var(--color-gold) 25%, transparent 25%), 
+    linear-gradient(135deg, var(--color-gold) 25%, transparent 25%), 
+    linear-gradient(-135deg, var(--color-gold) 25%, transparent 25%);
 }
 
-/* Container Utility Classes */
+/* Container Utilities */
 .container {
   width: 100%;
-  max-width: 1080px;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(1.2rem, 4vw, 2.5rem);
-  padding-right: clamp(1.2rem, 4vw, 2.5rem);
+  padding-left: clamp(1.25rem, 4vw, 2.75rem);
+  padding-right: clamp(1.25rem, 4vw, 2.75rem);
   position: relative;
   z-index: var(--z-base);
 }
 
 .container-narrow {
   width: 100%;
-  max-width: 760px;
+  max-width: 780px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(1.2rem, 4vw, 2.5rem);
-  padding-right: clamp(1.2rem, 4vw, 2.5rem);
+  padding-left: clamp(1.25rem, 4vw, 2.75rem);
+  padding-right: clamp(1.25rem, 4vw, 2.75rem);
   position: relative;
   z-index: var(--z-base);
 }
 
 .container-wide {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1260px;
   margin-left: auto;
   margin-right: auto;
   padding-left: clamp(1rem, 3.5vw, 2.5rem);
@@ -56,63 +63,60 @@ body::before {
   z-index: var(--z-base);
 }
 
-/* Section Rhythm */
+/* Continuous Imperial Red Sections (Zero White Gaps) */
 .section {
-  padding-top: clamp(4rem, 8vw, 7rem);
-  padding-bottom: clamp(4rem, 8vw, 7rem);
+  padding-top: clamp(4.5rem, 8vw, 7.5rem);
+  padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
   position: relative;
 }
 
 .section-hero {
-  padding-top: clamp(2rem, 5vw, 4rem);
-  padding-bottom: clamp(4rem, 8vw, 6.5rem);
-  background: radial-gradient(circle at 50% 25%, #641421 0%, #3E0C15 65%, #2A060C 100%);
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+  background: radial-gradient(circle at 50% 20%, #74101D 0%, #460912 60%, #1E0307 100%);
 }
 
 .section-invitation {
-  background: linear-gradient(180deg, #2A060C 0%, #F7F0E5 12%, #FAF6F0 88%, #2A060C 100%);
-  color: var(--color-charcoal);
-}
-
-.section-details {
-  background: radial-gradient(circle at 50% 30%, #4A0E17 0%, #30080F 70%, #200408 100%);
+  background: radial-gradient(circle at 50% 40%, #520D17 0%, #36070E 70%, #1E0307 100%);
   border-top: 1px solid var(--color-gold-hairline);
   border-bottom: 1px solid var(--color-gold-hairline);
 }
 
+.section-details {
+  background: radial-gradient(circle at 50% 30%, #480A12 0%, #2D050B 75%, #180205 100%);
+  border-bottom: 1px solid var(--color-gold-hairline);
+}
+
 .section-gallery {
-  background: linear-gradient(180deg, #200408 0%, #2F070E 40%, #25050B 100%);
+  background: linear-gradient(180deg, #180205 0%, #2A040A 40%, #1E0307 100%);
 }
 
 .section-closing {
-  background: radial-gradient(circle at 50% 20%, #4A0E17 0%, #2A060C 75%, #180306 100%);
-  padding-bottom: clamp(4rem, 8vw, 6rem);
+  background: radial-gradient(circle at 50% 25%, #520D17 0%, #260408 75%, #140204 100%);
+  padding-bottom: clamp(4.5rem, 8vw, 6.5rem);
 }
 
-/* Typography Utility */
+/* Typography Classes */
 .font-title {
   font-family: var(--font-title);
   letter-spacing: 0.08em;
 }
 
-.font-serif {
-  font-family: var(--font-serif);
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
 }
 
-.font-chinese {
-  font-family: var(--font-chinese);
+.font-sans {
+  font-family: var(--font-sans);
 }
 
 .font-myanmar {
   font-family: var(--font-myanmar);
-  line-height: 1.85;
+  line-height: 1.8;
 }
 
 .text-gold {
-  color: var(--color-gold);
-}
-
-.text-gold-bright {
   color: var(--color-gold-bright);
 }
 
@@ -120,59 +124,58 @@ body::before {
   text-align: center;
 }
 
-/* Section Header Component */
+/* Section Header */
 .section-header {
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: clamp(2.5rem, 5vw, 4.25rem);
   text-align: center;
 }
 
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   font-size: var(--text-2xs);
   font-weight: 600;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--color-gold-bright);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
 .section-eyebrow::before,
 .section-eyebrow::after {
   content: "";
   display: inline-block;
-  width: 24px;
+  width: 28px;
   height: 1px;
-  background-color: var(--color-gold-bright);
-  opacity: 0.6;
+  background: linear-gradient(90deg, transparent, var(--color-gold-bright), transparent);
 }
 
 .section-title {
-  font-family: var(--font-title);
-  font-size: clamp(2rem, 5.2vw, 3.2rem);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  color: var(--color-text-main);
   margin-bottom: 0.75rem;
 }
 
 .section-subtitle {
   font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
-  opacity: 0.85;
-  letter-spacing: 0.02em;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
 }
 
-/* Ornamental Hairline Dividers */
+/* Gold Ornamental Filigree Divider */
 .gold-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin: 1.75rem auto;
-  max-width: 280px;
+  gap: 1.25rem;
+  margin: 1.85rem auto;
+  max-width: 320px;
 }
 
 .gold-divider::before,
@@ -185,21 +188,21 @@ body::before {
 
 .gold-divider-knot {
   color: var(--color-gold-bright);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1;
 }
 
-/* Buttons */
+/* Luxury Gilded Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  padding: 0.95rem 1.85rem;
+  padding: 1rem 1.95rem;
   font-family: var(--font-sans);
-  font-size: var(--text-xs);
+  font-size: var(--text-2xs);
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   border-radius: var(--radius-xs);
   transition: all var(--duration-normal) var(--ease-editorial);
@@ -208,27 +211,30 @@ body::before {
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, #D4AF37 0%, #C5A46D 50%, #B89255 100%);
-  color: #2A060C;
-  border: 1px solid #E5C378;
-  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.25);
+  background: var(--color-gold-foil);
+  color: #240408;
+  border: 1px solid #FFF1D2;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+  font-weight: 700;
 }
 
 .btn-gold:hover {
-  background: linear-gradient(135deg, #E5C378 0%, #D4AF37 50%, #C5A46D 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.55);
+  background: linear-gradient(135deg, #FFF1D2 0%, #E5C378 40%, #C5A46D 80%, #FFF1D2 100%);
 }
 
 .btn-outline-gold {
-  background-color: transparent;
+  background-color: rgba(62, 9, 17, 0.5);
   color: var(--color-gold-bright);
   border: 1px solid var(--color-gold);
+  backdrop-filter: blur(4px);
 }
 
 .btn-outline-gold:hover {
-  background-color: rgba(197, 164, 109, 0.12);
-  border-color: var(--color-gold-bright);
+  background-color: rgba(197, 164, 109, 0.2);
+  border-color: #FFF1D2;
   color: #FFF;
   transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(197, 164, 109, 0.3);
 }

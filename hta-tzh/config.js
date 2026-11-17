@@ -2,7 +2,7 @@
  * WEDDING INVITATION CONFIGURATION
  * DigiVite — Invitation No. 02
  * Couple: Hein Thant Aung & Thazin Htet
- * Theme: Chinese Red Luxury (Deep Red, Burgundy, Champagne Gold, Warm Ivory)
+ * Creative Direction: Luxury Chinese Imperial Red & Champagne Gold (English Only)
  */
 
 window.WEDDING_CONFIG = {
@@ -21,12 +21,11 @@ window.WEDDING_CONFIG = {
       role: "Bride"
     },
     initials: "H & T",
-    chineseMonogram: "囍",
+    monogramTitle: "H & T",
     displayTitle: "Hein Thant Aung & Thazin Htet"
   },
 
   // Wedding Date & Time
-  // ISO format: YYYY-MM-DDTHH:mm:ss
   eventDate: "2026-11-22T09:00:00",
   timezone: "Asia/Yangon",
   timezoneLabel: "MMT",
@@ -40,31 +39,32 @@ window.WEDDING_CONFIG = {
     year: "2026"
   },
 
-  // Intro Screen (Envelope & Double Happiness)
+  // Intro Screen (Imperial Sealed Invitation Folio)
   intro: {
     badge: "The Wedding Celebration",
-    chineseTitle: "百年好合 • 永结同心",
+    subtitle: "An Auspicious Union of Two Families",
     buttonText: "Open Invitation",
     skipText: "Enter Directly"
   },
 
   // Hero Section
   hero: {
-    eyebrow: "Wedding Celebration & Formal Invitation",
-    leadTag: "Auspicious Union",
+    eyebrow: "Formal Wedding Invitation",
+    leadTag: "Imperial Celebration",
     image: "./assets/images/hero.webp",
     imageAlt: "Hein Thant Aung & Thazin Htet — Wedding Portrait",
     scrollHint: "Scroll down to discover"
   },
 
-  // Formal Invitation Message
+  // Formal Invitation Message (Pure English)
   invitation: {
     eyebrow: "Formal Announcement",
     heading: "We Request The Honour Of Your Presence",
-    burmeseHeading: "မင်္ဂလာဖိတ်ကြားလွှာ",
+    subheading: "Together with our Families",
     body: [
-      "Together with our families, Hein Thant Aung and Thazin Htet warmly request the honour of your presence at our wedding ceremony.",
-      "As two families unite in love, honour, and perpetual harmony, we invite you to share in our vows, feast together, and bestow your cherished blessings upon our marriage."
+      "Together with our families, Hein Thant Aung and Thazin Htet warmly request the pleasure of your company at the celebration of our holy matrimony.",
+      "As two families unite in love, honour, and perpetual harmony, we invite you to share our vows, celebrate together, and bestow your cherished blessings upon our new journey.",
+      "Your gracious presence will bring immense joy and make our wedding celebration truly unforgettable."
     ],
     monogramSignoff: "With love, reverence & gratitude,",
     hosts: "Together with our Families"
@@ -75,6 +75,7 @@ window.WEDDING_CONFIG = {
     burmeseName: "ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့",
     name: "Hosein Chinese Temple",
     city: "Wakema, Myanmar",
+    addressDisplay: "Hosein Chinese Temple, Wakema",
     // Google Maps direct navigation link using exact Burmese text
     mapsUrl: "https://maps.google.com/?q=ဟိုစိန်တရုတ်ဘုံကျောင်း၊+ဝါးခယ်မမြို့"
   },
@@ -83,7 +84,7 @@ window.WEDDING_CONFIG = {
   gallery: {
     eyebrow: "Visual Narrative",
     heading: "Captured Moments",
-    subheading: "20 Chapters of Timeless Devotion",
+    subheading: "Twenty Chapters of Eternal Devotion",
     images: [
       { id: 1,  src: "./assets/images/photo-01.webp", aspect: "portrait" },
       { id: 2,  src: "./assets/images/photo-02.webp", aspect: "portrait" },
@@ -113,17 +114,16 @@ window.WEDDING_CONFIG = {
     enabled: true,
     file: "./assets/audio/ambient.mp3",
     title: "Eternal Harmony",
-    artist: "Traditional Acoustic Wedding Melody",
+    artist: "Acoustic Wedding Melody",
     autoplayAfterIntro: true,
     initialVolume: 0.60
   },
 
   // Closing Note
   closing: {
-    heading: "With Sincere Gratitude",
-    chineseBlessing: "白头偕老 • 幸福美满",
-    text: "Thank you for being part of our story and blessing our union with your warmth and affection.",
+    heading: "With Heartfelt Gratitude",
+    text: "Thank you for walking this road with us and blessing our union with your love and grace. We look forward to celebrating this special day with you.",
     monogram: "H & T",
-    footerText: "Hein Thant Aung & Thazin Htet • 22 November 2026 • ဝါးခယ်မမြို့"
+    footerText: "Hein Thant Aung & Thazin Htet • 22 November 2026 • Wakema"
   }
 };

@@ -1,46 +1,55 @@
 /**
  * DESIGN TOKENS & SYSTEM VARIABLES
- * Creative Direction: Chinese Red Luxury
- * Deep Chinese Red (#8F1725), Burgundy (#641421), Champagne Gold (#C5A46D), Warm Ivory (#F7F0E5), Charcoal (#28201D)
+ * Creative Direction: Luxury Chinese Imperial Red & Champagne Gold
+ * Fonts: Cinzel Decorative, Cinzel, Italiana, Montserrat
+ * Deep Rich Continuous Red Theme (No White Screens!)
  */
 
 :root {
-  /* Color Palette */
+  /* Rich Imperial Color Palette */
   --color-red-primary: #8F1725;
-  --color-red-deep: #78101D;
-  --color-burgundy: #641421;
-  --color-burgundy-dark: #3E0C15;
-  --color-burgundy-deepest: #2A060C;
-  --color-gold: #C5A46D;
-  --color-gold-light: #E0C797;
-  --color-gold-bright: #E5C378;
-  --color-gold-muted: rgba(197, 164, 109, 0.45);
-  --color-gold-hairline: rgba(197, 164, 109, 0.28);
-  --color-ivory: #F7F0E5;
-  --color-ivory-soft: #FDFBF7;
-  --color-charcoal: #28201D;
-  --color-charcoal-muted: #5A4E49;
-  --color-text-light: #F7F0E5;
+  --color-red-vibrant: #A51A2C;
+  --color-red-deep: #74101D;
+  --color-burgundy: #520D17;
+  --color-burgundy-dark: #36070E;
+  --color-burgundy-deepest: #1E0307;
+  --color-card-bg: #3E0911;
+  --color-card-surface: #4B0C15;
 
-  /* Typography */
-  --font-title: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
-  --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-chinese: 'Noto Serif SC', serif;
+  /* Lustrous Gold System */
+  --color-gold: #C5A46D;
+  --color-gold-light: #EAD8B5;
+  --color-gold-bright: #F3D794;
+  --color-gold-amber: #D4AF37;
+  --color-gold-hairline: rgba(229, 195, 120, 0.35);
+  --color-gold-subtle: rgba(197, 164, 109, 0.18);
+  --color-gold-foil: linear-gradient(135deg, #F7E7C4 0%, #D4AF37 30%, #C5A46D 65%, #F7E7C4 100%);
+
+  /* Text Colors (Warm Gold & Ivory on Red) */
+  --color-text-main: #FDF9F2;
+  --color-text-gold: #F0D28E;
+  --color-text-muted: #D6BE9E;
+  --color-text-dim: #9E856D;
+
+  /* Bespoke Luxury Fonts (Distinct from SLH) */
+  --font-title: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-serif: 'Italiana', Georgia, serif;
+  --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-myanmar: 'Padauk', 'Pyidaungsu', Myanmar3, sans-serif;
 
-  /* Type Scale */
-  --text-2xs: 0.68rem;
-  --text-xs: 0.78rem;
-  --text-sm: 0.88rem;
+  /* Typography Scale */
+  --text-3xs: 0.62rem;
+  --text-2xs: 0.72rem;
+  --text-xs: 0.82rem;
+  --text-sm: 0.92rem;
   --text-base: 1rem;
   --text-md: 1.15rem;
   --text-lg: 1.35rem;
-  --text-xl: 1.75rem;
-  --text-2xl: 2.25rem;
-  --text-3xl: 3rem;
-  --text-4xl: clamp(2.4rem, 6vw, 4.2rem);
-  --text-hero: clamp(2.6rem, 7.5vw, 5rem);
+  --text-xl: 1.85rem;
+  --text-2xl: 2.35rem;
+  --text-3xl: 3.25rem;
+  --text-hero: clamp(2.6rem, 7.5vw, 4.8rem);
 
   /* Spacing */
   --space-3xs: 0.25rem;
@@ -48,30 +57,24 @@
   --space-xs: 0.75rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
-  --space-lg: 2.25rem;
-  --space-xl: 3.5rem;
-  --space-2xl: 5rem;
-  --space-3xl: 7.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 3.75rem;
+  --space-2xl: 5.5rem;
 
   /* Structural Geometry */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
   --radius-pill: 9999px;
 
-  /* Transitions & Motion */
+  /* Transitions */
   --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast: 220ms;
   --duration-normal: 400ms;
-  --duration-slow: 750ms;
-  --duration-opening: 950ms;
+  --duration-slow: 800ms;
 
-  /* Z-Index Hierarchy */
+  /* Z-Index */
   --z-base: 1;
   --z-card: 10;
-  --z-header: 50;
   --z-floating: 80;
   --z-toast: 90;
   --z-modal: 100;

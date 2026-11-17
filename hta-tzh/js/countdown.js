@@ -78,10 +78,9 @@ class WeddingCountdown {
       const title = window.WEDDING_CONFIG?.couple?.displayTitle || "Hein Thant Aung & Thazin Htet";
       const date = window.WEDDING_CONFIG?.dateDisplay?.fullDate || "22 November 2026";
       grid.innerHTML = `
-        <div class="countdown-passed" style="grid-column: 1 / -1; text-align: center; padding: 1.5rem; background: rgba(62,12,21,0.6); border: 1px solid var(--color-gold); border-radius: var(--radius-sm);">
-          <p style="font-family: var(--font-chinese); font-size: 1.5rem; color: var(--color-gold-bright); margin-bottom: 0.5rem;">百年好合 • 永结同心</p>
-          <p style="font-family: var(--font-title); font-size: var(--text-lg); margin-bottom: 0.5rem; color: var(--color-ivory);">Happily Ever After</p>
-          <p style="font-family: var(--font-serif); font-size: var(--text-md);">${title} were united in marriage on ${date}.<br>Thank you for celebrating this auspicious day with us.</p>
+        <div class="countdown-passed" style="grid-column: 1 / -1; text-align: center; padding: 1.75rem; background: rgba(54,7,14,0.75); border: 1.5px solid var(--color-gold); border-radius: var(--radius-sm);">
+          <p style="font-family: var(--font-display); font-size: 1.45rem; color: var(--color-gold-bright); letter-spacing: 0.12em; margin-bottom: 0.5rem;">Happily Ever After</p>
+          <p style="font-family: var(--font-sans); font-size: var(--text-sm); line-height: 1.75; color: var(--color-text-muted);">${title} were united in marriage on ${date}.<br>Thank you for celebrating this auspicious day with us.</p>
         </div>
       `;
     }
