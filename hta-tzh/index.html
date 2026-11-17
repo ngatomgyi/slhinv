@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="theme-color" content="#520D17">
-  <meta name="description" content="Hein Thant Aung &amp; Thazin Htet — Wedding Celebration at Hosein Chinese Temple, Wakema on Sunday, 22 November 2026.">
+  <meta name="description" content="Hein Thant Aung &amp; Thazin Htet — Wedding Celebration at Ho Seng Chinese Temple, Wakema on Sunday, 22 November 2026.">
 
   <!-- OpenGraph Metadata -->
   <meta property="og:title" content="Hein Thant Aung &amp; Thazin Htet — Wedding Invitation">
-  <meta property="og:description" content="Sunday, 22 November 2026 • Hosein Chinese Temple, Wakema">
+  <meta property="og:description" content="Sunday, 22 November 2026 • Ho Seng Chinese Temple, Wakema">
   <meta property="og:url" content="https://invite.ytds.app/hta-tzh/">
   <meta property="og:image" content="https://invite.ytds.app/hta-tzh/assets/images/hero.webp">
   <meta property="og:type" content="website">
@@ -24,11 +24,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700&family=Cinzel:wght@400;500;600;700&family=Italiana&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets (All Relative for Subdirectory Compatibility) -->
-  <link rel="stylesheet" href="./css/variables.css?v=1.3.0">
-  <link rel="stylesheet" href="./css/reset.css?v=1.3.0">
-  <link rel="stylesheet" href="./css/base.css?v=1.3.0">
-  <link rel="stylesheet" href="./css/components.css?v=1.3.0">
-  <link rel="stylesheet" href="./css/animations.css?v=1.3.0">
+  <link rel="stylesheet" href="./css/variables.css?v=1.4.0">
+  <link rel="stylesheet" href="./css/reset.css?v=1.4.0">
+  <link rel="stylesheet" href="./css/base.css?v=1.4.0">
+  <link rel="stylesheet" href="./css/components.css?v=1.4.0">
+  <link rel="stylesheet" href="./css/animations.css?v=1.4.0">
 </head>
 <body class="intro-active">
 
@@ -62,10 +62,6 @@
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
-
-      <div>
-        <button id="btn-skip-intro" class="intro-skip-btn" type="button">Direct Access</button>
-      </div>
     </div>
   </section>
 
@@ -110,7 +106,7 @@
               </div>
               <div class="hero-meta-item">
                 <span class="hero-meta-label">Venue</span>
-                <span id="hero-venue-val" class="hero-meta-value">Hosein Chinese Temple, Wakema</span>
+                <span id="hero-venue-val" class="hero-meta-value">Ho Seng Chinese Temple, Wakema</span>
               </div>
             </div>
           </div>
@@ -194,32 +190,27 @@
         <!-- Venue Location Card -->
         <div class="venue-card reveal-card">
           <div class="section-eyebrow">Ceremony Venue</div>
-          <h3 id="venue-name" class="section-title" style="font-size: clamp(1.4rem, 3.2vw, 2rem); margin-bottom: 0.35rem;">Hosein Chinese Temple</h3>
+          <h3 id="venue-name" class="section-title" style="font-size: clamp(1.4rem, 3.2vw, 2rem); margin-bottom: 0.35rem;">Ho Seng Chinese Temple</h3>
           <p id="venue-city" class="section-subtitle" style="margin-bottom: 1.75rem;">Wakema, Myanmar</p>
 
           <div class="venue-actions">
             <!-- Google Maps Button (exact location) -->
             <a id="btn-open-maps" class="btn btn-gold" href="https://maps.app.goo.gl/ghnyTkuvZ8uwLi7Y7?g_st=ic" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              <span>Google Maps</span>
+              <span>View Map</span>
             </a>
 
-            <!-- Copy Venue Button -->
-            <button id="btn-copy-address" class="btn btn-outline-gold" type="button">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-              <span>Copy Location</span>
-            </button>
-
-            <!-- Google Calendar -->
-            <a id="btn-add-google-cal" class="btn btn-outline-gold" href="#" target="_blank" rel="noopener noreferrer">
+            <!-- Save Date Button -->
+            <button id="btn-save-date" class="btn btn-outline-gold" type="button">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <span>Google Cal</span>
-            </a>
+              <span>Save Date</span>
+            </button>
+          </div>
 
-            <!-- ICS Download for Apple / Outlook -->
-            <button id="btn-add-ics-cal" class="btn btn-outline-gold" type="button">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>Save Calendar</span>
+          <div>
+            <button id="btn-copy-address" class="btn-copy-venue" type="button">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy Address</span>
             </button>
           </div>
         </div>
@@ -322,11 +313,11 @@
   <div id="toast-notice" class="toast-notice" role="status" aria-live="polite"></div>
 
   <!-- Scripts (All Relative for Subdirectory Compatibility) -->
-  <script src="./config.js?v=1.3.0"></script>
-  <script src="./js/audio.js?v=1.3.0"></script>
-  <script src="./js/countdown.js?v=1.3.0"></script>
-  <script src="./js/gallery.js?v=1.3.0"></script>
-  <script src="./js/calendar.js?v=1.3.0"></script>
-  <script src="./js/app.js?v=1.3.0"></script>
+  <script src="./config.js?v=1.4.0"></script>
+  <script src="./js/audio.js?v=1.4.0"></script>
+  <script src="./js/countdown.js?v=1.4.0"></script>
+  <script src="./js/gallery.js?v=1.4.0"></script>
+  <script src="./js/calendar.js?v=1.4.0"></script>
+  <script src="./js/app.js?v=1.4.0"></script>
 </body>
 </html>

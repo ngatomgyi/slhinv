@@ -45,8 +45,7 @@ window.WEDDING_CONFIG = {
     badge: "Wedding Invitation",
     chineseTitle: "百年好合 • 永结同心",
     subtitle: "",
-    buttonText: "Open Invitation",
-    skipText: "Direct Access"
+    buttonText: "Open Invitation"
   },
 
   // Hero Section
@@ -72,11 +71,12 @@ window.WEDDING_CONFIG = {
     hosts: "Together with our Families"
   },
 
-  // Venue & Location (English Only)
+  // Venue & Location
   venue: {
-    name: "Hosein Chinese Temple",
+    name: "Ho Seng Chinese Temple",
     city: "Wakema, Myanmar",
-    addressDisplay: "Hosein Chinese Temple, Wakema",
+    addressDisplay: "Ho Seng Chinese Temple, Wakema",
+    burmeseName: "ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့",
     // Exact Google Maps navigation link
     mapsUrl: "https://maps.app.goo.gl/ghnyTkuvZ8uwLi7Y7?g_st=ic"
   },

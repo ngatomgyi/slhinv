@@ -70,7 +70,7 @@ function populateDetails(config) {
   setElemText('#hero-name-2', couple.partner2?.fullName || 'Thazin Htet');
   setElemText('#hero-date-val', `${dateDisplay.fullDate || '22 November 2026'} (${dateDisplay.dayOfWeek || 'Sunday'})`);
   setElemText('#hero-time-val', dateDisplay.time || '9:00 AM – 12:00 PM');
-  setElemText('#hero-venue-val', venue.addressDisplay || 'Hosein Chinese Temple, Wakema');
+  setElemText('#hero-venue-val', venue.addressDisplay || 'Ho Seng Chinese Temple, Wakema');
 
   const heroImg = document.getElementById('hero-portrait-img');
   if (heroImg && config.hero?.image) {
@@ -89,7 +89,7 @@ function populateDetails(config) {
   }
 
   // Venue Card (English Location)
-  setElemText('#venue-name', venue.name || 'Hosein Chinese Temple');
+  setElemText('#venue-name', venue.name || 'Ho Seng Chinese Temple');
   setElemText('#venue-city', venue.city || 'Wakema, Myanmar');
 
   // Closing Section
@@ -108,23 +108,13 @@ function setElemText(selector, text) {
 function setupIntroScreen(audio) {
   const introScreen = document.getElementById('intro-screen');
   const openBtn = document.getElementById('btn-open-invitation');
-  const skipBtn = document.getElementById('btn-skip-intro');
 
   if (!introScreen) return;
 
   document.body.classList.add('intro-active');
 
-  const dismissIntro = (fast = false) => {
+  const dismissIntro = () => {
     if (introScreen.classList.contains('dismissed')) return;
-
-    if (fast) {
-      introScreen.classList.add('dismissed');
-      document.body.classList.remove('intro-active');
-      window.scrollTo({ top: 0, behavior: 'instant' });
-      if (audio) audio.play();
-      setTimeout(() => { introScreen.style.display = 'none'; }, 400);
-      return;
-    }
 
     // Cinematic Envelope Flap Open Animation
     introScreen.classList.add('opening');
@@ -154,16 +144,12 @@ function setupIntroScreen(audio) {
     }, 350);
   };
 
-  if (openBtn) openBtn.addEventListener('click', () => dismissIntro(false));
-  if (skipBtn) skipBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dismissIntro(true);
-  });
+  if (openBtn) openBtn.addEventListener('click', dismissIntro);
 
   // Enter key dismisses intro
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !introScreen.classList.contains('dismissed')) {
-      dismissIntro(false);
+      dismissIntro();
     }
   });
 }
@@ -171,19 +157,19 @@ function setupIntroScreen(audio) {
 function setupCalendar(config) {
   const calendar = new window.WeddingCalendar(config);
 
+  const saveDateBtn = document.getElementById('btn-save-date') || document.getElementById('btn-add-ics-cal');
+  if (saveDateBtn) {
+    saveDateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      calendar.downloadICS();
+    });
+  }
+
   const googleBtn = document.getElementById('btn-add-google-cal');
   if (googleBtn) {
     googleBtn.href = calendar.getGoogleCalendarUrl();
     googleBtn.target = '_blank';
     googleBtn.rel = 'noopener noreferrer';
-  }
-
-  const icsBtn = document.getElementById('btn-add-ics-cal');
-  if (icsBtn) {
-    icsBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      calendar.downloadICS();
-    });
   }
 }
 
