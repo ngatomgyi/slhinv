@@ -77,8 +77,8 @@ window.WEDDING_CONFIG = {
     name: "Hosein Chinese Temple",
     city: "Wakema, Myanmar",
     addressDisplay: "Hosein Chinese Temple, Wakema",
-    // Google Maps direct navigation link to exact temple coordinates in Wakema
-    mapsUrl: "https://maps.google.com/?q=ဟိုစိန်တရုတ်ဘုံကျောင်း၊+ဝါးခယ်မမြို့"
+    // Exact Google Maps navigation link
+    mapsUrl: "https://maps.app.goo.gl/ghnyTkuvZ8uwLi7Y7?g_st=ic"
   },
 
   // Pre-Wedding Gallery (Exactly 20 Photos)
