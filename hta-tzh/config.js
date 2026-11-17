@@ -103,10 +103,10 @@ window.WEDDING_CONFIG = {
       { id: 14, src: "./assets/images/photo-14.webp", aspect: "portrait" },
       { id: 15, src: "./assets/images/photo-15.webp", aspect: "portrait" },
       { id: 16, src: "./assets/images/photo-16.webp", aspect: "portrait" },
-      { id: 17, src: "./assets/images/photo-17.webp", aspect: "landscape" },
-      { id: 18, src: "./assets/images/photo-18.webp", aspect: "portrait" },
-      { id: 19, src: "./assets/images/photo-19.webp", aspect: "portrait" },
-      { id: 20, src: "./assets/images/photo-20.webp", aspect: "portrait" }
+      { id: 17, src: "./assets/images/photo-17.webp", aspect: "portrait" },
+      { id: 18, src: "./assets/images/photo-18.webp", aspect: "landscape" },
+      { id: 19, src: "./assets/images/photo-19.webp", aspect: "landscape" },
+      { id: 20, src: "./assets/images/photo-20.webp", aspect: "landscape" }
     ]
   },
 
