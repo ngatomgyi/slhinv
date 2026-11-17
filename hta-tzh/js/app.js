@@ -52,6 +52,7 @@ function populateDetails(config) {
 
   // Intro Screen
   setElemText('#intro-badge', config.intro?.badge || 'The Wedding Celebration');
+  setElemText('#intro-chinese-blessing', config.intro?.chineseTitle || '百年好合 • 永结同心');
   setElemText('#intro-subtitle', config.intro?.subtitle || 'An Auspicious Union of Two Families');
   setElemText('#intro-names-1', couple.partner1?.fullName || 'Hein Thant Aung');
   setElemText('#intro-names-2', couple.partner2?.fullName || 'Thazin Htet');
@@ -62,7 +63,7 @@ function populateDetails(config) {
   setElemText('#hero-name-2', couple.partner2?.fullName || 'Thazin Htet');
   setElemText('#hero-date-val', `${dateDisplay.fullDate || '22 November 2026'} (${dateDisplay.dayOfWeek || 'Sunday'})`);
   setElemText('#hero-time-val', dateDisplay.time || '9:00 AM – 12:00 PM');
-  setElemText('#hero-venue-val', venue.burmeseName || 'ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့');
+  setElemText('#hero-venue-val', venue.addressDisplay || 'Hosein Chinese Temple, Wakema');
 
   const heroImg = document.getElementById('hero-portrait-img');
   if (heroImg && config.hero?.image) {
@@ -70,7 +71,7 @@ function populateDetails(config) {
     heroImg.alt = config.hero.imageAlt || 'Hein Thant Aung & Thazin Htet';
   }
 
-  // Formal Invitation Section (Pure English)
+  // Formal Invitation Section
   setElemText('#invitation-eyebrow', config.invitation?.subheading || 'Together with our Families');
   setElemText('#invitation-title', config.invitation?.heading || 'We Request The Honour Of Your Presence');
   setElemText('#invitation-hosts', config.invitation?.hosts || 'Together with our Families');
@@ -80,11 +81,12 @@ function populateDetails(config) {
     invBodyEl.innerHTML = config.invitation.body.map((p) => `<p>${p}</p>`).join('');
   }
 
-  // Venue Card
-  setElemText('#venue-burmese-name', venue.burmeseName || 'ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့');
-  setElemText('#venue-english-name', venue.addressDisplay || 'Hosein Chinese Temple, Wakema');
+  // Venue Card (English Location)
+  setElemText('#venue-name', venue.name || 'Hosein Chinese Temple');
+  setElemText('#venue-city', venue.city || 'Wakema, Myanmar');
 
   // Closing Section
+  setElemText('#closing-chinese-blessing', config.closing?.chineseBlessing || '白头偕老 • 幸福美满');
   setElemText('#closing-title', config.closing?.heading || 'With Heartfelt Gratitude');
   setElemText('#closing-text', config.closing?.text);
   setElemText('#closing-footer', config.closing?.footerText);

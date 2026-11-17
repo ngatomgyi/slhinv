@@ -2,7 +2,8 @@
  * WEDDING INVITATION CONFIGURATION
  * DigiVite — Invitation No. 02
  * Couple: Hein Thant Aung & Thazin Htet
- * Creative Direction: Luxury Chinese Imperial Red & Champagne Gold (English Only)
+ * Creative Direction: Luxury Chinese Imperial Red & Champagne Gold
+ * Language: English & Traditional Chinese (Burmese Removed)
  */
 
 window.WEDDING_CONFIG = {
@@ -21,7 +22,7 @@ window.WEDDING_CONFIG = {
       role: "Bride"
     },
     initials: "H & T",
-    monogramTitle: "H & T",
+    chineseMonogram: "囍",
     displayTitle: "Hein Thant Aung & Thazin Htet"
   },
 
@@ -42,9 +43,10 @@ window.WEDDING_CONFIG = {
   // Intro Screen (Imperial Sealed Invitation Folio)
   intro: {
     badge: "The Wedding Celebration",
+    chineseTitle: "百年好合 • 永结同心",
     subtitle: "An Auspicious Union of Two Families",
     buttonText: "Open Invitation",
-    skipText: "Enter Directly"
+    skipText: "Direct Access"
   },
 
   // Hero Section
@@ -56,7 +58,7 @@ window.WEDDING_CONFIG = {
     scrollHint: "Scroll down to discover"
   },
 
-  // Formal Invitation Message (Pure English)
+  // Formal Invitation Message
   invitation: {
     eyebrow: "Formal Announcement",
     heading: "We Request The Honour Of Your Presence",
@@ -70,13 +72,12 @@ window.WEDDING_CONFIG = {
     hosts: "Together with our Families"
   },
 
-  // Venue & Location
+  // Venue & Location (English Only)
   venue: {
-    burmeseName: "ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့",
     name: "Hosein Chinese Temple",
     city: "Wakema, Myanmar",
     addressDisplay: "Hosein Chinese Temple, Wakema",
-    // Google Maps direct navigation link using exact Burmese text
+    // Google Maps direct navigation link to exact temple coordinates in Wakema
     mapsUrl: "https://maps.google.com/?q=ဟိုစိန်တရုတ်ဘုံကျောင်း၊+ဝါးခယ်မမြို့"
   },
 
@@ -122,8 +123,9 @@ window.WEDDING_CONFIG = {
   // Closing Note
   closing: {
     heading: "With Heartfelt Gratitude",
+    chineseBlessing: "白头偕老 • 幸福美满",
     text: "Thank you for walking this road with us and blessing our union with your love and grace. We look forward to celebrating this special day with you.",
     monogram: "H & T",
-    footerText: "Hein Thant Aung & Thazin Htet • 22 November 2026 • Wakema"
+    footerText: "Hein Thant Aung & Thazin Htet • 22 November 2026 • Wakema, Myanmar"
   }
 };

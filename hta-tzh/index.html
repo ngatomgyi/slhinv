@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="theme-color" content="#520D17">
-  <meta name="description" content="Hein Thant Aung &amp; Thazin Htet — Wedding Celebration at ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့ on Sunday, 22 November 2026.">
+  <meta name="description" content="Hein Thant Aung &amp; Thazin Htet — Wedding Celebration at Hosein Chinese Temple, Wakema on Sunday, 22 November 2026.">
 
   <!-- OpenGraph Metadata -->
   <meta property="og:title" content="Hein Thant Aung &amp; Thazin Htet — Wedding Invitation">
-  <meta property="og:description" content="Sunday, 22 November 2026 • ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့">
+  <meta property="og:description" content="Sunday, 22 November 2026 • Hosein Chinese Temple, Wakema">
   <meta property="og:url" content="https://invite.ytds.app/hta-tzh/">
   <meta property="og:image" content="https://invite.ytds.app/hta-tzh/assets/images/hero.webp">
   <meta property="og:type" content="website">
@@ -18,22 +18,22 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
 
-  <!-- Bespoke Luxury Imperial Typography (Cinzel Decorative, Cinzel, Italiana, Montserrat, Padauk) -->
+  <!-- Bespoke Luxury Imperial Typography (Cinzel Decorative, Cinzel, Italiana, Montserrat, Noto Serif SC) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700&family=Cinzel:wght@400;500;600;700&family=Italiana&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700&family=Cinzel:wght@400;500;600;700&family=Italiana&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets (All Relative for Subdirectory Compatibility) -->
-  <link rel="stylesheet" href="./css/variables.css?v=1.1.0">
-  <link rel="stylesheet" href="./css/reset.css?v=1.1.0">
-  <link rel="stylesheet" href="./css/base.css?v=1.1.0">
-  <link rel="stylesheet" href="./css/components.css?v=1.1.0">
-  <link rel="stylesheet" href="./css/animations.css?v=1.1.0">
+  <link rel="stylesheet" href="./css/variables.css?v=1.2.0">
+  <link rel="stylesheet" href="./css/reset.css?v=1.2.0">
+  <link rel="stylesheet" href="./css/base.css?v=1.2.0">
+  <link rel="stylesheet" href="./css/components.css?v=1.2.0">
+  <link rel="stylesheet" href="./css/animations.css?v=1.2.0">
 </head>
 <body class="intro-active">
 
   <!-- =========================================================================
-       1. OPENING CEREMONY / IMPERIAL ENVELOPE INTRO (ENGLISH ONLY)
+       1. OPENING CEREMONY / IMPERIAL ENVELOPE INTRO
        ========================================================================= -->
   <section id="intro-screen" class="intro-screen" aria-label="Wedding Invitation Envelope">
     <div class="intro-lattice-bg" aria-hidden="true"></div>
@@ -48,10 +48,11 @@
 
     <!-- The Imperial Envelope / Sealed Folio -->
     <div class="envelope-container">
-      <div class="royal-monogram-seal" aria-hidden="true">
-        <span class="seal-monogram-text">H&amp;T</span>
+      <div class="double-happiness-seal" aria-hidden="true">
+        <span class="seal-character">囍</span>
       </div>
 
+      <p id="intro-chinese-blessing" class="intro-chinese-blessing">百年好合 • 永结同心</p>
       <p id="intro-badge" class="intro-badge">The Wedding Celebration</p>
       <p id="intro-subtitle" class="intro-subtitle">An Auspicious Union of Two Families</p>
 
@@ -92,7 +93,7 @@
       <div class="container">
         
         <div class="hero-emblem-wrap reveal-item">
-          <div class="hero-monogram-badge conf-initials" aria-hidden="true">H &amp; T</div>
+          <div class="hero-double-happiness" aria-hidden="true">囍</div>
         </div>
 
         <div class="hero-grid">
@@ -121,7 +122,7 @@
               </div>
               <div class="hero-meta-item">
                 <span class="hero-meta-label">Venue</span>
-                <span id="hero-venue-val" class="hero-venue-myanmar">ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့</span>
+                <span id="hero-venue-val" class="hero-meta-value">Hosein Chinese Temple, Wakema</span>
               </div>
             </div>
           </div>
@@ -213,11 +214,11 @@
         <!-- Venue Location Card -->
         <div class="venue-card reveal-card">
           <div class="section-eyebrow">Ceremony Venue</div>
-          <h3 id="venue-burmese-name" class="venue-burmese-name">ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့</h3>
-          <p id="venue-english-name" class="venue-english-name">Hosein Chinese Temple, Wakema</p>
+          <h3 id="venue-name" class="section-title" style="font-size: clamp(1.4rem, 3.2vw, 2rem); margin-bottom: 0.35rem;">Hosein Chinese Temple</h3>
+          <p id="venue-city" class="section-subtitle" style="margin-bottom: 1.75rem;">Wakema, Myanmar</p>
 
           <div class="venue-actions">
-            <!-- Google Maps Button (exact Burmese text query) -->
+            <!-- Google Maps Button (direct to exact temple coordinates in Wakema) -->
             <a id="btn-open-maps" class="btn btn-gold" href="https://maps.google.com/?q=ဟိုစိန်တရုတ်ဘုံကျောင်း၊+ဝါးခယ်မမြို့" target="_blank" rel="noopener noreferrer">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               <span>Open Google Maps</span>
@@ -273,9 +274,10 @@
       <div class="container-narrow text-center">
         
         <div class="hero-emblem-wrap reveal-item">
-          <div class="hero-monogram-badge conf-initials" aria-hidden="true">H &amp; T</div>
+          <div class="hero-double-happiness" aria-hidden="true">囍</div>
         </div>
 
+        <p id="closing-chinese-blessing" class="intro-chinese-blessing reveal-item">白头偕老 • 幸福美满</p>
         <h2 id="closing-title" class="section-title reveal-item delay-1">With Heartfelt Gratitude</h2>
 
         <p id="closing-text" class="invitation-body reveal-item delay-2" style="color: var(--color-text-muted);">
@@ -288,7 +290,7 @@
 
         <footer class="reveal-item delay-3">
           <p id="closing-footer" style="font-size: var(--text-2xs); letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold-light); opacity: 0.85;">
-            Hein Thant Aung &amp; Thazin Htet • 22 November 2026 • Wakema
+            Hein Thant Aung &amp; Thazin Htet • 22 November 2026 • Wakema, Myanmar
           </p>
         </footer>
 
@@ -342,11 +344,11 @@
   <div id="toast-notice" class="toast-notice" role="status" aria-live="polite"></div>
 
   <!-- Scripts (All Relative for Subdirectory Compatibility) -->
-  <script src="./config.js?v=1.1.0"></script>
-  <script src="./js/audio.js?v=1.1.0"></script>
-  <script src="./js/countdown.js?v=1.1.0"></script>
-  <script src="./js/gallery.js?v=1.1.0"></script>
-  <script src="./js/calendar.js?v=1.1.0"></script>
-  <script src="./js/app.js?v=1.1.0"></script>
+  <script src="./config.js?v=1.2.0"></script>
+  <script src="./js/audio.js?v=1.2.0"></script>
+  <script src="./js/countdown.js?v=1.2.0"></script>
+  <script src="./js/gallery.js?v=1.2.0"></script>
+  <script src="./js/calendar.js?v=1.2.0"></script>
+  <script src="./js/app.js?v=1.2.0"></script>
 </body>
 </html>

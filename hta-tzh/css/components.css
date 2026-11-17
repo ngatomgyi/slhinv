@@ -86,8 +86,8 @@ body.intro-active {
   transition: transform 0.6s var(--ease-editorial);
 }
 
-/* Royal Monogram Medallion (English Monogram with Concentric Gold Rings) */
-.royal-monogram-seal {
+/* Double Happiness Golden Seal Medallion */
+.double-happiness-seal {
   width: 76px;
   height: 76px;
   margin: 0 auto 1.5rem;
@@ -102,7 +102,7 @@ body.intro-active {
   animation: sealPulse 3s ease-in-out infinite;
 }
 
-.royal-monogram-seal::before {
+.double-happiness-seal::before {
   content: "";
   position: absolute;
   inset: 4px;
@@ -110,14 +110,22 @@ body.intro-active {
   border: 1px dashed rgba(54, 7, 14, 0.65);
 }
 
-.seal-monogram-text {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
+.seal-character {
+  font-family: var(--font-chinese);
+  font-size: 2.3rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
   color: #2D050B;
   line-height: 1;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.intro-chinese-blessing {
+  font-family: var(--font-chinese);
+  font-size: 1rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold-bright);
+  margin-bottom: 0.85rem;
+  opacity: 0.95;
 }
 
 .intro-badge {
@@ -230,7 +238,7 @@ body.intro-active {
   margin-bottom: 1.75rem;
 }
 
-.hero-monogram-badge {
+.hero-double-happiness {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -238,12 +246,11 @@ body.intro-active {
   height: 56px;
   border-radius: var(--radius-pill);
   border: 1.5px solid var(--color-gold-bright);
-  background: rgba(82, 13, 23, 0.8);
+  background: rgba(82, 13, 23, 0.85);
   color: var(--color-gold-bright);
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: var(--font-chinese);
+  font-size: 1.85rem;
+  font-weight: 700;
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
 }
 
