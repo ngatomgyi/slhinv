@@ -40,18 +40,18 @@ window.WEDDING_CONFIG = {
     year: "2026"
   },
 
-  // Intro Screen (Imperial Sealed Invitation Folio)
+  // Intro Screen (Bespoke Sealed Invitation)
   intro: {
-    badge: "The Wedding Celebration",
+    badge: "Wedding Invitation",
     chineseTitle: "百年好合 • 永结同心",
-    subtitle: "An Auspicious Union of Two Families",
+    subtitle: "",
     buttonText: "Open Invitation",
     skipText: "Direct Access"
   },
 
   // Hero Section
   hero: {
-    eyebrow: "Formal Wedding Invitation",
+    eyebrow: "Wedding Invitation",
     leadTag: "Imperial Celebration",
     image: "./assets/images/hero.webp",
     imageAlt: "Hein Thant Aung & Thazin Htet — Wedding Portrait",

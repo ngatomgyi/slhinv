@@ -51,9 +51,16 @@ function populateDetails(config) {
   });
 
   // Intro Screen
-  setElemText('#intro-badge', config.intro?.badge || 'The Wedding Celebration');
+  setElemText('#intro-badge', config.intro?.badge || 'Wedding Invitation');
   setElemText('#intro-chinese-blessing', config.intro?.chineseTitle || '百年好合 • 永结同心');
-  setElemText('#intro-subtitle', config.intro?.subtitle || 'An Auspicious Union of Two Families');
+  const introSub = document.getElementById('intro-subtitle');
+  if (introSub) {
+    if (config.intro?.subtitle) {
+      introSub.textContent = config.intro.subtitle;
+    } else {
+      introSub.remove();
+    }
+  }
   setElemText('#intro-names-1', couple.partner1?.fullName || 'Hein Thant Aung');
   setElemText('#intro-names-2', couple.partner2?.fullName || 'Thazin Htet');
   setElemText('#intro-date', `Sunday, ${dateDisplay.fullDate || '22 November 2026'}`);
@@ -135,9 +142,8 @@ function setupIntroScreen(audio) {
       const hero = document.getElementById('hero');
       if (hero) {
         setTimeout(() => hero.querySelector('.hero-emblem-wrap')?.classList.add('is-revealed'), 100);
-        setTimeout(() => hero.querySelector('.hero-name-1')?.classList.add('is-revealed'), 250);
-        setTimeout(() => hero.querySelector('.hero-ampersand')?.classList.add('is-revealed'), 420);
-        setTimeout(() => hero.querySelector('.hero-name-2')?.classList.add('is-revealed'), 580);
+        setTimeout(() => hero.querySelectorAll('.mask-reveal').forEach((el) => el.classList.add('is-revealed')), 250);
+        setTimeout(() => hero.querySelector('.hero-amp-reveal')?.classList.add('is-revealed'), 420);
         setTimeout(() => hero.querySelector('.hero-visual-frame')?.classList.add('is-revealed'), 500);
         setTimeout(() => hero.querySelector('.hero-meta-list')?.classList.add('is-revealed'), 750);
       }

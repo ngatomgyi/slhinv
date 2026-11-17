@@ -13,22 +13,6 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Subtle Imperial Lattice Watermark Texture across entire site */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.04;
-  background-size: 64px 64px;
-  background-image: 
-    linear-gradient(45deg, var(--color-gold) 25%, transparent 25%), 
-    linear-gradient(-45deg, var(--color-gold) 25%, transparent 25%), 
-    linear-gradient(135deg, var(--color-gold) 25%, transparent 25%), 
-    linear-gradient(-135deg, var(--color-gold) 25%, transparent 25%);
-}
-
 /* Container Utilities */
 .container {
   width: 100%;
@@ -133,12 +117,15 @@ body::before {
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
+  gap: 0.65rem;
   font-size: var(--text-2xs);
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-gold-bright);
+  white-space: nowrap;
+  max-width: 100%;
   margin-bottom: 0.85rem;
 }
 
@@ -146,9 +133,10 @@ body::before {
 .section-eyebrow::after {
   content: "";
   display: inline-block;
-  width: 28px;
+  width: clamp(16px, 3vw, 24px);
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-gold-bright), transparent);
+  flex-shrink: 1;
 }
 
 .section-title {
@@ -168,28 +156,13 @@ body::before {
   letter-spacing: 0.03em;
 }
 
-/* Gold Ornamental Filigree Divider */
+/* Gold Ornamental Hairline Divider */
 .gold-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  margin: 1.85rem auto;
-  max-width: 320px;
-}
-
-.gold-divider::before,
-.gold-divider::after {
-  content: "";
-  flex: 1;
+  display: block;
+  margin: 1.65rem auto;
+  max-width: 220px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-}
-
-.gold-divider-knot {
-  color: var(--color-gold-bright);
-  font-size: 0.95rem;
-  line-height: 1;
 }
 
 /* Luxury Gilded Buttons */
