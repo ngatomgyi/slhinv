@@ -19,8 +19,8 @@ body {
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(1.25rem, 4vw, 2.75rem);
-  padding-right: clamp(1.25rem, 4vw, 2.75rem);
+  padding-left: clamp(1.5rem, 5.5vw, 3.25rem);
+  padding-right: clamp(1.5rem, 5.5vw, 3.25rem);
   position: relative;
   z-index: var(--z-base);
 }
@@ -30,8 +30,8 @@ body {
   max-width: 780px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(1.25rem, 4vw, 2.75rem);
-  padding-right: clamp(1.25rem, 4vw, 2.75rem);
+  padding-left: clamp(1.5rem, 5.5vw, 3.25rem);
+  padding-right: clamp(1.5rem, 5.5vw, 3.25rem);
   position: relative;
   z-index: var(--z-base);
 }
@@ -41,23 +41,23 @@ body {
   max-width: 1260px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(1rem, 3.5vw, 2.5rem);
-  padding-right: clamp(1rem, 3.5vw, 2.5rem);
+  padding-left: clamp(1.25rem, 4.5vw, 3rem);
+  padding-right: clamp(1.25rem, 4.5vw, 3rem);
   position: relative;
   z-index: var(--z-base);
 }
 
 /* Continuous Imperial Red Sections (Zero White Gaps) */
 .section {
-  padding-top: clamp(4.5rem, 8vw, 7.5rem);
-  padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+  padding-top: clamp(5rem, 9vw, 8rem);
+  padding-bottom: clamp(5rem, 9vw, 8rem);
   position: relative;
 }
 
 .section-hero {
-  padding-top: clamp(3rem, 6vw, 5rem);
-  padding-bottom: clamp(4.5rem, 8vw, 7rem);
-  background: radial-gradient(circle at 50% 20%, #74101D 0%, #460912 60%, #1E0307 100%);
+  padding-top: clamp(4rem, 8vw, 6.5rem);
+  padding-bottom: clamp(5rem, 10vw, 8.5rem);
+  background: radial-gradient(circle at 50% 25%, #74101D 0%, #460912 60%, #1E0307 100%);
 }
 
 .section-invitation {

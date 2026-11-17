@@ -50,7 +50,7 @@
   --text-xl: 1.85rem;
   --text-2xl: 2.35rem;
   --text-3xl: 3.25rem;
-  --text-hero: clamp(2.35rem, 6.8vw, 4.4rem);
+  --text-hero: clamp(2.15rem, 6.2vw, 4rem);
 
   /* Spacing */
   --space-3xs: 0.25rem;
