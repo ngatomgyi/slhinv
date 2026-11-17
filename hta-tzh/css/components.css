@@ -1,0 +1,836 @@
+/**
+ * LUXURY CHINESE WEDDING COMPONENTS
+ * Rich Chinese Red, Burgundy, Champagne Gold, and Warm Ivory
+ */
+
+/* ==========================================================================
+   1. OPENING CEREMONY / TRADITIONAL RED ENVELOPE INTRO
+   ========================================================================== */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-intro);
+  background: radial-gradient(circle at 50% 35%, #7A1220 0%, #4D0914 55%, #250409 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: transform var(--duration-opening) var(--ease-editorial),
+              opacity var(--duration-opening) var(--ease-editorial),
+              filter var(--duration-opening) var(--ease-editorial);
+  will-change: transform, opacity, filter;
+}
+
+body.intro-active {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Background lattice watermark */
+.intro-lattice-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  pointer-events: none;
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(45deg, #C5A46D 25%, transparent 25%), 
+    linear-gradient(-45deg, #C5A46D 25%, transparent 25%), 
+    linear-gradient(135deg, #C5A46D 25%, transparent 25%), 
+    linear-gradient(-135deg, #C5A46D 25%, transparent 25%);
+}
+
+/* Golden Ornamental Border Frame */
+.intro-border-frame {
+  position: absolute;
+  inset: 1.25rem;
+  border: 1px solid var(--color-gold-hairline);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.intro-border-inner {
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(197, 164, 109, 0.4);
+}
+
+/* Ornate Corner Accents */
+.ornament-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: var(--color-gold-bright);
+  border-style: solid;
+  pointer-events: none;
+}
+.corner-tl { top: -2px; left: -2px; border-width: 3px 0 0 3px; }
+.corner-tr { top: -2px; right: -2px; border-width: 3px 3px 0 0; }
+.corner-bl { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; }
+.corner-br { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; }
+
+/* The Red Envelope Body */
+.envelope-container {
+  width: 100%;
+  max-width: 440px;
+  background: linear-gradient(145deg, #8F1725 0%, #641421 100%);
+  border: 1px solid rgba(229, 195, 120, 0.5);
+  border-radius: var(--radius-sm);
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 40px rgba(143, 23, 37, 0.35);
+  transition: transform 0.6s var(--ease-editorial);
+}
+
+/* Double Happiness Golden Seal Medallion */
+.double-happiness-seal {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.5rem;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(circle at 35% 35%, #F5D79E 0%, #C5A46D 50%, #9C7D48 100%);
+  border: 2px solid #FFF3D6;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 25px rgba(229, 195, 120, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: sealPulse 3s ease-in-out infinite;
+}
+
+.double-happiness-seal::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: var(--radius-pill);
+  border: 1px dashed rgba(62, 12, 21, 0.6);
+}
+
+.seal-character {
+  font-family: var(--font-chinese);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #3E0C15;
+  line-height: 1;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.intro-chinese-blessing {
+  font-family: var(--font-chinese);
+  font-size: 0.95rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold-bright);
+  margin-bottom: 0.85rem;
+  opacity: 0.9;
+}
+
+.intro-names-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.55rem, 4.5vw, 2.1rem);
+  font-weight: 500;
+  color: var(--color-ivory);
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+
+.intro-amp {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--color-gold-bright);
+  margin: 0.2rem 0;
+}
+
+.intro-date {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  margin-bottom: 2rem;
+}
+
+.intro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 280px;
+  padding: 1.05rem 1.8rem;
+  background: linear-gradient(135deg, #E5C378 0%, #C5A46D 50%, #9C7D48 100%);
+  color: #2A060C;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  border: 1px solid #FFF3D6;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(229, 195, 120, 0.35);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-editorial);
+}
+
+.intro-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 28px rgba(229, 195, 120, 0.55);
+}
+
+.intro-skip-btn {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  opacity: 0.75;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  transition: opacity 0.2s ease;
+}
+
+.intro-skip-btn:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Dismiss / Open Animation States */
+.intro-screen.opening {
+  opacity: 0.8;
+  filter: blur(4px);
+}
+
+.intro-screen.dismissed {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   2. COUPLE HERO SECTION
+   ========================================================================== */
+.hero-emblem-wrap {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.hero-double-happiness {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-gold-bright);
+  background: rgba(100, 20, 33, 0.6);
+  color: var(--color-gold-bright);
+  font-family: var(--font-chinese);
+  font-size: 1.7rem;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(197, 164, 109, 0.3);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+  }
+}
+
+.hero-typography {
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .hero-typography {
+    text-align: left;
+  }
+}
+
+.hero-title {
+  font-family: var(--font-title);
+  font-size: var(--text-hero);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
+  color: var(--color-ivory);
+  margin-bottom: 1.5rem;
+}
+
+.hero-name-block {
+  display: block;
+}
+
+.hero-ampersand {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.65em;
+  color: var(--color-gold-bright);
+  margin: 0.15rem 0.4rem;
+}
+
+.hero-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-gold-hairline);
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+@media (min-width: 600px) {
+  .hero-meta-item {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1.25rem;
+  }
+}
+
+.hero-meta-label {
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  min-width: 80px;
+}
+
+.hero-meta-value {
+  font-family: var(--font-serif);
+  font-size: var(--text-md);
+  color: var(--color-ivory);
+  letter-spacing: 0.03em;
+}
+
+.hero-venue-myanmar {
+  font-family: var(--font-myanmar);
+  font-size: 1.05rem;
+  color: var(--color-gold-bright);
+  font-weight: 700;
+}
+
+/* Hero Portrait Frame */
+.hero-visual-frame {
+  position: relative;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.hero-visual-inner {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--color-gold);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 30px rgba(197, 164, 109, 0.25);
+  background-color: var(--color-burgundy-dark);
+}
+
+.hero-visual-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-editorial);
+}
+
+.hero-visual-frame:hover .hero-visual-inner img {
+  transform: scale(1.035);
+}
+
+/* ==========================================================================
+   3. FORMAL INVITATION SECTION (WARM IVORY PARCHMENT)
+   ========================================================================== */
+.invitation-card {
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+  text-align: center;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.invitation-card-border {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(143, 23, 37, 0.25);
+  pointer-events: none;
+}
+
+.invitation-burmese-heading {
+  font-family: var(--font-myanmar);
+  font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--color-red-primary);
+  margin-bottom: 0.5rem;
+}
+
+.invitation-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.35rem, 3.2vw, 1.8rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-burgundy-dark);
+  margin-bottom: 1.5rem;
+}
+
+.invitation-body {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  color: #382C27;
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.invitation-signoff {
+  border-top: 1px solid rgba(197, 164, 109, 0.4);
+  padding-top: 1.5rem;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.invitation-monogram {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  color: var(--color-red-primary);
+  margin-bottom: 0.25rem;
+}
+
+.invitation-hosts {
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-charcoal-muted);
+}
+
+/* ==========================================================================
+   4. WEDDING DETAILS & COUNTDOWN SECTION
+   ========================================================================== */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  max-width: 580px;
+  margin: 0 auto 3rem;
+}
+
+.countdown-unit {
+  background: rgba(62, 12, 21, 0.65);
+  border: 1px solid var(--color-gold-hairline);
+  border-radius: var(--radius-xs);
+  padding: clamp(0.85rem, 2vw, 1.5rem) 0.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-num {
+  display: block;
+  font-family: var(--font-title);
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  font-weight: 500;
+  color: var(--color-gold-bright);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.countdown-label {
+  font-size: var(--text-2xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  opacity: 0.75;
+}
+
+/* Location Card */
+.venue-card {
+  background: linear-gradient(145deg, #440D16 0%, #29060B 100%);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.venue-burmese-name {
+  font-family: var(--font-myanmar);
+  font-size: clamp(1.35rem, 3.2vw, 1.8rem);
+  font-weight: 700;
+  color: var(--color-gold-bright);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.venue-english-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-ivory);
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.venue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   5. PRE-WEDDING GALLERY (EXACTLY 20 PHOTOS)
+   ========================================================================== */
+.gallery-stream {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+/* Gallery Layout Rows */
+.gallery-row-single {
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.gallery-row-duo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .gallery-row-duo {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.gallery-row-panorama {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+/* Individual Editorial Photo Card */
+.photo-card {
+  position: relative;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  background-color: var(--color-burgundy-dark);
+  border: 1px solid var(--color-gold-hairline);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: transform var(--duration-normal) var(--ease-editorial),
+              border-color var(--duration-normal) var(--ease-editorial),
+              box-shadow var(--duration-normal) var(--ease-editorial);
+}
+
+.photo-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold-bright);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(197, 164, 109, 0.3);
+}
+
+.photo-aspect-portrait {
+  aspect-ratio: 2 / 3;
+}
+
+.photo-aspect-landscape {
+  aspect-ratio: 3 / 2;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s var(--ease-editorial);
+}
+
+.photo-card:hover .photo-img {
+  transform: scale(1.03);
+}
+
+.photo-zoom-hint {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  background: rgba(42, 6, 12, 0.7);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(197, 164, 109, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-bright);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.photo-card:hover .photo-zoom-hint {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   6. FULLSCREEN LIGHTBOX MODAL
+   ========================================================================== */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: rgba(18, 3, 5, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: max(0px, env(safe-area-inset-top, 0px));
+}
+
+.lightbox-counter {
+  font-family: var(--font-title);
+  font-size: var(--text-sm);
+  color: var(--color-gold-bright);
+  letter-spacing: 0.15em;
+}
+
+.lightbox-close-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-gold-hairline);
+  color: var(--color-ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lightbox-close-btn:hover {
+  background: rgba(229, 195, 120, 0.25);
+  color: #FFF;
+}
+
+.lightbox-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0.5rem 0;
+  overflow: hidden;
+}
+
+.lightbox-img-wrap {
+  max-width: 90vw;
+  max-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: var(--radius-xs);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: rgba(42, 6, 12, 0.7);
+  border: 1px solid var(--color-gold-hairline);
+  color: var(--color-gold-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.25s ease;
+}
+
+.lightbox-nav-btn:hover {
+  background: rgba(143, 23, 37, 0.9);
+  color: #FFF;
+}
+
+.lightbox-prev { left: clamp(0.5rem, 2vw, 2rem); }
+.lightbox-next { right: clamp(0.5rem, 2vw, 2rem); }
+
+/* Thumbnail Scrubber Ribbon */
+.lightbox-thumbs-bar {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+.lightbox-thumbs-track {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4px;
+}
+
+.lightbox-thumb-btn {
+  width: 44px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lightbox-thumb-btn.active,
+.lightbox-thumb-btn:hover {
+  opacity: 1;
+  border-color: var(--color-gold-bright);
+  transform: scale(1.08);
+}
+
+.lightbox-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   7. FLOATING MUSIC TOGGLE BUTTON
+   ========================================================================== */
+.music-toggle-btn {
+  position: fixed;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: var(--z-floating);
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-pill);
+  background: rgba(62, 12, 21, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--color-gold-bright);
+  color: var(--color-gold-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), 0 0 15px rgba(197, 164, 109, 0.3);
+  transition: all 0.3s ease;
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.08);
+  background: rgba(143, 23, 37, 0.95);
+  color: #FFF;
+}
+
+.music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 16px;
+}
+
+.music-bar {
+  width: 2.5px;
+  background-color: currentColor;
+  border-radius: 1px;
+  height: 4px;
+  transition: height 0.2s ease;
+}
+
+.music-toggle-btn.playing .music-bar-1 { animation: soundBar 1s ease-in-out infinite alternate; }
+.music-toggle-btn.playing .music-bar-2 { animation: soundBar 0.8s ease-in-out infinite alternate 0.2s; }
+.music-toggle-btn.playing .music-bar-3 { animation: soundBar 1.2s ease-in-out infinite alternate 0.4s; }
+
+/* Toast */
+.toast-notice {
+  position: fixed;
+  bottom: calc(var(--space-md) + 60px + env(safe-area-inset-bottom, 0px));
+  right: max(var(--space-md), env(safe-area-inset-right, 0px));
+  z-index: var(--z-toast);
+  background-color: #F7F0E5;
+  color: #2A060C;
+  border: 1px solid #C5A46D;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-xs);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: all 0.35s var(--ease-editorial);
+}
+
+.toast-notice.show {
+  opacity: 1;
+  transform: translateY(0);
+}

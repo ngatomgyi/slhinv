@@ -1,0 +1,115 @@
+/**
+ * ANIMATIONS & MOTION SYSTEM
+ * Smooth, elegant, and culturally grounded motion
+ */
+
+@keyframes sealPulse {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 25px rgba(229, 195, 120, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.55), 0 0 38px rgba(229, 195, 120, 0.65);
+    transform: scale(1.03);
+  }
+}
+
+@keyframes soundBar {
+  0% { height: 4px; }
+  100% { height: 16px; }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Scroll Triggered Reveals: Standard Items */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll Triggered Reveals: Cards */
+.reveal-card {
+  opacity: 0;
+  transform: translateY(32px) scale(0.975);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-card.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger Delays */
+.delay-1 { transition-delay: 90ms; }
+.delay-2 { transition-delay: 180ms; }
+.delay-3 { transition-delay: 270ms; }
+.delay-4 { transition-delay: 360ms; }
+
+/* Clip Mask Reveal */
+.mask-reveal {
+  overflow: hidden;
+  display: block;
+}
+
+.mask-reveal > span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.mask-reveal.is-revealed > span {
+  transform: translateY(0);
+}
+
+/* Ampersand Blossom */
+.hero-amp-reveal {
+  opacity: 0;
+  transform: scale(0.5) rotate(-8deg);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+}
+
+.hero-amp-reveal.is-revealed {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* --------------------------------------------------------------------------
+   ACCESSIBILITY: PREFERS REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-item,
+  .reveal-card,
+  .photo-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .mask-reveal > span,
+  .hero-amp-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
