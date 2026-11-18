@@ -114,8 +114,8 @@ window.WEDDING_CONFIG = {
   music: {
     enabled: true,
     file: "./assets/audio/ambient.mp3",
-    title: "Ripples (Modern Guzheng Melody)",
-    artist: "Chinese Romantic Instrumental",
+    title: "China-E",
+    artist: "徐梦圆 (Xu Mengyuan)",
     autoplayAfterIntro: true,
     initialVolume: 0.60
   },
