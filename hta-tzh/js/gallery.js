@@ -56,6 +56,7 @@ class WeddingGallery {
     };
 
     let html = '';
+    let i = 0;
 
     // 1. Grand Opener (Photo 1 / index 0)
     if (this.images[0]) {
@@ -64,113 +65,56 @@ class WeddingGallery {
           ${makeCard(0, 'card-opener')}
         </div>
       `;
+      i = 1;
     }
 
-    // 2. Duo Spread (Photos 2 & 3 / index 1 & 2)
-    if (this.images[1] || this.images[2]) {
-      html += `
-        <div class="gallery-row-duo">
-          ${makeCard(1)}
-          ${makeCard(2, 'delay-1')}
-        </div>
-      `;
-    }
+    // Dynamic row composition based on aspect ratios
+    while (i < this.images.length) {
+      const curr = this.images[i];
+      const next = this.images[i + 1];
 
-    // 3. Panoramic Landscape Spread (Photo 4 / index 3)
-    if (this.images[3]) {
-      html += `
-        <div class="gallery-row-panorama">
-          ${makeCard(3, 'card-panorama')}
-        </div>
-      `;
-    }
-
-    // 4. Duo Spread (Photos 5 & 6 / index 4 & 5)
-    if (this.images[4] || this.images[5]) {
-      html += `
-        <div class="gallery-row-duo">
-          ${makeCard(4)}
-          ${makeCard(5, 'delay-1')}
-        </div>
-      `;
-    }
-
-    // 5. Duo Spread (Photos 7 & 8 / index 6 & 7)
-    if (this.images[6] || this.images[7]) {
-      html += `
-        <div class="gallery-row-duo">
-          ${makeCard(6)}
-          ${makeCard(7, 'delay-1')}
-        </div>
-      `;
-    }
-
-    // 6. Duo Spread (Photos 9 & 10 / index 8 & 9)
-    if (this.images[8] || this.images[9]) {
-      html += `
-        <div class="gallery-row-duo">
-          ${makeCard(8)}
-          ${makeCard(9, 'delay-1')}
-        </div>
-      `;
-    }
-
-    // 7. Panoramic Landscape Spread (Photo 11 / index 10)
-    if (this.images[10]) {
-      html += `
-        <div class="gallery-row-panorama">
-          ${makeCard(10, 'card-panorama')}
-        </div>
-      `;
-    }
-
-    // 8. Duo Spread (Photos 12 & 13 / index 11 & 12)
-    if (this.images[11] || this.images[12]) {
-      html += `
-        <div class="gallery-row-duo">
-          ${makeCard(11)}
-          ${makeCard(12, 'delay-1')}
-        </div>
-      `;
-    }
-
-    // 9. Duo Spread (Photos 14 & 15 / index 13 & 14)
-    if (this.images[13] || this.images[14]) {
-      html += `
-        <div class="gallery-row-duo">
-          ${makeCard(13)}
-          ${makeCard(14, 'delay-1')}
-        </div>
-      `;
-    }
-
-    // 10. Duo Spread (Photos 16 & 17 / index 15 & 16)
-    if (this.images[15] || this.images[16]) {
-      html += `
-        <div class="gallery-row-duo">
-          ${makeCard(15)}
-          ${makeCard(16, 'delay-1')}
-        </div>
-      `;
-    }
-
-    // 11. Duo Spread (Photos 18 & 19 / index 17 & 18)
-    if (this.images[17] || this.images[18]) {
-      html += `
-        <div class="gallery-row-duo">
-          ${makeCard(17)}
-          ${makeCard(18, 'delay-1')}
-        </div>
-      `;
-    }
-
-    // 12. Majestic Epilogue (Photo 20 / index 19)
-    if (this.images[19]) {
-      html += `
-        <div class="gallery-row-single">
-          ${makeCard(19, 'card-epilogue')}
-        </div>
-      `;
+      if (!next) {
+        html += `
+          <div class="gallery-row-single">
+            ${makeCard(i, 'card-epilogue')}
+          </div>
+        `;
+        i += 1;
+      } else if (curr.aspect === 'landscape') {
+        if (next.aspect === 'landscape' && i === this.images.length - 2) {
+          html += `
+            <div class="gallery-row-duo">
+              ${makeCard(i)}
+              ${makeCard(i + 1, 'delay-1')}
+            </div>
+          `;
+          i += 2;
+        } else {
+          html += `
+            <div class="gallery-row-panorama">
+              ${makeCard(i, 'card-panorama')}
+            </div>
+          `;
+          i += 1;
+        }
+      } else {
+        if (next && next.aspect === 'portrait') {
+          html += `
+            <div class="gallery-row-duo">
+              ${makeCard(i)}
+              ${makeCard(i + 1, 'delay-1')}
+            </div>
+          `;
+          i += 2;
+        } else {
+          html += `
+            <div class="gallery-row-single">
+              ${makeCard(i)}
+            </div>
+          `;
+          i += 1;
+        }
+      }
     }
 
     this.stream.innerHTML = html;
