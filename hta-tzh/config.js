@@ -114,10 +114,24 @@ window.WEDDING_CONFIG = {
   music: {
     enabled: true,
     file: "./assets/audio/ambient.mp3",
-    title: "Eternal Harmony",
-    artist: "Acoustic Wedding Melody",
+    title: "Ripples (Modern Guzheng Melody)",
+    artist: "Chinese Romantic Instrumental",
     autoplayAfterIntro: true,
     initialVolume: 0.60
+  },
+
+  // Far Gift / Auspicious Blessings
+  gift: {
+    eyebrow: "Wedding Gift",
+    title: "Auspicious Blessings",
+    subtitle: "For family and friends from afar wishing to bestow auspicious wedding blessings",
+    chineseBlessing: "添福添喜 • 佳偶天成",
+    recipient: "Thazin Htet",
+    accountType: "KBZPay (KPay)",
+    phone: "09960795330",
+    phoneDisplay: "09 960 795 330",
+    qrImage: "./assets/images/gift-qr.webp",
+    qrAlt: "KBZPay QR Code — Thazin Htet"
   },
 
   // Closing Note

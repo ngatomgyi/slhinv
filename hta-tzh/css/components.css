@@ -401,8 +401,9 @@ body.intro-active {
 .countdown-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(0.75rem, 2vw, 1.5rem);
-  max-width: 600px;
+  gap: clamp(0.75rem, 1.8vw, 1.25rem);
+  max-width: 580px;
+  width: 100%;
   margin: 0 auto 3.25rem;
 }
 
@@ -410,15 +411,41 @@ body.intro-active {
   background: rgba(54, 7, 14, 0.75);
   border: 1px solid var(--color-gold-hairline);
   border-radius: var(--radius-xs);
-  padding: clamp(1rem, 2.2vw, 1.65rem) 0.5rem;
+  padding: 1.25rem 0.5rem;
   text-align: center;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  box-sizing: border-box;
+  transition: transform var(--duration-normal) var(--ease-editorial), border-color var(--duration-normal);
+}
+
+.countdown-unit:hover {
+  border-color: var(--color-gold-bright);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 320px;
+    gap: 0.85rem;
+    margin: 0 auto 2.5rem;
+  }
+
+  .countdown-unit {
+    padding: 1.15rem 0.5rem;
+    min-height: 102px;
+  }
 }
 
 .countdown-num {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.85rem);
+  font-size: clamp(1.8rem, 3.8vw, 2.75rem);
   font-weight: 600;
   color: var(--color-gold-bright);
   line-height: 1;
@@ -875,4 +902,118 @@ body.intro-active {
 .toast-notice.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ==========================================================================
+   8. FAR GIFT / AUSPICIOUS BLESSINGS SECTION
+   ========================================================================== */
+.section-gift {
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, rgba(107, 18, 30, 0.35) 0%, transparent 70%);
+}
+
+.gift-card {
+  background: linear-gradient(150deg, #4A0B14 0%, #28040A 100%);
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-sm);
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2.5rem);
+  max-width: 520px;
+  margin: 0 auto;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 30px rgba(165, 26, 44, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gift-qr-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 14px;
+  border: 2px solid var(--color-gold-bright);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.3);
+  margin-bottom: 1.6rem;
+  cursor: pointer;
+  transition: transform var(--duration-normal) var(--ease-editorial), box-shadow var(--duration-normal);
+}
+
+.gift-qr-wrapper:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.45);
+}
+
+.gift-qr-wrapper:active {
+  transform: translateY(0) scale(1);
+}
+
+.gift-qr-image {
+  width: min(220px, 60vw);
+  height: min(220px, 60vw);
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+}
+
+.gift-qr-scan-badge {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #125191;
+}
+
+.gift-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-bottom: 1.85rem;
+  width: 100%;
+}
+
+.gift-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.gift-label {
+  font-size: var(--text-3xs);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.gift-value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-text-main);
+}
+
+.gift-phone {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-bright);
+}
+
+.gift-actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.gift-actions .btn {
+  width: 100%;
+  max-width: 320px;
 }

@@ -24,11 +24,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700&family=Cinzel:wght@400;500;600;700&family=Italiana&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets (All Relative for Subdirectory Compatibility) -->
-  <link rel="stylesheet" href="./css/variables.css?v=1.7.0">
-  <link rel="stylesheet" href="./css/reset.css?v=1.7.0">
-  <link rel="stylesheet" href="./css/base.css?v=1.7.0">
-  <link rel="stylesheet" href="./css/components.css?v=1.7.0">
-  <link rel="stylesheet" href="./css/animations.css?v=1.7.0">
+  <link rel="stylesheet" href="./css/variables.css?v=1.8.0">
+  <link rel="stylesheet" href="./css/reset.css?v=1.8.0">
+  <link rel="stylesheet" href="./css/base.css?v=1.8.0">
+  <link rel="stylesheet" href="./css/components.css?v=1.8.0">
+  <link rel="stylesheet" href="./css/animations.css?v=1.8.0">
 </head>
 <body class="intro-active">
 
@@ -242,7 +242,54 @@
     </section>
 
     <!-- -----------------------------------------------------------------------
-         6. CLOSING GRATITUDE NOTE
+         6. WEDDING GIFT / AUSPICIOUS BLESSINGS (FAR GIFT)
+         ----------------------------------------------------------------------- -->
+    <section class="section section-gift" id="gift" aria-label="Auspicious Wedding Gift">
+      <div class="container-narrow text-center">
+        
+        <div class="section-header reveal-item">
+          <span class="section-eyebrow" id="gift-eyebrow">Wedding Gift</span>
+          <h2 class="section-title" id="gift-title">Auspicious Blessings</h2>
+          <p class="intro-chinese-blessing" id="gift-chinese-blessing" style="margin-bottom: 0.75rem;">添福添喜 • 佳偶天成</p>
+          <p class="section-subtitle" id="gift-subtitle">For family and friends from afar wishing to bestow auspicious wedding blessings</p>
+        </div>
+
+        <div class="gift-card reveal-card">
+          <!-- KBZPay QR Code Frame -->
+          <div class="gift-qr-wrapper" id="gift-qr-plate" role="button" tabindex="0" title="Tap to copy KBZPay number">
+            <img class="gift-qr-image" src="./assets/images/gift-qr.webp" alt="KBZPay QR Code — Thazin Htet" loading="lazy">
+            <div class="gift-qr-scan-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path></svg>
+              <span>Scan with KBZPay</span>
+            </div>
+          </div>
+
+          <!-- Account Information -->
+          <div class="gift-info">
+            <div class="gift-meta-item">
+              <span class="gift-label">Account Name</span>
+              <span class="gift-value" id="gift-recipient">Thazin Htet</span>
+            </div>
+            <div class="gift-meta-item">
+              <span class="gift-label">KBZPay Account</span>
+              <span class="gift-phone" id="gift-phone-display">09 960 795 330</span>
+            </div>
+          </div>
+
+          <!-- Action Button: Copy Number -->
+          <div class="gift-actions">
+            <button id="btn-copy-kpay" class="btn btn-gold" type="button" aria-label="Copy KBZPay Number">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy KBZPay Number</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- -----------------------------------------------------------------------
+         7. CLOSING GRATITUDE NOTE
          ----------------------------------------------------------------------- -->
     <section class="section section-closing" id="closing" aria-label="Closing Gratitude">
       <div class="container-narrow text-center">
@@ -316,11 +363,11 @@
   <div id="toast-notice" class="toast-notice" role="status" aria-live="polite"></div>
 
   <!-- Scripts (All Relative for Subdirectory Compatibility) -->
-  <script src="./config.js?v=1.7.0"></script>
-  <script src="./js/audio.js?v=1.7.0"></script>
-  <script src="./js/countdown.js?v=1.7.0"></script>
-  <script src="./js/gallery.js?v=1.7.0"></script>
-  <script src="./js/calendar.js?v=1.7.0"></script>
-  <script src="./js/app.js?v=1.7.0"></script>
+  <script src="./config.js?v=1.8.0"></script>
+  <script src="./js/audio.js?v=1.8.0"></script>
+  <script src="./js/countdown.js?v=1.8.0"></script>
+  <script src="./js/gallery.js?v=1.8.0"></script>
+  <script src="./js/calendar.js?v=1.8.0"></script>
+  <script src="./js/app.js?v=1.8.0"></script>
 </body>
 </html>

@@ -33,7 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 7. Venue Interactions (Google Maps & Copy Address)
   setupVenueInteractions(config);
 
-  // 8. Scroll Reveal Animations (IntersectionObserver)
+  // 8. Far Gift / Auspicious Blessings Interactions
+  setupGiftInteractions(config);
+
+  // 9. Scroll Reveal Animations (IntersectionObserver)
   setupScrollReveals();
 });
 
@@ -91,6 +94,15 @@ function populateDetails(config) {
   // Venue Card (English Location)
   setElemText('#venue-name', venue.name || 'Ho Seng Chinese Temple');
   setElemText('#venue-city', venue.city || 'Wakema, Myanmar');
+
+  // Far Gift Section
+  const gift = config.gift || {};
+  setElemText('#gift-eyebrow', gift.eyebrow || 'Wedding Gift');
+  setElemText('#gift-title', gift.title || 'Auspicious Blessings');
+  setElemText('#gift-chinese-blessing', gift.chineseBlessing || '添福添喜 • 佳偶天成');
+  setElemText('#gift-subtitle', gift.subtitle);
+  setElemText('#gift-recipient', gift.recipient || 'Thazin Htet');
+  setElemText('#gift-phone-display', gift.phoneDisplay || gift.phone || '09 960 795 330');
 
   // Closing Section
   setElemText('#closing-chinese-blessing', config.closing?.chineseBlessing || '白头偕老 • 幸福美满');
@@ -202,6 +214,28 @@ function setupVenueInteractions(config) {
       }
     });
   }
+}
+
+function setupGiftInteractions(config) {
+  const giftPhone = config.gift?.phone || '09960795330';
+  const copyBtn = document.getElementById('btn-copy-kpay');
+  const qrWrap = document.getElementById('gift-qr-plate');
+
+  const copyNumber = () => {
+    const onDone = () => showToast(`✓ KBZPay number copied: ${giftPhone}`);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(giftPhone).then(onDone).catch(() => {
+        fallbackCopyText(giftPhone);
+        onDone();
+      });
+    } else {
+      fallbackCopyText(giftPhone);
+      onDone();
+    }
+  };
+
+  if (copyBtn) copyBtn.addEventListener('click', copyNumber);
+  if (qrWrap) qrWrap.addEventListener('click', copyNumber);
 }
 
 function setupScrollReveals() {
