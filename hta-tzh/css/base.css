@@ -21,6 +21,22 @@ body {
   letter-spacing: 0.02em;
 }
 
+/* Global Luxury Xuan Paper / Silk Brocade Micro-Texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.12;
+  background-image: url('../assets/images/texture-paper-grain.webp');
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  mix-blend-mode: overlay;
+}
+
 /* Container Utilities */
 .container {
   width: 100%;
@@ -65,26 +81,41 @@ body {
 .section-hero {
   padding-top: clamp(4rem, 8vw, 6.5rem);
   padding-bottom: clamp(5rem, 10vw, 8.5rem);
-  background: radial-gradient(circle at 50% 25%, #74101D 0%, #460912 60%, #1E0307 100%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    radial-gradient(circle at 50% 25%, #74101D 0%, #460912 60%, #1E0307 100%);
+  background-size: 72px 72px, auto;
 }
 
 .section-invitation {
-  background: radial-gradient(circle at 50% 40%, #520D17 0%, #36070E 70%, #1E0307 100%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    radial-gradient(circle at 50% 40%, #520D17 0%, #36070E 70%, #1E0307 100%);
+  background-size: 72px 72px, auto;
   border-top: 1px solid var(--color-gold-hairline);
   border-bottom: 1px solid var(--color-gold-hairline);
 }
 
 .section-details {
-  background: radial-gradient(circle at 50% 30%, #480A12 0%, #2D050B 75%, #180205 100%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    radial-gradient(circle at 50% 30%, #480A12 0%, #2D050B 75%, #180205 100%);
+  background-size: 72px 72px, auto;
   border-bottom: 1px solid var(--color-gold-hairline);
 }
 
 .section-gallery {
-  background: linear-gradient(180deg, #180205 0%, #2A040A 40%, #1E0307 100%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    linear-gradient(180deg, #180205 0%, #2A040A 40%, #1E0307 100%);
+  background-size: 72px 72px, auto;
 }
 
 .section-closing {
-  background: radial-gradient(circle at 50% 25%, #520D17 0%, #260408 75%, #140204 100%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    radial-gradient(circle at 50% 25%, #520D17 0%, #260408 75%, #140204 100%);
+  background-size: 72px 72px, auto;
   padding-bottom: clamp(4.5rem, 8vw, 6.5rem);
 }
 

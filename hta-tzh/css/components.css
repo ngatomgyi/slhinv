@@ -330,15 +330,66 @@ body.intro-active {
    3. FORMAL INVITATION SECTION (DEEP LACQUER RED FOLIO — NO WHITE!)
    ========================================================================== */
 .invitation-card {
-  background: linear-gradient(155deg, #4F0C16 0%, #30060D 100%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    linear-gradient(155deg, #4F0C16 0%, #30060D 100%);
+  background-size: 72px 72px, auto;
   color: var(--color-text-main);
   border: 1px solid var(--color-gold);
   border-radius: var(--radius-sm);
   padding: clamp(2.5rem, 5vw, 4.25rem) clamp(1.5rem, 4vw, 3.25rem);
   text-align: center;
   position: relative;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), inset 0 0 45px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
+
+/* Subtle Imperial Double Happiness Seal Watermark */
+.invitation-card::before {
+  content: "囍";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-chinese);
+  font-size: clamp(14rem, 28vw, 22rem);
+  font-weight: 700;
+  color: #E5C378;
+  opacity: 0.035;
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+  z-index: 0;
+}
+
+.invitation-card > *:not(.card-inset-frame) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Card Inset Hairline Frame & Traditional Corner Brackets */
+.card-inset-frame {
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(229, 195, 120, 0.28);
+  border-radius: calc(var(--radius-sm) - 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-corner {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-color: var(--color-gold-bright);
+  border-style: solid;
+  opacity: 0.75;
+}
+
+.card-corner-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.card-corner-tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.card-corner-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.card-corner-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
 .invitation-subheading-eyebrow {
   font-size: var(--text-2xs);
@@ -408,7 +459,10 @@ body.intro-active {
 }
 
 .countdown-unit {
-  background: rgba(54, 7, 14, 0.75);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    rgba(54, 7, 14, 0.78);
+  background-size: 60px 60px, auto;
   border: 1px solid var(--color-gold-hairline);
   border-radius: var(--radius-xs);
   padding: 1.25rem 0.5rem;
@@ -462,15 +516,24 @@ body.intro-active {
 
 /* Venue Card */
 .venue-card {
-  background: linear-gradient(150deg, #4A0B14 0%, #28040A 100%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    linear-gradient(150deg, #4A0B14 0%, #28040A 100%);
+  background-size: 72px 72px, auto;
   border: 1.5px solid var(--color-gold);
   border-radius: var(--radius-sm);
   padding: clamp(2.25rem, 5vw, 3.25rem) clamp(1.5rem, 4vw, 2.75rem);
   text-align: center;
   max-width: 720px;
   margin: 0 auto;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 30px rgba(165, 26, 44, 0.25);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 30px rgba(165, 26, 44, 0.25), inset 0 0 45px rgba(0, 0, 0, 0.35);
   position: relative;
+  overflow: hidden;
+}
+
+.venue-card > *:not(.card-inset-frame) {
+  position: relative;
+  z-index: 2;
 }
 
 .venue-burmese-name {
@@ -499,9 +562,17 @@ body.intro-active {
   justify-content: center;
   gap: 0.45rem;
   padding: 1.15rem 1.5rem;
-  background: rgba(54, 7, 14, 0.7);
-  border: 1px solid rgba(229, 195, 120, 0.35);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    rgba(54, 7, 14, 0.85);
+  background-size: 60px 60px, auto;
+  border: 1px solid rgba(229, 195, 120, 0.45);
   border-radius: var(--radius-xs);
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto 1.65rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
   max-width: 440px;
   width: 100%;
   margin: 0 auto 1.65rem;
@@ -903,21 +974,35 @@ body.intro-active {
    ========================================================================== */
 .section-gift {
   position: relative;
-  background: radial-gradient(circle at 50% 30%, rgba(107, 18, 30, 0.35) 0%, transparent 70%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    radial-gradient(circle at 50% 30%, rgba(107, 18, 30, 0.45) 0%, #1a0206 70%);
+  background-size: 72px 72px, auto;
+  border-bottom: 1px solid var(--color-gold-hairline);
 }
 
 .gift-card {
-  background: linear-gradient(150deg, #4A0B14 0%, #28040A 100%);
+  background: 
+    url('../assets/images/pattern-lattice.svg') repeat,
+    linear-gradient(150deg, #4A0B14 0%, #28040A 100%);
+  background-size: 72px 72px, auto;
   border: 1.5px solid var(--color-gold);
   border-radius: var(--radius-sm);
   padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2.5rem);
   max-width: 520px;
   margin: 0 auto;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 30px rgba(165, 26, 44, 0.25);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 30px rgba(165, 26, 44, 0.25), inset 0 0 40px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.gift-card > *:not(.card-inset-frame) {
+  position: relative;
+  z-index: 2;
 }
 
 .gift-qr-wrapper {
