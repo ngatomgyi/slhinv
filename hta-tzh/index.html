@@ -24,11 +24,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;600;700&family=Cinzel:wght@400;500;600;700&family=Italiana&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets (All Relative for Subdirectory Compatibility) -->
-  <link rel="stylesheet" href="./css/variables.css?v=1.9.2">
-  <link rel="stylesheet" href="./css/reset.css?v=1.9.2">
-  <link rel="stylesheet" href="./css/base.css?v=1.9.2">
-  <link rel="stylesheet" href="./css/components.css?v=1.9.2">
-  <link rel="stylesheet" href="./css/animations.css?v=1.9.2">
+  <link rel="stylesheet" href="./css/variables.css?v=1.9.3">
+  <link rel="stylesheet" href="./css/reset.css?v=1.9.3">
+  <link rel="stylesheet" href="./css/base.css?v=1.9.3">
+  <link rel="stylesheet" href="./css/components.css?v=1.9.3">
+  <link rel="stylesheet" href="./css/animations.css?v=1.9.3">
 </head>
 <body class="intro-active">
 
@@ -36,7 +36,16 @@
        1. OPENING CEREMONY / INTRO SCREEN
        ========================================================================= -->
   <section id="intro-screen" class="intro-screen" aria-label="Wedding Invitation Envelope">
-    <div class="intro-frame" aria-hidden="true"></div>
+    <!-- Subtle Frame with Traditional Corner Brackets -->
+    <div class="intro-frame" aria-hidden="true">
+      <span class="intro-corner intro-corner-tl"></span>
+      <span class="intro-corner intro-corner-tr"></span>
+      <span class="intro-corner intro-corner-bl"></span>
+      <span class="intro-corner intro-corner-br"></span>
+    </div>
+
+    <!-- Subtle Faint Double Happiness Background Watermark -->
+    <div class="intro-watermark-seal" aria-hidden="true">囍</div>
 
     <div class="intro-content">
       <div class="double-happiness-seal" aria-hidden="true">
@@ -391,11 +400,11 @@
   <div id="toast-notice" class="toast-notice" role="status" aria-live="polite"></div>
 
   <!-- Scripts (All Relative for Subdirectory Compatibility) -->
-  <script src="./config.js?v=1.9.2"></script>
-  <script src="./js/audio.js?v=1.9.2"></script>
-  <script src="./js/countdown.js?v=1.9.2"></script>
-  <script src="./js/gallery.js?v=1.9.2"></script>
-  <script src="./js/calendar.js?v=1.9.2"></script>
-  <script src="./js/app.js?v=1.9.2"></script>
+  <script src="./config.js?v=1.9.3"></script>
+  <script src="./js/audio.js?v=1.9.3"></script>
+  <script src="./js/countdown.js?v=1.9.3"></script>
+  <script src="./js/gallery.js?v=1.9.3"></script>
+  <script src="./js/calendar.js?v=1.9.3"></script>
+  <script src="./js/app.js?v=1.9.3"></script>
 </body>
 </html>
