@@ -39,53 +39,33 @@
   mix-blend-mode: overlay;
 }
 
-/* Subtle Regal Double Happiness Seal Watermark */
-.intro-watermark-seal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-chinese);
-  font-size: clamp(16rem, 36vw, 26rem);
-  font-weight: 700;
-  color: #E5C378;
-  opacity: 0.032;
-  pointer-events: none;
-  line-height: 1;
-  user-select: none;
-  z-index: 1;
-}
-
 body.intro-active {
   overflow: hidden !important;
   touch-action: none;
 }
 
-/* Subtle Hairline Frame with Traditional Chinese Decorative Corners */
+/* Subtle Hairline Frame with Traditional Corner Brackets */
 .intro-frame {
   position: absolute;
-  inset: clamp(0.85rem, 3vw, 2rem);
-  border: 1px solid rgba(229, 195, 120, 0.25);
+  inset: clamp(1rem, 3.5vw, 2.25rem);
+  border: 1px solid rgba(229, 195, 120, 0.28);
   pointer-events: none;
   z-index: 2;
 }
 
 .intro-corner {
   position: absolute;
-  width: clamp(38px, 9vw, 56px);
-  height: clamp(38px, 9vw, 56px);
-  background-image: url('../assets/images/corner-accent.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  opacity: 0.9;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+  width: 14px;
+  height: 14px;
+  border-color: var(--color-gold-bright);
+  border-style: solid;
+  opacity: 0.75;
 }
 
-.intro-corner-tl { top: -1px; left: -1px; transform-origin: top left; }
-.intro-corner-tr { top: -1px; right: -1px; transform: scaleX(-1); transform-origin: top right; }
-.intro-corner-bl { bottom: -1px; left: -1px; transform: scaleY(-1); transform-origin: bottom left; }
-.intro-corner-br { bottom: -1px; right: -1px; transform: scale(-1); transform-origin: bottom right; }
+.intro-corner-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.intro-corner-tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.intro-corner-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.intro-corner-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
 /* Centered Presentation Content */
 .intro-content {
@@ -130,10 +110,6 @@ body.intro-active {
 }
 
 .intro-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.22em;
@@ -141,20 +117,6 @@ body.intro-active {
   color: var(--color-gold-bright);
   margin-bottom: 1rem;
   white-space: nowrap;
-}
-
-.intro-badge::before,
-.intro-badge::after {
-  content: "";
-  display: inline-block;
-  width: clamp(24px, 6vw, 36px);
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-gold-bright));
-  opacity: 0.75;
-}
-
-.intro-badge::after {
-  background: linear-gradient(to left, transparent, var(--color-gold-bright));
 }
 
 .intro-names-title {
@@ -462,25 +424,19 @@ body.intro-active {
 
 .card-corner {
   position: absolute;
-  width: clamp(28px, 6vw, 38px);
-  height: clamp(28px, 6vw, 38px);
-  background-image: url('../assets/images/corner-accent.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  opacity: 0.88;
+  width: 13px;
+  height: 13px;
+  border-color: var(--color-gold-bright);
+  border-style: solid;
+  opacity: 0.75;
 }
 
-.card-corner-tl { top: -1px; left: -1px; transform-origin: top left; }
-.card-corner-tr { top: -1px; right: -1px; transform: scaleX(-1); transform-origin: top right; }
-.card-corner-bl { bottom: -1px; left: -1px; transform: scaleY(-1); transform-origin: bottom left; }
-.card-corner-br { bottom: -1px; right: -1px; transform: scale(-1); transform-origin: bottom right; }
+.card-corner-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.card-corner-tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.card-corner-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.card-corner-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
 .invitation-subheading-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
   font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: 0.22em;
@@ -488,20 +444,6 @@ body.intro-active {
   color: var(--color-gold-bright);
   margin-bottom: 0.75rem;
   white-space: nowrap;
-}
-
-.invitation-subheading-eyebrow::before,
-.invitation-subheading-eyebrow::after {
-  content: "";
-  display: inline-block;
-  width: clamp(20px, 5vw, 32px);
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-gold-bright));
-  opacity: 0.75;
-}
-
-.invitation-subheading-eyebrow::after {
-  background: linear-gradient(to left, transparent, var(--color-gold-bright));
 }
 
 .invitation-title {
