@@ -193,27 +193,6 @@ function setupVenueInteractions(config) {
     mapsBtn.target = '_blank';
     mapsBtn.rel = 'noopener noreferrer';
   }
-
-  // Copy Venue Name Button
-  const copyBtn = document.getElementById('btn-copy-address');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const address = config.venue?.burmeseName || 'ဟိုစိန်တရုတ်ဘုံကျောင်း၊ ဝါးခယ်မမြို့';
-      const performCopy = () => {
-        showToast('✓ Venue location copied to clipboard');
-      };
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(address).then(performCopy).catch(() => {
-          fallbackCopyText(address);
-          performCopy();
-        });
-      } else {
-        fallbackCopyText(address);
-        performCopy();
-      }
-    });
-  }
 }
 
 function setupGiftInteractions(config) {
